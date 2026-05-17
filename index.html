@@ -827,40 +827,49 @@
       });
     });
 
+    function revealEl(el) {
+      el.classList.add('revealed');
+      if (el.classList.contains('manifeste')) {
+        el.querySelectorAll('.manifeste-line, .divider').forEach((line, i) => {
+          setTimeout(() => {
+            line.style.opacity = '1';
+            line.style.transform = 'translateX(0)';
+          }, 200 + i * 130);
+        });
+      }
+      if (el.classList.contains('flux-wrap')) {
+        el.classList.add('flux-revealed');
+        el.querySelectorAll('.flux-node').forEach((node, i) => {
+          node.style.opacity = '0';
+          node.style.transform = 'scale(0.82)';
+          node.style.transition = 'opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1)';
+          setTimeout(() => { node.style.opacity = '1'; node.style.transform = 'scale(1)'; }, i * 220);
+        });
+      }
+    }
+
     const revealObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (!entry.isIntersecting) return;
-        const el = entry.target;
-        el.classList.add('revealed');
-        revealObserver.unobserve(el);
-
-        // Manifeste : stagger lines
-        if (el.classList.contains('manifeste')) {
-          el.querySelectorAll('.manifeste-line, .divider').forEach((line, i) => {
-            setTimeout(() => {
-              line.style.opacity = '1';
-              line.style.transform = 'translateX(0)';
-            }, 200 + i * 130);
-          });
-        }
-
-        // Flux : draw arrows + pop nodes
-        if (el.classList.contains('flux-wrap')) {
-          el.classList.add('flux-revealed');
-          el.querySelectorAll('.flux-node').forEach((node, i) => {
-            node.style.opacity = '0';
-            node.style.transform = 'scale(0.82)';
-            node.style.transition = 'opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1)';
-            setTimeout(() => {
-              node.style.opacity = '1';
-              node.style.transform = 'scale(1)';
-            }, i * 220);
-          });
-        }
+        revealEl(entry.target);
+        revealObserver.unobserve(entry.target);
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+    }, { threshold: 0.08, rootMargin: '0px 0px 0px 0px' });
 
-    allReveal.forEach(el => revealObserver.observe(el));
+    // Révèle immédiatement les éléments déjà visibles, observe les autres
+    allReveal.forEach(el => {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight && rect.bottom > 0) {
+        revealEl(el);
+      } else {
+        revealObserver.observe(el);
+      }
+    });
+
+    // Filet de sécurité : révèle tout après 1.5s si encore caché
+    setTimeout(() => {
+      document.querySelectorAll('.will-reveal:not(.revealed)').forEach(el => revealEl(el));
+    }, 1500);
 
     // ── COUNTER ANIMATION ──
     document.querySelectorAll('.hero-metric-val').forEach(el => {
