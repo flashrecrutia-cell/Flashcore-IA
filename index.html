@@ -16,462 +16,127 @@
       --muted: #52525b;
       --accent: #a78bfa;
     }
-
     * { margin: 0; padding: 0; box-sizing: border-box; }
-
-    body {
-      font-family: 'Segoe UI', system-ui, sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--bg); color: var(--text); line-height: 1.6; }
     a { color: inherit; text-decoration: none; }
 
     /* ── NAV ── */
-    nav {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 18px 60px;
-      position: fixed;
-      width: 100%;
-      top: 0;
-      background: rgba(8,8,13,0.9);
-      backdrop-filter: blur(14px);
-      z-index: 100;
-      border-bottom: 1px solid var(--border);
-    }
-    .logo {
-      font-family: 'Courier New', monospace;
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.5px;
-    }
-    .logo span {
-      background: linear-gradient(135deg, var(--purple), var(--blue));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    nav ul {
-      list-style: none;
-      display: flex;
-      gap: 32px;
-      align-items: center;
-    }
-    nav ul a {
-      color: var(--muted);
-      font-size: 0.85rem;
-      letter-spacing: 0.3px;
-      transition: color 0.2s;
-    }
+    nav { display: flex; justify-content: space-between; align-items: center; padding: 18px 60px; position: fixed; width: 100%; top: 0; background: rgba(8,8,13,0.9); backdrop-filter: blur(14px); z-index: 100; border-bottom: 1px solid var(--border); }
+    .logo { font-family: 'Courier New', monospace; font-size: 1.1rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; }
+    .logo span { background: linear-gradient(135deg, var(--purple), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    nav ul { list-style: none; display: flex; gap: 28px; align-items: center; }
+    nav ul a { color: var(--muted); font-size: 0.85rem; transition: color 0.2s; }
     nav ul a:hover { color: #fff; }
-    .nav-cta {
-      background: linear-gradient(135deg, var(--purple), var(--blue));
-      color: #fff !important;
-      padding: 8px 20px;
-      border-radius: 6px;
-      font-weight: 600 !important;
-      font-size: 0.85rem !important;
-      transition: opacity 0.2s !important;
-    }
+    .nav-cta { background: linear-gradient(135deg, var(--purple), var(--blue)); color: #fff !important; padding: 8px 20px; border-radius: 6px; font-weight: 600 !important; font-size: 0.85rem !important; transition: opacity 0.2s !important; }
     .nav-cta:hover { opacity: 0.82; }
+    .lang-toggle { display: flex; gap: 0; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; }
+    .lang-btn { background: transparent; border: none; color: var(--muted); font-size: 0.78rem; font-family: 'Courier New', monospace; padding: 6px 12px; cursor: pointer; transition: background 0.2s, color 0.2s; letter-spacing: 1px; }
+    .lang-btn.active { background: rgba(124,58,237,0.2); color: var(--accent); }
+    .lang-btn:hover:not(.active) { background: rgba(255,255,255,0.04); color: #fff; }
 
     /* ── HERO ── */
-    .hero {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding: 140px 60px 80px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .hero-tag {
-      font-family: 'Courier New', monospace;
-      font-size: 0.75rem;
-      color: var(--accent);
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 32px;
-    }
-    .hero h1 {
-      font-size: clamp(3rem, 7vw, 6.5rem);
-      font-weight: 800;
-      line-height: 1.0;
-      letter-spacing: -2px;
-      color: #fff;
-      margin-bottom: 32px;
-    }
-    .hero h1 em {
-      font-style: normal;
-      background: linear-gradient(135deg, var(--purple), var(--blue));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero-sub {
-      font-size: 1.1rem;
-      color: var(--muted);
-      max-width: 520px;
-      line-height: 1.75;
-      margin-bottom: 48px;
-    }
-    .hero-btns {
-      display: flex;
-      gap: 14px;
-      flex-wrap: wrap;
-    }
-    .btn-primary {
-      background: linear-gradient(135deg, var(--purple), var(--blue));
-      color: #fff;
-      padding: 14px 30px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: opacity 0.2s, transform 0.2s;
-      display: inline-block;
-    }
+    .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 140px 60px 80px; max-width: 1100px; margin: 0 auto; }
+    .hero-tag { font-family: 'Courier New', monospace; font-size: 0.75rem; color: var(--accent); letter-spacing: 3px; text-transform: uppercase; margin-bottom: 32px; }
+    .hero h1 { font-size: clamp(3rem, 7vw, 6.5rem); font-weight: 800; line-height: 1.0; letter-spacing: -2px; color: #fff; margin-bottom: 32px; }
+    .hero h1 em { font-style: normal; background: linear-gradient(135deg, var(--purple), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+    .hero-sub { font-size: 1.1rem; color: var(--muted); max-width: 520px; line-height: 1.75; margin-bottom: 48px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary { background: linear-gradient(135deg, var(--purple), var(--blue)); color: #fff; padding: 14px 30px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; transition: opacity 0.2s, transform 0.2s; display: inline-block; }
     .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
-    .btn-ghost {
-      background: transparent;
-      color: var(--accent);
-      border: 1px solid rgba(124,58,237,0.35);
-      padding: 14px 30px;
-      border-radius: 8px;
-      font-weight: 600;
-      font-size: 0.95rem;
-      transition: background 0.2s, transform 0.2s;
-      display: inline-block;
-    }
+    .btn-ghost { background: transparent; color: var(--accent); border: 1px solid rgba(124,58,237,0.35); padding: 14px 30px; border-radius: 8px; font-weight: 600; font-size: 0.95rem; transition: background 0.2s, transform 0.2s; display: inline-block; }
     .btn-ghost:hover { background: rgba(124,58,237,0.1); transform: translateY(-2px); }
-    .hero-metrics {
-      display: flex;
-      gap: 48px;
-      margin-top: 64px;
-      padding-top: 48px;
-      border-top: 1px solid var(--border);
-      flex-wrap: wrap;
-    }
-    .hero-metric-val {
-      font-family: 'Courier New', monospace;
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #fff;
-    }
-    .hero-metric-label {
-      font-size: 0.8rem;
-      color: var(--muted);
-      margin-top: 4px;
-      letter-spacing: 0.5px;
-    }
+    .hero-metrics { display: flex; gap: 48px; margin-top: 64px; padding-top: 48px; border-top: 1px solid var(--border); flex-wrap: wrap; }
+    .hero-metric-val { font-family: 'Courier New', monospace; font-size: 1.8rem; font-weight: 700; color: #fff; }
+    .hero-metric-label { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
 
-    /* ── SECTION BASE ── */
-    .s {
-      border-top: 1px solid var(--border);
-      padding: 90px 60px;
-      max-width: 1100px;
-      margin: 0 auto;
-    }
-    .s-num {
-      font-family: 'Courier New', monospace;
-      font-size: 0.7rem;
-      color: var(--muted);
-      letter-spacing: 3px;
-      margin-bottom: 12px;
-    }
-    .s-title {
-      font-size: clamp(1.8rem, 4vw, 2.8rem);
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -1px;
-      line-height: 1.15;
-      margin-bottom: 16px;
-    }
-    .s-sub {
-      color: var(--muted);
-      font-size: 0.95rem;
-      max-width: 480px;
-      line-height: 1.7;
-      margin-bottom: 56px;
-    }
-    .divider {
-      font-family: 'Courier New', monospace;
-      color: var(--muted);
-      font-size: 0.75rem;
-      letter-spacing: 4px;
-      margin: 16px 0;
-    }
+    /* ── SECTION ── */
+    .s { border-top: 1px solid var(--border); padding: 90px 60px; max-width: 1100px; margin: 0 auto; }
+    .s-num { font-family: 'Courier New', monospace; font-size: 0.7rem; color: var(--muted); letter-spacing: 3px; margin-bottom: 12px; }
+    .s-title { font-size: clamp(1.8rem, 4vw, 2.8rem); font-weight: 700; color: #fff; letter-spacing: -1px; line-height: 1.15; margin-bottom: 16px; }
+    .s-sub { color: var(--muted); font-size: 0.95rem; max-width: 480px; line-height: 1.7; margin-bottom: 56px; }
+    .divider { font-family: 'Courier New', monospace; color: var(--muted); font-size: 0.75rem; letter-spacing: 4px; margin: 16px 0; }
 
     /* ── FLUX ── */
-    .flux {
-      display: flex;
-      align-items: center;
-      gap: 0;
-      flex-wrap: wrap;
-      margin-top: 48px;
-    }
-    .flux-node {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 24px 28px;
-      text-align: center;
-      min-width: 160px;
-    }
+    .flux { display: flex; align-items: center; flex-wrap: wrap; margin-top: 48px; }
+    .flux-node { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; text-align: center; min-width: 160px; }
     .flux-node-icon { font-size: 1.8rem; margin-bottom: 8px; }
-    .flux-node-label {
-      font-family: 'Courier New', monospace;
-      font-size: 0.72rem;
-      color: var(--accent);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 6px;
-    }
+    .flux-node-label { font-family: 'Courier New', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
     .flux-node-text { font-size: 0.85rem; color: var(--muted); }
-    .flux-arrow {
-      font-family: 'Courier New', monospace;
-      color: var(--purple);
-      font-size: 1.4rem;
-      padding: 0 12px;
-      flex-shrink: 0;
-    }
+    .flux-arrow { font-family: 'Courier New', monospace; color: var(--purple); font-size: 1.4rem; padding: 0 12px; flex-shrink: 0; }
 
     /* ── DEMO ── */
-    .demo-box {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 48px;
-      background: var(--surface);
-      border: 1px solid rgba(124,58,237,0.2);
-      border-radius: 20px;
-      padding: 52px;
-      align-items: start;
-    }
-    .demo-tag {
-      font-family: 'Courier New', monospace;
-      font-size: 0.7rem;
-      color: var(--accent);
-      letter-spacing: 2px;
-      margin-bottom: 16px;
-    }
-    .demo-box h3 {
-      font-size: 1.8rem;
-      font-weight: 700;
-      color: #fff;
-      letter-spacing: -0.5px;
-      margin-bottom: 14px;
-      line-height: 1.2;
-    }
+    .demo-box { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; background: var(--surface); border: 1px solid rgba(124,58,237,0.2); border-radius: 20px; padding: 52px; align-items: start; }
+    .demo-tag { font-family: 'Courier New', monospace; font-size: 0.7rem; color: var(--accent); letter-spacing: 2px; margin-bottom: 16px; }
+    .demo-box h3 { font-size: 1.8rem; font-weight: 700; color: #fff; letter-spacing: -0.5px; margin-bottom: 14px; line-height: 1.2; }
     .demo-box p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 28px; }
     .demo-free { font-size: 0.75rem; color: var(--muted); margin-top: 10px; }
     .demo-outputs { display: flex; flex-direction: column; gap: 12px; }
-    .demo-output {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 14px 18px;
-      display: flex;
-      gap: 14px;
-      align-items: flex-start;
-    }
+    .demo-output { background: rgba(255,255,255,0.03); border: 1px solid var(--border); border-radius: 10px; padding: 14px 18px; display: flex; gap: 14px; align-items: flex-start; }
     .demo-output-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
     .demo-output h4 { font-size: 0.85rem; font-weight: 600; color: #fff; margin-bottom: 3px; }
     .demo-output p { font-size: 0.78rem; color: var(--muted); margin: 0; }
 
     /* ── SERVICES ── */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1px;
-      background: var(--border);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      overflow: hidden;
-    }
-    .service {
-      background: var(--bg);
-      padding: 36px 32px;
-      transition: background 0.2s;
-    }
+    .services-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--border); border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+    .service { background: var(--bg); padding: 36px 32px; transition: background 0.2s; }
     .service:hover { background: var(--surface); }
     .service-icon { font-size: 1.6rem; margin-bottom: 20px; }
-    .service h3 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 12px;
-    }
+    .service h3 { font-size: 1rem; font-weight: 700; color: #fff; margin-bottom: 12px; }
     .service p { color: var(--muted); font-size: 0.85rem; line-height: 1.65; }
-    .service ul {
-      margin-top: 14px;
-      padding-left: 0;
-      list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-    .service ul li {
-      font-size: 0.8rem;
-      color: var(--muted);
-      padding-left: 14px;
-      position: relative;
-    }
-    .service ul li::before {
-      content: '→';
-      position: absolute;
-      left: 0;
-      color: var(--purple);
-      font-size: 0.75rem;
-    }
+    .service ul { margin-top: 14px; padding-left: 0; list-style: none; display: flex; flex-direction: column; gap: 6px; }
+    .service ul li { font-size: 0.8rem; color: var(--muted); padding-left: 14px; position: relative; }
+    .service ul li::before { content: '→'; position: absolute; left: 0; color: var(--purple); font-size: 0.75rem; }
 
     /* ── METHODE ── */
-    .methode-steps { display: flex; flex-direction: column; gap: 0; }
-    .methode-step {
-      display: grid;
-      grid-template-columns: 80px 1fr;
-      gap: 32px;
-      padding: 36px 0;
-      border-bottom: 1px solid var(--border);
-      align-items: start;
-    }
+    .methode-steps { display: flex; flex-direction: column; }
+    .methode-step { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 36px 0; border-bottom: 1px solid var(--border); align-items: start; }
     .methode-step:last-child { border-bottom: none; }
-    .methode-step-num {
-      font-family: 'Courier New', monospace;
-      font-size: 2.5rem;
-      font-weight: 700;
-      color: rgba(124,58,237,0.3);
-      line-height: 1;
-      padding-top: 4px;
-    }
-    .methode-step h3 {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: #fff;
-      margin-bottom: 8px;
-    }
+    .methode-step-num { font-family: 'Courier New', monospace; font-size: 2.5rem; font-weight: 700; color: rgba(124,58,237,0.3); line-height: 1; padding-top: 4px; }
+    .methode-step h3 { font-size: 1.1rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
     .methode-step p { color: var(--muted); font-size: 0.88rem; line-height: 1.65; }
-    .methode-step-tag {
-      display: inline-block;
-      font-family: 'Courier New', monospace;
-      font-size: 0.7rem;
-      color: var(--accent);
-      background: rgba(124,58,237,0.1);
-      border: 1px solid rgba(124,58,237,0.2);
-      padding: 3px 10px;
-      border-radius: 4px;
-      margin-top: 10px;
-    }
+    .methode-step-tag { display: inline-block; font-family: 'Courier New', monospace; font-size: 0.7rem; color: var(--accent); background: rgba(124,58,237,0.1); border: 1px solid rgba(124,58,237,0.2); padding: 3px 10px; border-radius: 4px; margin-top: 10px; }
 
     /* ── MANIFESTE ── */
-    .manifeste {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      padding: 64px;
-    }
-    .manifeste-line {
-      font-size: clamp(1.2rem, 3vw, 1.9rem);
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.3;
-      margin-bottom: 20px;
-    }
+    .manifeste { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 64px; }
+    .manifeste-line { font-size: clamp(1.2rem, 3vw, 1.9rem); font-weight: 700; color: #fff; line-height: 1.3; margin-bottom: 20px; }
     .manifeste-line.muted { color: var(--muted); font-weight: 400; font-size: clamp(0.9rem, 2vw, 1.15rem); }
-    .manifeste-line em {
-      font-style: normal;
-      background: linear-gradient(135deg, var(--purple), var(--blue));
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
+    .manifeste-line em { font-style: normal; background: linear-gradient(135deg, var(--purple), var(--blue)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 
     /* ── POURQUOI ── */
-    .pourquoi-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-    }
-    .pourquoi-card {
-      padding: 32px;
-      border: 1px solid var(--border);
-      border-radius: 14px;
-      background: var(--surface);
-    }
-    .pourquoi-card h3 {
-      font-family: 'Courier New', monospace;
-      font-size: 0.75rem;
-      letter-spacing: 2px;
-      color: var(--accent);
-      text-transform: uppercase;
-      margin-bottom: 14px;
-    }
+    .pourquoi-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+    .pourquoi-card { padding: 32px; border: 1px solid var(--border); border-radius: 14px; background: var(--surface); }
+    .pourquoi-card h3 { font-family: 'Courier New', monospace; font-size: 0.75rem; letter-spacing: 2px; color: var(--accent); text-transform: uppercase; margin-bottom: 14px; }
     .pourquoi-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
 
     /* ── CONTACT ── */
-    .contact-wrap {
-      background: var(--surface);
-      border-top: 1px solid var(--border);
-    }
-    .contact-inner {
-      max-width: 660px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 100px 24px;
-    }
-    .contact-inner .s-num { justify-content: center; display: block; }
+    .contact-wrap { background: var(--surface); border-top: 1px solid var(--border); }
+    .contact-inner { max-width: 660px; margin: 0 auto; text-align: center; padding: 100px 24px; }
     .contact-inner .s-title { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 14px; }
-    .contact-inner p { color: var(--muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 44px; }
+    .contact-inner > p { color: var(--muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 44px; }
     .contact-options { display: flex; flex-direction: column; gap: 12px; max-width: 440px; margin: 0 auto; }
-    .contact-opt-main {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: linear-gradient(135deg, var(--purple), var(--blue));
-      color: #fff;
-      padding: 20px 28px;
-      border-radius: 12px;
-      transition: opacity 0.2s, transform 0.2s;
-    }
+    .contact-opt-main { display: flex; align-items: center; gap: 16px; background: linear-gradient(135deg, var(--purple), var(--blue)); color: #fff; padding: 20px 28px; border-radius: 12px; transition: opacity 0.2s, transform 0.2s; }
     .contact-opt-main:hover { opacity: 0.88; transform: translateY(-2px); }
-    .contact-opt-sec {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      background: transparent;
-      border: 1px solid var(--border);
-      color: var(--text);
-      padding: 18px 28px;
-      border-radius: 12px;
-      transition: border-color 0.2s, transform 0.2s;
-    }
+    .contact-opt-sec { display: flex; align-items: center; gap: 16px; background: transparent; border: 1px solid var(--border); color: var(--text); padding: 18px 28px; border-radius: 12px; transition: border-color 0.2s, transform 0.2s; }
     .contact-opt-sec:hover { border-color: rgba(124,58,237,0.4); transform: translateY(-2px); }
     .opt-icon { font-size: 1.4rem; flex-shrink: 0; }
     .opt-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; }
     .opt-sub { font-size: 0.78rem; opacity: 0.6; }
 
     /* ── FOOTER ── */
-    footer {
-      text-align: center;
-      padding: 32px 20px;
-      color: var(--muted);
-      font-size: 0.78rem;
-      font-family: 'Courier New', monospace;
-      border-top: 1px solid var(--border);
-      letter-spacing: 0.5px;
-    }
+    footer { text-align: center; padding: 32px 20px; color: var(--muted); font-size: 0.78rem; font-family: 'Courier New', monospace; border-top: 1px solid var(--border); letter-spacing: 0.5px; }
 
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
-      nav { padding: 16px 24px; }
+      nav { padding: 16px 20px; }
+      nav ul { gap: 14px; }
       .hero { padding: 120px 24px 70px; }
       .s { padding: 70px 24px; }
       .services-grid { grid-template-columns: 1fr; }
       .pourquoi-grid { grid-template-columns: 1fr; }
-      .demo-box { grid-template-columns: 1fr; padding: 36px 28px; }
-      .manifeste { padding: 40px 28px; }
+      .demo-box { grid-template-columns: 1fr; padding: 32px 24px; }
+      .manifeste { padding: 36px 24px; }
       .hero h1 { letter-spacing: -1px; }
       .methode-step { grid-template-columns: 50px 1fr; gap: 20px; }
-      .flux { gap: 8px; }
     }
   </style>
 </head>
@@ -481,46 +146,49 @@
   <nav>
     <div class="logo">flashcore<span>_ia</span></div>
     <ul>
-      <li><a href="#demo">Agent IA</a></li>
-      <li><a href="#services">Services</a></li>
-      <li><a href="#methode">Méthode</a></li>
-      <li><a href="#contact" class="nav-cta">Réserver un appel</a></li>
+      <li><a href="#demo" data-i18n="nav-demo">Agent IA</a></li>
+      <li><a href="#services" data-i18n="nav-services">Services</a></li>
+      <li><a href="#methode" data-i18n="nav-methode">Méthode</a></li>
+      <li>
+        <div class="lang-toggle">
+          <button class="lang-btn active" onclick="setLang('fr')">FR</button>
+          <button class="lang-btn" onclick="setLang('en')">EN</button>
+        </div>
+      </li>
+      <li><a href="#contact" class="nav-cta" data-i18n="nav-cta">Réserver un appel</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <div style="background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.12) 0%, transparent 60%);">
     <section class="hero">
-      <div class="hero-tag">// agents_ia · automatisation · flashcore</div>
-      <h1>
-        L'IA qui<br/>
-        travaille<br/>
-        <em>sans vous.</em>
+      <div class="hero-tag" data-i18n="hero-tag">// agents_ia · automatisation · flashcore</div>
+      <h1 data-i18n-html="hero-h1">
+        L'IA qui<br/>travaille<br/><em>sans vous.</em>
       </h1>
-      <p class="hero-sub">
-        Je conçois des agents IA sur mesure pour les entrepreneurs.
-        Vos tâches répétitives s'automatisent — vous, vous revenez sur ce qui crée vraiment de la valeur.
+      <p class="hero-sub" data-i18n="hero-sub">
+        Je conçois des agents IA sur mesure pour les entrepreneurs. Vos tâches répétitives s'automatisent — vous, vous revenez sur ce qui crée vraiment de la valeur.
       </p>
       <div class="hero-btns">
-        <a href="#demo" class="btn-primary">Tester l'agent IA gratuit</a>
-        <a href="#contact" class="btn-ghost">Réserver un appel →</a>
+        <a href="#demo" class="btn-primary" data-i18n="hero-btn1">Tester l'agent IA gratuit</a>
+        <a href="#contact" class="btn-ghost" data-i18n="hero-btn2">Réserver un appel →</a>
       </div>
       <div class="hero-metrics">
         <div>
           <div class="hero-metric-val">48h</div>
-          <div class="hero-metric-label">Livraison moyenne</div>
+          <div class="hero-metric-label" data-i18n="metric-1">Livraison moyenne</div>
         </div>
         <div>
           <div class="hero-metric-val">24/7</div>
-          <div class="hero-metric-label">Agents actifs</div>
+          <div class="hero-metric-label" data-i18n="metric-2">Agents actifs</div>
         </div>
         <div>
           <div class="hero-metric-val">0</div>
-          <div class="hero-metric-label">Abonnement SaaS inutile</div>
+          <div class="hero-metric-label" data-i18n="metric-3">Abonnement SaaS inutile</div>
         </div>
         <div>
           <div class="hero-metric-val">3</div>
-          <div class="hero-metric-label">IA disponibles</div>
+          <div class="hero-metric-label" data-i18n="metric-4">IA disponibles</div>
         </div>
       </div>
     </section>
@@ -529,32 +197,32 @@
   <!-- 01 — FLUX -->
   <div>
     <div class="s">
-      <div class="s-num">// 01 — COMMENT ÇA FONCTIONNE</div>
-      <h2 class="s-title">Votre problème entre.<br/>La solution sort.</h2>
-      <p class="s-sub">Un agent IA reçoit une entrée, traite, décide et livre un résultat — sans intervention humaine.</p>
+      <div class="s-num" data-i18n="s01-num">// 01 — COMMENT ÇA FONCTIONNE</div>
+      <h2 class="s-title" data-i18n="s01-title">Votre problème entre.<br/>La solution sort.</h2>
+      <p class="s-sub" data-i18n="s01-sub">Un agent IA reçoit une entrée, traite, décide et livre un résultat — sans intervention humaine.</p>
       <div class="flux">
         <div class="flux-node">
           <div class="flux-node-icon">📥</div>
-          <div class="flux-node-label">Entrée</div>
-          <div class="flux-node-text">Message, image, données, déclencheur</div>
+          <div class="flux-node-label" data-i18n="flux-1-label">Entrée</div>
+          <div class="flux-node-text" data-i18n="flux-1-text">Message, image, données, déclencheur</div>
         </div>
         <div class="flux-arrow">──→</div>
         <div class="flux-node" style="border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.08);">
           <div class="flux-node-icon">🤖</div>
-          <div class="flux-node-label">Agent IA</div>
-          <div class="flux-node-text">Analyse · Décide · Agit</div>
+          <div class="flux-node-label" data-i18n="flux-2-label">Agent IA</div>
+          <div class="flux-node-text" data-i18n="flux-2-text">Analyse · Décide · Agit</div>
         </div>
         <div class="flux-arrow">──→</div>
         <div class="flux-node">
           <div class="flux-node-icon">📤</div>
-          <div class="flux-node-label">Sortie</div>
-          <div class="flux-node-text">Réponse, contenu, action, rapport</div>
+          <div class="flux-node-label" data-i18n="flux-3-label">Sortie</div>
+          <div class="flux-node-text" data-i18n="flux-3-text">Réponse, contenu, action, rapport</div>
         </div>
         <div class="flux-arrow">──→</div>
         <div class="flux-node">
           <div class="flux-node-icon">🔁</div>
           <div class="flux-node-label">Loop</div>
-          <div class="flux-node-text">Tourne 24h/24 sans vous</div>
+          <div class="flux-node-text" data-i18n="flux-4-text">Tourne 24h/24 sans vous</div>
         </div>
       </div>
     </div>
@@ -563,43 +231,43 @@
   <!-- 02 — DEMO -->
   <div id="demo">
     <div class="s">
-      <div class="s-num">// 02 — AGENT IA DÉMO · GRATUIT</div>
-      <h2 class="s-title">Testez l'IA<br/>sur votre business.</h2>
+      <div class="s-num" data-i18n="s02-num">// 02 — AGENT IA DÉMO · GRATUIT</div>
+      <h2 class="s-title" data-i18n="s02-title">Testez l'IA<br/>sur votre business.</h2>
       <div class="demo-box">
         <div>
           <div class="demo-tag">// radiographie_marketing.agent</div>
-          <h3>Diagnostic marketing en 30 secondes</h3>
-          <p>Décrivez votre business en 2-3 phrases. L'agent analyse votre positionnement et livre un diagnostic complet — direct, sans bullshit.</p>
-          <a href="https://t.me/monmarketing_bot" class="btn-primary" target="_blank">Lancer l'agent →</a>
-          <p class="demo-free">3 analyses offertes · Aucune inscription</p>
+          <h3 data-i18n="demo-h3">Diagnostic marketing en 30 secondes</h3>
+          <p data-i18n="demo-p">Décrivez votre business en 2-3 phrases. L'agent analyse votre positionnement et livre un diagnostic complet — direct, sans bullshit.</p>
+          <a href="https://t.me/monmarketing_bot" class="btn-primary" target="_blank" data-i18n="demo-btn">Lancer l'agent →</a>
+          <p class="demo-free" data-i18n="demo-free">3 analyses offertes · Aucune inscription</p>
         </div>
         <div class="demo-outputs">
           <div class="demo-output">
             <div class="demo-output-icon">🔍</div>
             <div>
-              <h4>Diagnostic</h4>
-              <p>Ce qui freine votre croissance — sans détour</p>
+              <h4 data-i18n="out-1-title">Diagnostic</h4>
+              <p data-i18n="out-1-sub">Ce qui freine votre croissance — sans détour</p>
             </div>
           </div>
           <div class="demo-output">
             <div class="demo-output-icon">🎯</div>
             <div>
-              <h4>Positionnement</h4>
-              <p>Comment vous différencier de vos concurrents</p>
+              <h4 data-i18n="out-2-title">Positionnement</h4>
+              <p data-i18n="out-2-sub">Comment vous différencier de vos concurrents</p>
             </div>
           </div>
           <div class="demo-output">
             <div class="demo-output-icon">📣</div>
             <div>
-              <h4>Message clé</h4>
-              <p>La phrase qui doit résumer votre offre</p>
+              <h4 data-i18n="out-3-title">Message clé</h4>
+              <p data-i18n="out-3-sub">La phrase qui doit résumer votre offre</p>
             </div>
           </div>
           <div class="demo-output">
             <div class="demo-output-icon">⚡</div>
             <div>
-              <h4>3 actions immédiates</h4>
-              <p>Faisables cette semaine</p>
+              <h4 data-i18n="out-4-title">3 actions immédiates</h4>
+              <p data-i18n="out-4-sub">Faisables cette semaine</p>
             </div>
           </div>
         </div>
@@ -610,74 +278,74 @@
   <!-- 03 — SERVICES -->
   <div id="services">
     <div class="s">
-      <div class="s-num">// 03 — SERVICES</div>
-      <h2 class="s-title">Ce que je construis.</h2>
-      <p class="s-sub">Des solutions livrées rapidement, qui tournent sans vous et s'adaptent à votre activité.</p>
+      <div class="s-num" data-i18n="s03-num">// 03 — SERVICES</div>
+      <h2 class="s-title" data-i18n="s03-title">Ce que je construis.</h2>
+      <p class="s-sub" data-i18n="s03-sub">Des solutions livrées rapidement, qui tournent sans vous et s'adaptent à votre activité.</p>
       <div class="services-grid">
         <div class="service">
           <div class="service-icon">🤖</div>
-          <h3>Bots & Agents Telegram / WhatsApp</h3>
-          <p>Assistants IA qui répondent, qualifient, génèrent du contenu et gèrent vos processus — 24h/24.</p>
+          <h3 data-i18n="srv-1-title">Bots & Agents Telegram / WhatsApp</h3>
+          <p data-i18n="srv-1-desc">Assistants IA qui répondent, qualifient, génèrent du contenu et gèrent vos processus — 24h/24.</p>
           <ul>
-            <li>Réponse automatique clients</li>
-            <li>Qualification de leads</li>
-            <li>Génération de contenu</li>
-            <li>Notifications intelligentes</li>
+            <li data-i18n="srv-1-li1">Réponse automatique clients</li>
+            <li data-i18n="srv-1-li2">Qualification de leads</li>
+            <li data-i18n="srv-1-li3">Génération de contenu</li>
+            <li data-i18n="srv-1-li4">Notifications intelligentes</li>
           </ul>
         </div>
         <div class="service">
           <div class="service-icon">⚡</div>
-          <h3>Agents IA autonomes</h3>
-          <p>Des agents capables d'analyser, décider et agir seuls — alimentés par Claude, GPT ou Mistral.</p>
+          <h3 data-i18n="srv-2-title">Agents IA autonomes</h3>
+          <p data-i18n="srv-2-desc">Des agents capables d'analyser, décider et agir seuls — alimentés par Claude, GPT ou Mistral.</p>
           <ul>
-            <li>Analyse de données en continu</li>
-            <li>Prise de décision automatisée</li>
-            <li>Connexion à vos outils existants</li>
-            <li>Rapports et alertes auto</li>
+            <li data-i18n="srv-2-li1">Analyse de données en continu</li>
+            <li data-i18n="srv-2-li2">Prise de décision automatisée</li>
+            <li data-i18n="srv-2-li3">Connexion à vos outils existants</li>
+            <li data-i18n="srv-2-li4">Rapports et alertes auto</li>
           </ul>
         </div>
         <div class="service">
           <div class="service-icon">📢</div>
-          <h3>Automatisation marketing</h3>
-          <p>Posts réseaux sociaux, publicités, emails et campagnes générés par l'IA en quelques secondes.</p>
+          <h3 data-i18n="srv-3-title">Automatisation marketing</h3>
+          <p data-i18n="srv-3-desc">Posts réseaux sociaux, publicités, emails et campagnes générés par l'IA en quelques secondes.</p>
           <ul>
-            <li>Contenu réseaux sociaux</li>
-            <li>Publicités multi-formats</li>
-            <li>Séquences email automatiques</li>
-            <li>Stratégie de contenu IA</li>
+            <li data-i18n="srv-3-li1">Contenu réseaux sociaux</li>
+            <li data-i18n="srv-3-li2">Publicités multi-formats</li>
+            <li data-i18n="srv-3-li3">Séquences email automatiques</li>
+            <li data-i18n="srv-3-li4">Stratégie de contenu IA</li>
           </ul>
         </div>
         <div class="service">
           <div class="service-icon">🔗</div>
-          <h3>Connexion d'outils & APIs</h3>
-          <p>Votre CRM, e-commerce, réseaux sociaux connectés entre eux — les données circulent seules.</p>
+          <h3 data-i18n="srv-4-title">Connexion d'outils & APIs</h3>
+          <p data-i18n="srv-4-desc">Votre CRM, e-commerce, réseaux sociaux connectés entre eux — les données circulent seules.</p>
           <ul>
-            <li>Intégration CRM / e-commerce</li>
-            <li>Webhooks et automatisations</li>
-            <li>Synchronisation de données</li>
-            <li>Tableaux de bord auto-mis à jour</li>
+            <li data-i18n="srv-4-li1">Intégration CRM / e-commerce</li>
+            <li data-i18n="srv-4-li2">Webhooks et automatisations</li>
+            <li data-i18n="srv-4-li3">Synchronisation de données</li>
+            <li data-i18n="srv-4-li4">Tableaux de bord auto</li>
           </ul>
         </div>
         <div class="service">
           <div class="service-icon">💡</div>
-          <h3>Audit & Stratégie IA</h3>
-          <p>Je cartographie les tâches automatisables dans votre activité et je définis la feuille de route la plus rentable.</p>
+          <h3 data-i18n="srv-5-title">Audit & Stratégie IA</h3>
+          <p data-i18n="srv-5-desc">Je cartographie les tâches automatisables dans votre activité et définis la feuille de route la plus rentable.</p>
           <ul>
-            <li>Identification des gains rapides</li>
-            <li>ROI estimé par automatisation</li>
-            <li>Plan d'action priorisé</li>
-            <li>Choix du bon modèle IA</li>
+            <li data-i18n="srv-5-li1">Identification des gains rapides</li>
+            <li data-i18n="srv-5-li2">ROI estimé par automatisation</li>
+            <li data-i18n="srv-5-li3">Plan d'action priorisé</li>
+            <li data-i18n="srv-5-li4">Choix du bon modèle IA</li>
           </ul>
         </div>
         <div class="service">
           <div class="service-icon">🛠️</div>
-          <h3>Déploiement & Maintenance</h3>
-          <p>Vos agents installés sur VPS, monitorés, maintenus. Vous ne gérez rien — ils tournent et vous alertent.</p>
+          <h3 data-i18n="srv-6-title">Déploiement & Maintenance</h3>
+          <p data-i18n="srv-6-desc">Vos agents installés sur VPS, monitorés, maintenus. Vous ne gérez rien — ils tournent et vous alertent.</p>
           <ul>
-            <li>Déploiement VPS Linux</li>
-            <li>Monitoring & alertes</li>
-            <li>Mises à jour incluses</li>
-            <li>Support réactif</li>
+            <li data-i18n="srv-6-li1">Déploiement VPS Linux</li>
+            <li data-i18n="srv-6-li2">Monitoring & alertes</li>
+            <li data-i18n="srv-6-li3">Mises à jour incluses</li>
+            <li data-i18n="srv-6-li4">Support réactif</li>
           </ul>
         </div>
       </div>
@@ -687,40 +355,40 @@
   <!-- 04 — METHODE -->
   <div id="methode">
     <div class="s">
-      <div class="s-num">// 04 — MÉTHODE</div>
-      <h2 class="s-title">Du brief à la mise<br/>en production en 48h.</h2>
-      <p class="s-sub">Un process simple et rapide. Pas de réunions interminables, pas de specs de 40 pages.</p>
+      <div class="s-num" data-i18n="s04-num">// 04 — MÉTHODE</div>
+      <h2 class="s-title" data-i18n="s04-title">Du brief à la mise<br/>en production en 48h.</h2>
+      <p class="s-sub" data-i18n="s04-sub">Un process simple et rapide. Pas de réunions interminables, pas de specs de 40 pages.</p>
       <div class="methode-steps">
         <div class="methode-step">
           <div class="methode-step-num">01</div>
           <div>
-            <h3>Appel découverte — 30 min</h3>
-            <p>On se parle. Vous m'expliquez ce que vous voulez automatiser, ce qui vous prend trop de temps, ce qui vous coûte trop cher. Je pose des questions précises.</p>
-            <span class="methode-step-tag">// gratuit · sans engagement</span>
+            <h3 data-i18n="m1-title">Appel découverte — 30 min</h3>
+            <p data-i18n="m1-desc">On se parle. Vous m'expliquez ce que vous voulez automatiser, ce qui vous prend trop de temps, ce qui vous coûte trop cher. Je pose des questions précises.</p>
+            <span class="methode-step-tag" data-i18n="m1-tag">// gratuit · sans engagement</span>
           </div>
         </div>
         <div class="methode-step">
           <div class="methode-step-num">02</div>
           <div>
-            <h3>Conception de la solution</h3>
-            <p>Je choisis le bon modèle IA, je conçois l'architecture et je code votre agent sur mesure. Vous recevez une démo dans les 24-48h.</p>
-            <span class="methode-step-tag">// livraison : 24-48h</span>
+            <h3 data-i18n="m2-title">Conception de la solution</h3>
+            <p data-i18n="m2-desc">Je choisis le bon modèle IA, je conçois l'architecture et je code votre agent sur mesure. Vous recevez une démo dans les 24-48h.</p>
+            <span class="methode-step-tag" data-i18n="m2-tag">// livraison : 24-48h</span>
           </div>
         </div>
         <div class="methode-step">
           <div class="methode-step-num">03</div>
           <div>
-            <h3>Déploiement & tests</h3>
-            <p>L'agent est déployé sur serveur, testé en conditions réelles. Vous validez, on ajuste si besoin jusqu'à ce que ce soit parfait.</p>
-            <span class="methode-step-tag">// inclus dans chaque projet</span>
+            <h3 data-i18n="m3-title">Déploiement & tests</h3>
+            <p data-i18n="m3-desc">L'agent est déployé sur serveur, testé en conditions réelles. Vous validez, on ajuste si besoin jusqu'à ce que ce soit parfait.</p>
+            <span class="methode-step-tag" data-i18n="m3-tag">// inclus dans chaque projet</span>
           </div>
         </div>
         <div class="methode-step">
           <div class="methode-step-num">04</div>
           <div>
-            <h3>Autonomie totale</h3>
-            <p>Votre agent tourne 24h/24 sans intervention. Je reste disponible pour les évolutions et la maintenance. Vous, vous récupérez votre temps.</p>
-            <span class="methode-step-tag">// support inclus</span>
+            <h3 data-i18n="m4-title">Autonomie totale</h3>
+            <p data-i18n="m4-desc">Votre agent tourne 24h/24 sans intervention. Je reste disponible pour les évolutions et la maintenance. Vous, vous récupérez votre temps.</p>
+            <span class="methode-step-tag" data-i18n="m4-tag">// support inclus</span>
           </div>
         </div>
       </div>
@@ -730,20 +398,20 @@
   <!-- 05 — MANIFESTE -->
   <div>
     <div class="s">
-      <div class="s-num">// 05 — POURQUOI FLASHCORE IA</div>
+      <div class="s-num" data-i18n="s05-num">// 05 — POURQUOI FLASHCORE IA</div>
       <div class="manifeste">
-        <div class="divider">/// manifeste ///</div>
+        <div class="divider" data-i18n="manifeste-divider">/// manifeste ///</div>
         <br/>
-        <p class="manifeste-line">Vous n'avez pas besoin d'une agence de 15 personnes.</p>
-        <p class="manifeste-line muted">Ni d'un consultant qui parle pendant 3 mois sans rien livrer.</p>
+        <p class="manifeste-line" data-i18n="mf-1">Vous n'avez pas besoin d'une agence de 15 personnes.</p>
+        <p class="manifeste-line muted" data-i18n="mf-2">Ni d'un consultant qui parle pendant 3 mois sans rien livrer.</p>
         <br/>
-        <p class="manifeste-line">Vous avez besoin d'un <em>agent qui fait le travail.</em></p>
-        <p class="manifeste-line muted">Qui répond à vos clients à 3h du matin.</p>
-        <p class="manifeste-line muted">Qui génère vos contenus pendant que vous dormez.</p>
-        <p class="manifeste-line muted">Qui analyse vos données pendant que vous vendez.</p>
+        <p class="manifeste-line" data-i18n-html="mf-3">Vous avez besoin d'un <em>agent qui fait le travail.</em></p>
+        <p class="manifeste-line muted" data-i18n="mf-4">Qui répond à vos clients à 3h du matin.</p>
+        <p class="manifeste-line muted" data-i18n="mf-5">Qui génère vos contenus pendant que vous dormez.</p>
+        <p class="manifeste-line muted" data-i18n="mf-6">Qui analyse vos données pendant que vous vendez.</p>
         <br/>
-        <p class="manifeste-line">C'est ça, <em>Flashcore IA.</em></p>
-        <p class="manifeste-line muted">Pas du conseil. Des solutions qui tournent.</p>
+        <p class="manifeste-line" data-i18n-html="mf-7">C'est ça, <em>Flashcore IA.</em></p>
+        <p class="manifeste-line muted" data-i18n="mf-8">Pas du conseil. Des solutions qui tournent.</p>
         <br/>
         <div class="divider">/// ● ● ● ///</div>
       </div>
@@ -753,21 +421,21 @@
   <!-- 06 — POURQUOI -->
   <div>
     <div class="s">
-      <div class="s-num">// 06 — LES DIFFÉRENCES</div>
-      <h2 class="s-title">Pourquoi pas une agence.</h2>
-      <p class="s-sub">Ce qui change quand on travaille ensemble.</p>
+      <div class="s-num" data-i18n="s06-num">// 06 — LES DIFFÉRENCES</div>
+      <h2 class="s-title" data-i18n="s06-title">Pourquoi pas une agence.</h2>
+      <p class="s-sub" data-i18n="s06-sub">Ce qui change quand on travaille ensemble.</p>
       <div class="pourquoi-grid">
         <div class="pourquoi-card">
-          <h3>// Rapidité</h3>
-          <p>48h du brief à la mise en production. Pas de processus administratif, pas d'intermédiaire. Je code, je déploie, c'est live.</p>
+          <h3 data-i18n="pq-1-title">// Rapidité</h3>
+          <p data-i18n="pq-1-desc">48h du brief à la mise en production. Pas de processus administratif, pas d'intermédiaire. Je code, je déploie, c'est live.</p>
         </div>
         <div class="pourquoi-card">
-          <h3>// Sur mesure</h3>
-          <p>Aucun template, aucun outil no-code limité. Chaque agent est codé spécifiquement pour votre activité et vos contraintes.</p>
+          <h3 data-i18n="pq-2-title">// Sur mesure</h3>
+          <p data-i18n="pq-2-desc">Aucun template, aucun outil no-code limité. Chaque agent est codé spécifiquement pour votre activité et vos contraintes.</p>
         </div>
         <div class="pourquoi-card">
-          <h3>// Résultats directs</h3>
-          <p>Je me paie sur les résultats, pas sur les heures. Vous payez une solution qui fonctionne, pas des réunions et des livrables PDF.</p>
+          <h3 data-i18n="pq-3-title">// Résultats directs</h3>
+          <p data-i18n="pq-3-desc">Je me paie sur les résultats, pas sur les heures. Vous payez une solution qui fonctionne, pas des réunions et des livrables PDF.</p>
         </div>
       </div>
     </div>
@@ -776,22 +444,22 @@
   <!-- CONTACT -->
   <div id="contact" class="contact-wrap">
     <div class="contact-inner">
-      <div class="s-num">// 07 — CONTACT</div>
-      <h2 class="s-title">Parlons de votre projet.</h2>
-      <p>Un appel de 30 minutes suffit pour savoir si je peux vous aider et ce que ça donnerait concrètement.</p>
+      <div class="s-num" data-i18n="s07-num">// 07 — CONTACT</div>
+      <h2 class="s-title" data-i18n="s07-title">Parlons de votre projet.</h2>
+      <p data-i18n="s07-sub">Un appel de 30 minutes suffit pour savoir si je peux vous aider et ce que ça donnerait concrètement.</p>
       <div class="contact-options">
         <a href="https://calendly.com/flashrecrutia/appel-decouverte" class="contact-opt-main" target="_blank">
           <span class="opt-icon">📅</span>
           <div>
-            <div class="opt-title">Réserver un appel gratuit</div>
-            <div class="opt-sub">30 min · Visio ou téléphone · Agenda en direct</div>
+            <div class="opt-title" data-i18n="cta-1-title">Réserver un appel gratuit</div>
+            <div class="opt-sub" data-i18n="cta-1-sub">30 min · Visio ou téléphone · Agenda en direct</div>
           </div>
         </a>
         <a href="https://t.me/yanissmolines" class="contact-opt-sec" target="_blank">
           <span class="opt-icon">✈️</span>
           <div>
-            <div class="opt-title">Message Telegram</div>
-            <div class="opt-sub">@yanissmolines · Réponse sous 24h</div>
+            <div class="opt-title" data-i18n="cta-2-title">Message Telegram</div>
+            <div class="opt-sub" data-i18n="cta-2-sub">@yanissmolines · Réponse sous 24h</div>
           </div>
         </a>
       </div>
@@ -799,8 +467,277 @@
   </div>
 
   <footer>
-    © 2026 flashcore_ia — Yaniss Molines &nbsp;·&nbsp; agents_ia · automatisation · marketing
+    <span data-i18n="footer">© 2026 flashcore_ia — Yaniss Molines · agents_ia · automatisation · marketing</span>
   </footer>
+
+  <script>
+    const t = {
+      fr: {
+        'nav-demo': 'Agent IA',
+        'nav-services': 'Services',
+        'nav-methode': 'Méthode',
+        'nav-cta': 'Réserver un appel',
+        'hero-tag': '// agents_ia · automatisation · flashcore',
+        'hero-h1': "L'IA qui<br/>travaille<br/><em>sans vous.</em>",
+        'hero-sub': "Je conçois des agents IA sur mesure pour les entrepreneurs. Vos tâches répétitives s'automatisent — vous, vous revenez sur ce qui crée vraiment de la valeur.",
+        'hero-btn1': "Tester l'agent IA gratuit",
+        'hero-btn2': 'Réserver un appel →',
+        'metric-1': 'Livraison moyenne',
+        'metric-2': 'Agents actifs',
+        'metric-3': 'Abonnement SaaS inutile',
+        'metric-4': 'IA disponibles',
+        's01-num': '// 01 — COMMENT ÇA FONCTIONNE',
+        's01-title': 'Votre problème entre.<br/>La solution sort.',
+        's01-sub': "Un agent IA reçoit une entrée, traite, décide et livre un résultat — sans intervention humaine.",
+        'flux-1-label': 'Entrée',
+        'flux-1-text': 'Message, image, données, déclencheur',
+        'flux-2-label': 'Agent IA',
+        'flux-2-text': 'Analyse · Décide · Agit',
+        'flux-3-label': 'Sortie',
+        'flux-3-text': 'Réponse, contenu, action, rapport',
+        'flux-4-text': 'Tourne 24h/24 sans vous',
+        's02-num': '// 02 — AGENT IA DÉMO · GRATUIT',
+        's02-title': "Testez l'IA<br/>sur votre business.",
+        'demo-h3': 'Diagnostic marketing en 30 secondes',
+        'demo-p': "Décrivez votre business en 2-3 phrases. L'agent analyse votre positionnement et livre un diagnostic complet — direct, sans bullshit.",
+        'demo-btn': "Lancer l'agent →",
+        'demo-free': '3 analyses offertes · Aucune inscription',
+        'out-1-title': 'Diagnostic',
+        'out-1-sub': 'Ce qui freine votre croissance — sans détour',
+        'out-2-title': 'Positionnement',
+        'out-2-sub': 'Comment vous différencier de vos concurrents',
+        'out-3-title': 'Message clé',
+        'out-3-sub': 'La phrase qui doit résumer votre offre',
+        'out-4-title': '3 actions immédiates',
+        'out-4-sub': 'Faisables cette semaine',
+        's03-num': '// 03 — SERVICES',
+        's03-title': 'Ce que je construis.',
+        's03-sub': "Des solutions livrées rapidement, qui tournent sans vous et s'adaptent à votre activité.",
+        'srv-1-title': 'Bots & Agents Telegram / WhatsApp',
+        'srv-1-desc': 'Assistants IA qui répondent, qualifient, génèrent du contenu et gèrent vos processus — 24h/24.',
+        'srv-1-li1': 'Réponse automatique clients',
+        'srv-1-li2': 'Qualification de leads',
+        'srv-1-li3': 'Génération de contenu',
+        'srv-1-li4': 'Notifications intelligentes',
+        'srv-2-title': 'Agents IA autonomes',
+        'srv-2-desc': "Des agents capables d'analyser, décider et agir seuls — alimentés par Claude, GPT ou Mistral.",
+        'srv-2-li1': 'Analyse de données en continu',
+        'srv-2-li2': 'Prise de décision automatisée',
+        'srv-2-li3': 'Connexion à vos outils existants',
+        'srv-2-li4': 'Rapports et alertes auto',
+        'srv-3-title': 'Automatisation marketing',
+        'srv-3-desc': "Posts réseaux sociaux, publicités, emails et campagnes générés par l'IA en quelques secondes.",
+        'srv-3-li1': 'Contenu réseaux sociaux',
+        'srv-3-li2': 'Publicités multi-formats',
+        'srv-3-li3': 'Séquences email automatiques',
+        'srv-3-li4': 'Stratégie de contenu IA',
+        'srv-4-title': "Connexion d'outils & APIs",
+        'srv-4-desc': 'Votre CRM, e-commerce, réseaux sociaux connectés entre eux — les données circulent seules.',
+        'srv-4-li1': 'Intégration CRM / e-commerce',
+        'srv-4-li2': 'Webhooks et automatisations',
+        'srv-4-li3': 'Synchronisation de données',
+        'srv-4-li4': 'Tableaux de bord auto',
+        'srv-5-title': 'Audit & Stratégie IA',
+        'srv-5-desc': "Je cartographie les tâches automatisables dans votre activité et définis la feuille de route la plus rentable.",
+        'srv-5-li1': 'Identification des gains rapides',
+        'srv-5-li2': 'ROI estimé par automatisation',
+        'srv-5-li3': "Plan d'action priorisé",
+        'srv-5-li4': 'Choix du bon modèle IA',
+        'srv-6-title': 'Déploiement & Maintenance',
+        'srv-6-desc': "Vos agents installés sur VPS, monitorés, maintenus. Vous ne gérez rien — ils tournent et vous alertent.",
+        'srv-6-li1': 'Déploiement VPS Linux',
+        'srv-6-li2': 'Monitoring & alertes',
+        'srv-6-li3': 'Mises à jour incluses',
+        'srv-6-li4': 'Support réactif',
+        's04-num': '// 04 — MÉTHODE',
+        's04-title': 'Du brief à la mise<br/>en production en 48h.',
+        's04-sub': "Un process simple et rapide. Pas de réunions interminables, pas de specs de 40 pages.",
+        'm1-title': 'Appel découverte — 30 min',
+        'm1-desc': "On se parle. Vous m'expliquez ce que vous voulez automatiser, ce qui vous prend trop de temps, ce qui vous coûte trop cher. Je pose des questions précises.",
+        'm1-tag': '// gratuit · sans engagement',
+        'm2-title': 'Conception de la solution',
+        'm2-desc': "Je choisis le bon modèle IA, je conçois l'architecture et je code votre agent sur mesure. Vous recevez une démo dans les 24-48h.",
+        'm2-tag': '// livraison : 24-48h',
+        'm3-title': 'Déploiement & tests',
+        'm3-desc': "L'agent est déployé sur serveur, testé en conditions réelles. Vous validez, on ajuste si besoin jusqu'à ce que ce soit parfait.",
+        'm3-tag': '// inclus dans chaque projet',
+        'm4-title': 'Autonomie totale',
+        'm4-desc': "Votre agent tourne 24h/24 sans intervention. Je reste disponible pour les évolutions et la maintenance. Vous, vous récupérez votre temps.",
+        'm4-tag': '// support inclus',
+        's05-num': '// 05 — POURQUOI FLASHCORE IA',
+        'manifeste-divider': '/// manifeste ///',
+        'mf-1': "Vous n'avez pas besoin d'une agence de 15 personnes.",
+        'mf-2': "Ni d'un consultant qui parle pendant 3 mois sans rien livrer.",
+        'mf-3': "Vous avez besoin d'un <em>agent qui fait le travail.</em>",
+        'mf-4': "Qui répond à vos clients à 3h du matin.",
+        'mf-5': "Qui génère vos contenus pendant que vous dormez.",
+        'mf-6': "Qui analyse vos données pendant que vous vendez.",
+        'mf-7': "C'est ça, <em>Flashcore IA.</em>",
+        'mf-8': "Pas du conseil. Des solutions qui tournent.",
+        's06-num': '// 06 — LES DIFFÉRENCES',
+        's06-title': 'Pourquoi pas une agence.',
+        's06-sub': 'Ce qui change quand on travaille ensemble.',
+        'pq-1-title': '// Rapidité',
+        'pq-1-desc': "48h du brief à la mise en production. Pas de processus administratif, pas d'intermédiaire. Je code, je déploie, c'est live.",
+        'pq-2-title': '// Sur mesure',
+        'pq-2-desc': "Aucun template, aucun outil no-code limité. Chaque agent est codé spécifiquement pour votre activité et vos contraintes.",
+        'pq-3-title': '// Résultats directs',
+        'pq-3-desc': "Je me paie sur les résultats, pas sur les heures. Vous payez une solution qui fonctionne, pas des réunions et des livrables PDF.",
+        's07-num': '// 07 — CONTACT',
+        's07-title': 'Parlons de votre projet.',
+        's07-sub': "Un appel de 30 minutes suffit pour savoir si je peux vous aider et ce que ça donnerait concrètement.",
+        'cta-1-title': 'Réserver un appel gratuit',
+        'cta-1-sub': '30 min · Visio ou téléphone · Agenda en direct',
+        'cta-2-title': 'Message Telegram',
+        'cta-2-sub': '@yanissmolines · Réponse sous 24h',
+        'footer': '© 2026 flashcore_ia — Yaniss Molines · agents_ia · automatisation · marketing',
+      },
+      en: {
+        'nav-demo': 'AI Agent',
+        'nav-services': 'Services',
+        'nav-methode': 'Method',
+        'nav-cta': 'Book a call',
+        'hero-tag': '// ai_agents · automation · flashcore',
+        'hero-h1': "The AI that<br/>works<br/><em>without you.</em>",
+        'hero-sub': "I design custom AI agents for entrepreneurs. Your repetitive tasks run on autopilot — you focus on what actually creates value.",
+        'hero-btn1': 'Try the free AI agent',
+        'hero-btn2': 'Book a call →',
+        'metric-1': 'Average delivery',
+        'metric-2': 'Active agents',
+        'metric-3': 'Useless SaaS subscription',
+        'metric-4': 'AI models available',
+        's01-num': '// 01 — HOW IT WORKS',
+        's01-title': 'Your problem goes in.<br/>The solution comes out.',
+        's01-sub': "An AI agent receives an input, processes it, decides and delivers a result — without human intervention.",
+        'flux-1-label': 'Input',
+        'flux-1-text': 'Message, image, data, trigger',
+        'flux-2-label': 'AI Agent',
+        'flux-2-text': 'Analyzes · Decides · Acts',
+        'flux-3-label': 'Output',
+        'flux-3-text': 'Response, content, action, report',
+        'flux-4-text': 'Runs 24/7 without you',
+        's02-num': '// 02 — AI AGENT DEMO · FREE',
+        's02-title': "Test the AI<br/>on your business.",
+        'demo-h3': 'Marketing diagnosis in 30 seconds',
+        'demo-p': "Describe your business in 2-3 sentences. The agent analyzes your positioning and delivers a complete diagnosis — straight, no fluff.",
+        'demo-btn': 'Launch the agent →',
+        'demo-free': '3 free analyses · No sign-up required',
+        'out-1-title': 'Diagnosis',
+        'out-1-sub': "What's holding back your growth — straight talk",
+        'out-2-title': 'Positioning',
+        'out-2-sub': 'How to stand out from your competitors',
+        'out-3-title': 'Key message',
+        'out-3-sub': 'The sentence that should define your offer',
+        'out-4-title': '3 immediate actions',
+        'out-4-sub': 'Doable this week',
+        's03-num': '// 03 — SERVICES',
+        's03-title': 'What I build.',
+        's03-sub': "Solutions delivered fast, that run without you and adapt to your business.",
+        'srv-1-title': 'Telegram / WhatsApp Bots & Agents',
+        'srv-1-desc': 'AI assistants that respond, qualify, generate content and manage your processes — 24/7.',
+        'srv-1-li1': 'Automated client responses',
+        'srv-1-li2': 'Lead qualification',
+        'srv-1-li3': 'Content generation',
+        'srv-1-li4': 'Smart notifications',
+        'srv-2-title': 'Autonomous AI Agents',
+        'srv-2-desc': "Agents that analyze, decide and act alone — powered by Claude, GPT or Mistral.",
+        'srv-2-li1': 'Continuous data analysis',
+        'srv-2-li2': 'Automated decision-making',
+        'srv-2-li3': 'Connection to your existing tools',
+        'srv-2-li4': 'Auto reports and alerts',
+        'srv-3-title': 'Marketing Automation',
+        'srv-3-desc': "Social media posts, ads, emails and full campaigns generated by AI in seconds.",
+        'srv-3-li1': 'Social media content',
+        'srv-3-li2': 'Multi-format ads',
+        'srv-3-li3': 'Automated email sequences',
+        'srv-3-li4': 'AI content strategy',
+        'srv-4-title': 'Tool & API Integration',
+        'srv-4-desc': 'Your CRM, e-commerce, social media connected together — data flows automatically.',
+        'srv-4-li1': 'CRM / e-commerce integration',
+        'srv-4-li2': 'Webhooks and automations',
+        'srv-4-li3': 'Data synchronization',
+        'srv-4-li4': 'Auto-updated dashboards',
+        'srv-5-title': 'AI Audit & Strategy',
+        'srv-5-desc': "I map the automatable tasks in your business and define the most profitable AI roadmap.",
+        'srv-5-li1': 'Quick win identification',
+        'srv-5-li2': 'ROI estimate per automation',
+        'srv-5-li3': 'Prioritized action plan',
+        'srv-5-li4': 'Right AI model selection',
+        'srv-6-title': 'Deployment & Maintenance',
+        'srv-6-desc': "Your agents installed on VPS, monitored, maintained. You manage nothing — they run and alert you.",
+        'srv-6-li1': 'Linux VPS deployment',
+        'srv-6-li2': 'Monitoring & alerts',
+        'srv-6-li3': 'Updates included',
+        'srv-6-li4': 'Reactive support',
+        's04-num': '// 04 — METHOD',
+        's04-title': 'From brief to production<br/>in 48 hours.',
+        's04-sub': "A simple and fast process. No endless meetings, no 40-page specs.",
+        'm1-title': 'Discovery call — 30 min',
+        'm1-desc': "We talk. You tell me what you want to automate, what takes too much of your time, what costs too much. I ask precise questions.",
+        'm1-tag': '// free · no commitment',
+        'm2-title': 'Solution design',
+        'm2-desc': "I choose the right AI model, design the architecture and code your custom agent. You receive a demo within 24-48h.",
+        'm2-tag': '// delivery: 24-48h',
+        'm3-title': 'Deployment & testing',
+        'm3-desc': "The agent is deployed on server, tested in real conditions. You validate, we adjust if needed until it's perfect.",
+        'm3-tag': '// included in every project',
+        'm4-title': 'Full autonomy',
+        'm4-desc': "Your agent runs 24/7 without intervention. I stay available for updates and maintenance. You get your time back.",
+        'm4-tag': '// support included',
+        's05-num': '// 05 — WHY FLASHCORE IA',
+        'manifeste-divider': '/// manifesto ///',
+        'mf-1': "You don't need a 15-person agency.",
+        'mf-2': "Nor a consultant who talks for 3 months without delivering anything.",
+        'mf-3': "You need an <em>agent that does the work.</em>",
+        'mf-4': "That answers your clients at 3am.",
+        'mf-5': "That generates your content while you sleep.",
+        'mf-6': "That analyzes your data while you sell.",
+        'mf-7': "That's <em>Flashcore IA.</em>",
+        'mf-8': "Not consulting. Solutions that run.",
+        's06-num': '// 06 — THE DIFFERENCES',
+        's06-title': 'Why not an agency.',
+        's06-sub': 'What changes when we work together.',
+        'pq-1-title': '// Speed',
+        'pq-1-desc': "48h from brief to production. No admin process, no intermediary. I code, I deploy, it's live.",
+        'pq-2-title': '// Custom',
+        'pq-2-desc': "No templates, no limited no-code tools. Every agent is coded specifically for your business and constraints.",
+        'pq-3-title': '// Direct results',
+        'pq-3-desc': "I get paid on results, not hours. You pay for a working solution, not meetings and PDF deliverables.",
+        's07-num': '// 07 — CONTACT',
+        's07-title': "Let's talk about your project.",
+        's07-sub': "A 30-minute call is enough to know if I can help you and what it would look like concretely.",
+        'cta-1-title': 'Book a free call',
+        'cta-1-sub': '30 min · Video or phone · Live calendar',
+        'cta-2-title': 'Telegram message',
+        'cta-2-sub': '@yanissmolines · Reply within 24h',
+        'footer': '© 2026 flashcore_ia — Yaniss Molines · ai_agents · automation · marketing',
+      }
+    };
+
+    let currentLang = localStorage.getItem('lang') || 'fr';
+
+    function setLang(lang) {
+      currentLang = lang;
+      localStorage.setItem('lang', lang);
+      document.documentElement.lang = lang;
+
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (t[lang][key] !== undefined) el.textContent = t[lang][key];
+      });
+
+      document.querySelectorAll('[data-i18n-html]').forEach(el => {
+        const key = el.getAttribute('data-i18n-html');
+        if (t[lang][key] !== undefined) el.innerHTML = t[lang][key];
+      });
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.textContent === lang.toUpperCase());
+      });
+    }
+
+    setLang(currentLang);
+  </script>
 
 </body>
 </html>
