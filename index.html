@@ -723,7 +723,7 @@
 
       document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
-        if (t[lang][key] !== undefined) el.textContent = t[lang][key];
+        if (t[lang][key] !== undefined) el.innerHTML = t[lang][key];
       });
 
       document.querySelectorAll('[data-i18n-html]').forEach(el => {
