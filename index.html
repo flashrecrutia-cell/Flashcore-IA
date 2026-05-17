@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Flashcore IA — Yaniss Molines</title>
+  <title>Flashcore IA — Agents IA & Automatisation | Yaniss Molines</title>
+  <meta name="description" content="Je conçois des agents IA et automatisations sur mesure pour les entrepreneurs. Bots Telegram, workflows IA, marketing automatisé." />
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -13,7 +14,7 @@
       color: #e0e0e0;
     }
 
-    /* NAV */
+    /* ── NAV ── */
     nav {
       display: flex;
       justify-content: space-between;
@@ -22,8 +23,8 @@
       position: fixed;
       width: 100%;
       top: 0;
-      background: rgba(10,10,15,0.85);
-      backdrop-filter: blur(10px);
+      background: rgba(10,10,15,0.88);
+      backdrop-filter: blur(12px);
       z-index: 100;
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
@@ -37,7 +38,8 @@
     nav ul {
       list-style: none;
       display: flex;
-      gap: 30px;
+      gap: 32px;
+      align-items: center;
     }
     nav ul a {
       color: #aaa;
@@ -46,8 +48,17 @@
       transition: color 0.3s;
     }
     nav ul a:hover { color: #fff; }
+    .nav-cta {
+      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      color: #fff !important;
+      padding: 8px 18px;
+      border-radius: 6px;
+      font-weight: 600 !important;
+      transition: opacity 0.3s !important;
+    }
+    .nav-cta:hover { opacity: 0.85; color: #fff !important; }
 
-    /* HERO */
+    /* ── HERO ── */
     .hero {
       min-height: 100vh;
       display: flex;
@@ -55,21 +66,22 @@
       justify-content: center;
       align-items: center;
       text-align: center;
-      padding: 100px 20px 60px;
-      background: radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.15) 0%, transparent 70%);
+      padding: 120px 20px 80px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.18) 0%, transparent 65%);
     }
     .badge {
       background: rgba(124,58,237,0.15);
       border: 1px solid rgba(124,58,237,0.3);
       color: #a78bfa;
-      padding: 6px 16px;
+      padding: 6px 18px;
       border-radius: 20px;
       font-size: 0.8rem;
-      margin-bottom: 24px;
+      margin-bottom: 28px;
       display: inline-block;
+      letter-spacing: 0.5px;
     }
     .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-size: clamp(2.4rem, 6vw, 5rem);
       font-weight: 800;
       line-height: 1.1;
       margin-bottom: 24px;
@@ -82,9 +94,15 @@
     .hero p {
       font-size: 1.15rem;
       color: #888;
-      max-width: 560px;
-      line-height: 1.7;
-      margin-bottom: 40px;
+      max-width: 580px;
+      line-height: 1.75;
+      margin-bottom: 44px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      justify-content: center;
     }
     .btn {
       background: linear-gradient(135deg, #7c3aed, #3b82f6);
@@ -98,8 +116,41 @@
       display: inline-block;
     }
     .btn:hover { opacity: 0.85; transform: translateY(-2px); }
+    .btn-outline {
+      background: transparent;
+      color: #a78bfa;
+      border: 1px solid rgba(124,58,237,0.4);
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: background 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-outline:hover { background: rgba(124,58,237,0.1); transform: translateY(-2px); }
 
-    /* SERVICES */
+    /* ── STATS ── */
+    .stats-bar {
+      display: flex;
+      justify-content: center;
+      gap: 60px;
+      padding: 50px 20px;
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .stat-label { color: #666; font-size: 0.85rem; margin-top: 4px; }
+
+    /* ── SECTION COMMUNE ── */
     .section {
       padding: 100px 60px;
       max-width: 1100px;
@@ -107,27 +158,90 @@
     }
     .section-label {
       color: #7c3aed;
-      font-size: 0.85rem;
-      font-weight: 600;
+      font-size: 0.8rem;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 2px;
-      margin-bottom: 12px;
+      letter-spacing: 2.5px;
+      margin-bottom: 14px;
     }
     .section h2 {
-      font-size: 2.5rem;
+      font-size: clamp(1.8rem, 4vw, 2.6rem);
       font-weight: 700;
       margin-bottom: 16px;
+      line-height: 1.2;
     }
     .section-sub {
       color: #666;
       font-size: 1rem;
-      margin-bottom: 60px;
-      max-width: 500px;
+      margin-bottom: 64px;
+      max-width: 520px;
+      line-height: 1.7;
     }
 
+    /* ── DEMO ── */
+    .demo-wrapper {
+      background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(59,130,246,0.05));
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 24px;
+      padding: 56px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .demo-left h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 16px; }
+    .demo-left p { color: #777; line-height: 1.7; margin-bottom: 32px; }
+    .demo-outputs {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .demo-output {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 12px;
+      padding: 16px 20px;
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+    .demo-output-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .demo-output-text h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
+    .demo-output-text p { color: #666; font-size: 0.82rem; line-height: 1.5; }
+
+    /* ── STEPS ── */
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+    .step {
+      text-align: center;
+      padding: 32px 24px;
+      background: rgba(255,255,255,0.02);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 16px;
+      position: relative;
+    }
+    .step-num {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 1rem;
+      margin: 0 auto 20px;
+    }
+    .step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
+    .step p { color: #666; font-size: 0.875rem; line-height: 1.6; }
+
+    /* ── GRID CARDS ── */
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
       gap: 24px;
     }
     .card {
@@ -137,134 +251,222 @@
       padding: 32px;
       transition: border-color 0.3s, transform 0.2s;
     }
-    .card:hover {
-      border-color: rgba(124,58,237,0.4);
-      transform: translateY(-4px);
-    }
-    .card-icon {
-      font-size: 2rem;
-      margin-bottom: 16px;
-    }
-    .card h3 {
-      font-size: 1.1rem;
-      font-weight: 600;
-      margin-bottom: 10px;
-    }
-    .card p {
-      color: #666;
-      font-size: 0.9rem;
-      line-height: 1.6;
-    }
+    .card:hover { border-color: rgba(124,58,237,0.4); transform: translateY(-4px); }
+    .card-icon { font-size: 2rem; margin-bottom: 16px; }
+    .card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; }
+    .card p { color: #666; font-size: 0.875rem; line-height: 1.65; }
 
-    /* CONTACT */
+    /* ── CONTACT ── */
     .contact-section {
-      background: rgba(124,58,237,0.05);
+      background: rgba(124,58,237,0.04);
       border-top: 1px solid rgba(255,255,255,0.05);
       border-bottom: 1px solid rgba(255,255,255,0.05);
     }
     .contact-inner {
-      max-width: 600px;
+      max-width: 620px;
       margin: 0 auto;
       text-align: center;
       padding: 100px 20px;
     }
-    .contact-inner h2 {
-      font-size: 2.2rem;
-      font-weight: 700;
-      margin-bottom: 16px;
-    }
-    .contact-inner p {
-      color: #666;
-      margin-bottom: 40px;
-    }
-    .contact-links {
-      display: flex;
-      gap: 16px;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-    .contact-link {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #e0e0e0;
-      padding: 12px 24px;
-      border-radius: 8px;
+    .contact-inner h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; margin-bottom: 16px; }
+    .contact-inner p { color: #666; margin-bottom: 40px; line-height: 1.7; }
+    .tg-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      color: #fff;
+      padding: 16px 36px;
+      border-radius: 10px;
       text-decoration: none;
-      font-size: 0.9rem;
-      transition: background 0.3s;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: opacity 0.3s, transform 0.2s;
     }
-    .contact-link:hover { background: rgba(124,58,237,0.2); }
+    .tg-btn:hover { opacity: 0.85; transform: translateY(-2px); }
+    .tg-icon { font-size: 1.2rem; }
 
-    /* FOOTER */
+    /* ── FOOTER ── */
     footer {
       text-align: center;
-      padding: 30px;
-      color: #333;
+      padding: 36px 20px;
+      color: #2a2a2a;
       font-size: 0.8rem;
+      border-top: 1px solid rgba(255,255,255,0.03);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      nav { padding: 16px 24px; }
+      nav ul { gap: 16px; }
+      .section { padding: 70px 24px; }
+      .demo-wrapper { grid-template-columns: 1fr; padding: 36px 24px; gap: 40px; }
+      .steps { grid-template-columns: 1fr; }
+      .stats-bar { gap: 32px; }
     }
   </style>
 </head>
 <body>
 
+  <!-- NAV -->
   <nav>
     <div class="logo">Flashcore IA</div>
     <ul>
+      <li><a href="#demo">Agent IA</a></li>
       <li><a href="#solutions">Solutions</a></li>
-      <li><a href="#contact">Contact</a></li>
+      <li><a href="#contact" class="nav-cta">Me contacter</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
-    <div class="badge">Intelligence Artificielle & Automatisation</div>
+    <div class="badge">Agents IA & Automatisation sur mesure</div>
     <h1>
-      J'automatise ce qui<br/>
-      <span>vous fait perdre du temps</span>
+      L'IA qui travaille<br/>
+      <span>pendant que vous dormez</span>
     </h1>
     <p>
-      Bots Telegram, WhatsApp, agents IA, workflows sur mesure —
-      je conçois des solutions intelligentes pour les entrepreneurs et entreprises.
+      Je conçois des agents IA et automatisations sur mesure pour les entrepreneurs.
+      Vos tâches répétitives tournent en automatique — vous, vous vous concentrez sur ce qui compte.
     </p>
-    <a href="#contact" class="btn">Discutons de votre projet</a>
+    <div class="hero-btns">
+      <a href="#demo" class="btn">Tester l'agent IA gratuit</a>
+      <a href="#contact" class="btn-outline">Discuter de mon projet</a>
+    </div>
   </section>
+
+  <!-- STATS -->
+  <div class="stats-bar">
+    <div class="stat">
+      <div class="stat-number">24h/24</div>
+      <div class="stat-label">Agents actifs non-stop</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">48h</div>
+      <div class="stat-label">Délai de livraison moyen</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">100%</div>
+      <div class="stat-label">Solutions sur mesure</div>
+    </div>
+    <div class="stat">
+      <div class="stat-number">3</div>
+      <div class="stat-label">IA disponibles (Claude, GPT, Mistral)</div>
+    </div>
+  </div>
+
+  <!-- DEMO AGENT IA -->
+  <div id="demo">
+    <div class="section">
+      <div class="section-label">Agent IA — Démo gratuite</div>
+      <div class="demo-wrapper">
+        <div class="demo-left">
+          <h2>Radiographie<br/>Marketing IA</h2>
+          <p>
+            Décrivez votre business en 2-3 phrases. L'agent analyse votre positionnement
+            et vous livre un diagnostic marketing complet en quelques secondes — sans bullshit.
+          </p>
+          <a href="https://t.me/monmarketing_bot" class="btn" target="_blank">
+            Tester gratuitement →
+          </a>
+          <p style="color:#444; font-size:0.8rem; margin-top:12px;">3 analyses offertes · Aucune inscription</p>
+        </div>
+        <div class="demo-outputs">
+          <div class="demo-output">
+            <div class="demo-output-icon">🔍</div>
+            <div class="demo-output-text">
+              <h4>Diagnostic</h4>
+              <p>Ce qui freine réellement votre croissance marketing — sans détour</p>
+            </div>
+          </div>
+          <div class="demo-output">
+            <div class="demo-output-icon">🎯</div>
+            <div class="demo-output-text">
+              <h4>Positionnement</h4>
+              <p>Comment vous différencier concrètement de vos concurrents</p>
+            </div>
+          </div>
+          <div class="demo-output">
+            <div class="demo-output-icon">📣</div>
+            <div class="demo-output-text">
+              <h4>Message clé</h4>
+              <p>La phrase qui doit résumer votre offre — mémorable et différenciante</p>
+            </div>
+          </div>
+          <div class="demo-output">
+            <div class="demo-output-icon">⚡</div>
+            <div class="demo-output-text">
+              <h4>3 actions immédiates</h4>
+              <p>Ce que vous pouvez faire dès cette semaine pour améliorer votre marketing</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMENT ÇA MARCHE -->
+  <div>
+    <div class="section">
+      <div class="section-label">Processus</div>
+      <h2>Comment je travaille</h2>
+      <p class="section-sub">Du brief à la mise en production en 48h. Simple, rapide, efficace.</p>
+      <div class="steps">
+        <div class="step">
+          <div class="step-num">1</div>
+          <h3>Vous me décrivez le problème</h3>
+          <p>On échange sur Telegram. Vous m'expliquez ce que vous voulez automatiser ou ce qui vous prend trop de temps.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">2</div>
+          <h3>Je conçois la solution IA</h3>
+          <p>Je choisis le bon modèle IA, je conçois l'architecture et je code votre agent sur mesure.</p>
+        </div>
+        <div class="step">
+          <div class="step-num">3</div>
+          <h3>Déploiement & autonomie</h3>
+          <p>Votre agent est déployé sur serveur, tourne 24h/24 et vous livre les résultats directement.</p>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <!-- SOLUTIONS -->
   <div id="solutions">
     <div class="section">
-      <div class="section-label">Ce que je fais</div>
-      <h2>Mes solutions</h2>
-      <p class="section-sub">Des automatisations concrètes, déployées rapidement, qui fonctionnent 24h/24.</p>
-
+      <div class="section-label">Services</div>
+      <h2>Ce que je construis</h2>
+      <p class="section-sub">Des automatisations concrètes, livrées rapidement, qui fonctionnent sans vous.</p>
       <div class="grid">
         <div class="card">
           <div class="card-icon">🤖</div>
           <h3>Bots Telegram & WhatsApp</h3>
-          <p>Assistants intelligents pour répondre à vos clients, générer du contenu ou automatiser vos processus métier.</p>
+          <p>Assistants IA qui répondent à vos clients, qualifient les leads, génèrent du contenu ou gèrent vos processus — 24h/24, 7j/7.</p>
         </div>
         <div class="card">
           <div class="card-icon">⚡</div>
-          <h3>Agents IA sur mesure</h3>
-          <p>Des agents alimentés par Claude, GPT ou Mistral, capables d'analyser, décider et agir de façon autonome.</p>
+          <h3>Agents IA autonomes</h3>
+          <p>Agents capables d'analyser, décider et agir sans intervention humaine. Alimentés par Claude, GPT ou Mistral selon votre besoin.</p>
         </div>
         <div class="card">
           <div class="card-icon">📢</div>
           <h3>Automatisation marketing</h3>
-          <p>Génération de publicités, de contenus réseaux sociaux et de campagnes grâce à l'IA.</p>
+          <p>Génération de publicités, posts réseaux sociaux, emails et campagnes entières grâce à l'IA — en quelques secondes.</p>
         </div>
         <div class="card">
           <div class="card-icon">🔗</div>
-          <h3>Connexion d'APIs</h3>
-          <p>Intégration de vos outils existants : CRM, e-commerce, réseaux sociaux, bases de données.</p>
+          <h3>Connexion d'outils</h3>
+          <p>Votre CRM, e-commerce, réseaux sociaux et bases de données connectés entre eux — les données circulent automatiquement.</p>
         </div>
         <div class="card">
           <div class="card-icon">💡</div>
-          <h3>Conseil & Stratégie IA</h3>
-          <p>Identification des tâches automatisables dans votre activité et conception de la solution optimale.</p>
+          <h3>Audit & Stratégie IA</h3>
+          <p>Je cartographie les tâches automatisables dans votre activité et je vous propose la feuille de route IA la plus rentable.</p>
         </div>
         <div class="card">
           <div class="card-icon">🛠️</div>
-          <h3>Déploiement serveur</h3>
-          <p>Installation, configuration et maintenance de vos solutions sur VPS — disponibles 24h/24, 7j/7.</p>
+          <h3>Déploiement & maintenance</h3>
+          <p>Vos agents installés sur VPS, configurés, monitorés. Vous n'avez rien à gérer — ils tournent et vous alertent si besoin.</p>
         </div>
       </div>
     </div>
@@ -275,16 +477,19 @@
     <div class="contact-inner">
       <div class="section-label">Contact</div>
       <h2>Un projet en tête ?</h2>
-      <p>Décrivez-moi votre besoin et je vous propose une solution concrète sous 24h.</p>
-      <div class="contact-links">
-        <a href="https://t.me/monmarketing_bot" class="contact-link">Telegram</a>
-        <a href="mailto:flashrecrutia@gmail.com" class="contact-link">Email</a>
-      </div>
+      <p>
+        Décrivez-moi votre besoin sur Telegram. Je vous réponds en moins de 24h
+        avec une solution concrète et un devis clair.
+      </p>
+      <a href="https://t.me/yanissmolines" class="tg-btn" target="_blank">
+        <span class="tg-icon">✈️</span>
+        Me contacter sur Telegram
+      </a>
     </div>
   </div>
 
   <footer>
-    © 2026 Flashcore IA — Yaniss Molines
+    © 2026 Flashcore IA — Yaniss Molines &nbsp;·&nbsp; Agents IA & Automatisation
   </footer>
 
 </body>
