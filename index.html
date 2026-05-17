@@ -133,7 +133,20 @@
     @keyframes heroFadeIn  { from { opacity:0; } to { opacity:1; } }
     @keyframes shimmer     { 0% { left:-100%; } 60%,100% { left:150%; } }
     @keyframes drawLine    { from { width:0; } to { width:36px; } }
-    @keyframes gradientBreath { 0%,100% { opacity:0.06; transform:scale(1); } 50% { opacity:0.10; transform:scale(1.08); } }
+    @keyframes gradientBreath { 0%,100% { opacity:0.5; transform:scale(1); } 50% { opacity:1; transform:scale(1.08); } }
+
+    /* Hero gradient breath */
+    .hero-bg { position: relative; }
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.12) 0%, transparent 60%);
+      animation: gradientBreath 7s ease-in-out infinite;
+      pointer-events: none;
+      z-index: 0;
+    }
+    .hero { position: relative; z-index: 1; }
 
     /* Hero staged entrance */
     .hero-tag  { opacity:0; animation: heroFadeIn  0.7s 0.15s cubic-bezier(0.16,1,0.3,1) forwards; }
@@ -141,9 +154,6 @@
     .hero-sub  { opacity:0; animation: heroFadeUp  0.8s 0.65s cubic-bezier(0.16,1,0.3,1) forwards; }
     .hero-btns { opacity:0; animation: heroFadeUp  0.7s 0.88s cubic-bezier(0.16,1,0.3,1) forwards; }
     .hero-metrics { opacity:0; animation: heroFadeUp 0.7s 1.05s cubic-bezier(0.16,1,0.3,1) forwards; }
-
-    /* Hero gradient breath */
-    .hero-bg { animation: gradientBreath 7s ease-in-out infinite; }
 
     /* Scroll reveal */
     .will-reveal { opacity:0; transform:translateY(48px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
@@ -217,7 +227,7 @@
   </nav>
 
   <!-- HERO -->
-  <div class="hero-bg" style="background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.06) 0%, transparent 60%);">
+  <div class="hero-bg">
     <section class="hero">
       <div class="hero-tag" data-i18n="hero-tag">// agents_ia · automatisation · flashcore</div>
       <h1 data-i18n-html="hero-h1">
