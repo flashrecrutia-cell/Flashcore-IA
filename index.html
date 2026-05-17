@@ -4,34 +4,53 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Flashcore IA — Agents IA & Automatisation | Yaniss Molines</title>
-  <meta name="description" content="Je conçois des agents IA et automatisations sur mesure pour les entrepreneurs. Bots Telegram, workflows IA, marketing automatisé." />
+  <meta name="description" content="Je conçois des agents IA et automatisations sur mesure pour les entrepreneurs. Bots Telegram, workflows IA, marketing automatisé. Résultats en 48h." />
   <style>
+    :root {
+      --purple: #7c3aed;
+      --blue: #3b82f6;
+      --bg: #08080d;
+      --surface: #0f0f18;
+      --border: rgba(255,255,255,0.06);
+      --text: #d4d4d8;
+      --muted: #52525b;
+      --accent: #a78bfa;
+    }
+
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background: #0a0a0f;
-      color: #e0e0e0;
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
+
+    a { color: inherit; text-decoration: none; }
 
     /* ── NAV ── */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 60px;
+      padding: 18px 60px;
       position: fixed;
       width: 100%;
       top: 0;
-      background: rgba(10,10,15,0.88);
-      backdrop-filter: blur(12px);
+      background: rgba(8,8,13,0.9);
+      backdrop-filter: blur(14px);
       z-index: 100;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid var(--border);
     }
     .logo {
-      font-size: 1.4rem;
+      font-family: 'Courier New', monospace;
+      font-size: 1.1rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      color: #fff;
+      letter-spacing: -0.5px;
+    }
+    .logo span {
+      background: linear-gradient(135deg, var(--purple), var(--blue));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
@@ -42,21 +61,22 @@
       align-items: center;
     }
     nav ul a {
-      color: #aaa;
-      text-decoration: none;
-      font-size: 0.9rem;
-      transition: color 0.3s;
+      color: var(--muted);
+      font-size: 0.85rem;
+      letter-spacing: 0.3px;
+      transition: color 0.2s;
     }
     nav ul a:hover { color: #fff; }
     .nav-cta {
-      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      background: linear-gradient(135deg, var(--purple), var(--blue));
       color: #fff !important;
-      padding: 8px 18px;
+      padding: 8px 20px;
       border-radius: 6px;
       font-weight: 600 !important;
-      transition: opacity 0.3s !important;
+      font-size: 0.85rem !important;
+      transition: opacity 0.2s !important;
     }
-    .nav-cta:hover { opacity: 0.85; color: #fff !important; }
+    .nav-cta:hover { opacity: 0.82; }
 
     /* ── HERO ── */
     .hero {
@@ -64,265 +84,394 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
-      align-items: center;
-      text-align: center;
-      padding: 120px 20px 80px;
-      background: radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.18) 0%, transparent 65%);
-    }
-    .badge {
-      background: rgba(124,58,237,0.15);
-      border: 1px solid rgba(124,58,237,0.3);
-      color: #a78bfa;
-      padding: 6px 18px;
-      border-radius: 20px;
-      font-size: 0.8rem;
-      margin-bottom: 28px;
-      display: inline-block;
-      letter-spacing: 0.5px;
-    }
-    .hero h1 {
-      font-size: clamp(2.4rem, 6vw, 5rem);
-      font-weight: 800;
-      line-height: 1.1;
-      margin-bottom: 24px;
-    }
-    .hero h1 span {
-      background: linear-gradient(135deg, #7c3aed, #3b82f6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero p {
-      font-size: 1.15rem;
-      color: #888;
-      max-width: 580px;
-      line-height: 1.75;
-      margin-bottom: 44px;
-    }
-    .hero-btns {
-      display: flex;
-      gap: 16px;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-    .btn {
-      background: linear-gradient(135deg, #7c3aed, #3b82f6);
-      color: #fff;
-      padding: 14px 32px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: opacity 0.3s, transform 0.2s;
-      display: inline-block;
-    }
-    .btn:hover { opacity: 0.85; transform: translateY(-2px); }
-    .btn-outline {
-      background: transparent;
-      color: #a78bfa;
-      border: 1px solid rgba(124,58,237,0.4);
-      padding: 14px 32px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      transition: background 0.3s, transform 0.2s;
-      display: inline-block;
-    }
-    .btn-outline:hover { background: rgba(124,58,237,0.1); transform: translateY(-2px); }
-
-    /* ── STATS ── */
-    .stats-bar {
-      display: flex;
-      justify-content: center;
-      gap: 60px;
-      padding: 50px 20px;
-      border-top: 1px solid rgba(255,255,255,0.05);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-      flex-wrap: wrap;
-    }
-    .stat { text-align: center; }
-    .stat-number {
-      font-size: 2.2rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #7c3aed, #3b82f6);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .stat-label { color: #666; font-size: 0.85rem; margin-top: 4px; }
-
-    /* ── SECTION COMMUNE ── */
-    .section {
-      padding: 100px 60px;
+      padding: 140px 60px 80px;
       max-width: 1100px;
       margin: 0 auto;
     }
-    .section-label {
-      color: #7c3aed;
-      font-size: 0.8rem;
-      font-weight: 700;
+    .hero-tag {
+      font-family: 'Courier New', monospace;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 3px;
       text-transform: uppercase;
-      letter-spacing: 2.5px;
-      margin-bottom: 14px;
+      margin-bottom: 32px;
     }
-    .section h2 {
-      font-size: clamp(1.8rem, 4vw, 2.6rem);
-      font-weight: 700;
-      margin-bottom: 16px;
-      line-height: 1.2;
+    .hero h1 {
+      font-size: clamp(3rem, 7vw, 6.5rem);
+      font-weight: 800;
+      line-height: 1.0;
+      letter-spacing: -2px;
+      color: #fff;
+      margin-bottom: 32px;
     }
-    .section-sub {
-      color: #666;
-      font-size: 1rem;
-      margin-bottom: 64px;
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--purple), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-sub {
+      font-size: 1.1rem;
+      color: var(--muted);
       max-width: 520px;
+      line-height: 1.75;
+      margin-bottom: 48px;
+    }
+    .hero-btns {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--purple), var(--blue));
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: opacity 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-primary:hover { opacity: 0.85; transform: translateY(-2px); }
+    .btn-ghost {
+      background: transparent;
+      color: var(--accent);
+      border: 1px solid rgba(124,58,237,0.35);
+      padding: 14px 30px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: background 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn-ghost:hover { background: rgba(124,58,237,0.1); transform: translateY(-2px); }
+    .hero-metrics {
+      display: flex;
+      gap: 48px;
+      margin-top: 64px;
+      padding-top: 48px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+    .hero-metric-val {
+      font-family: 'Courier New', monospace;
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+    }
+    .hero-metric-label {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 4px;
+      letter-spacing: 0.5px;
+    }
+
+    /* ── SECTION BASE ── */
+    .s {
+      border-top: 1px solid var(--border);
+      padding: 90px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .s-num {
+      font-family: 'Courier New', monospace;
+      font-size: 0.7rem;
+      color: var(--muted);
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+    }
+    .s-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .s-sub {
+      color: var(--muted);
+      font-size: 0.95rem;
+      max-width: 480px;
       line-height: 1.7;
+      margin-bottom: 56px;
+    }
+    .divider {
+      font-family: 'Courier New', monospace;
+      color: var(--muted);
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      margin: 16px 0;
+    }
+
+    /* ── FLUX ── */
+    .flux {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: wrap;
+      margin-top: 48px;
+    }
+    .flux-node {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 24px 28px;
+      text-align: center;
+      min-width: 160px;
+    }
+    .flux-node-icon { font-size: 1.8rem; margin-bottom: 8px; }
+    .flux-node-label {
+      font-family: 'Courier New', monospace;
+      font-size: 0.72rem;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 6px;
+    }
+    .flux-node-text { font-size: 0.85rem; color: var(--muted); }
+    .flux-arrow {
+      font-family: 'Courier New', monospace;
+      color: var(--purple);
+      font-size: 1.4rem;
+      padding: 0 12px;
+      flex-shrink: 0;
     }
 
     /* ── DEMO ── */
-    .demo-wrapper {
-      background: linear-gradient(135deg, rgba(124,58,237,0.08), rgba(59,130,246,0.05));
-      border: 1px solid rgba(124,58,237,0.2);
-      border-radius: 24px;
-      padding: 56px;
+    .demo-box {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
+      gap: 48px;
+      background: var(--surface);
+      border: 1px solid rgba(124,58,237,0.2);
+      border-radius: 20px;
+      padding: 52px;
+      align-items: start;
     }
-    .demo-left h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-bottom: 16px; }
-    .demo-left p { color: #777; line-height: 1.7; margin-bottom: 32px; }
-    .demo-outputs {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
+    .demo-tag {
+      font-family: 'Courier New', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      letter-spacing: 2px;
+      margin-bottom: 16px;
     }
+    .demo-box h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.5px;
+      margin-bottom: 14px;
+      line-height: 1.2;
+    }
+    .demo-box p { color: var(--muted); font-size: 0.9rem; line-height: 1.7; margin-bottom: 28px; }
+    .demo-free { font-size: 0.75rem; color: var(--muted); margin-top: 10px; }
+    .demo-outputs { display: flex; flex-direction: column; gap: 12px; }
     .demo-output {
       background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 12px;
-      padding: 16px 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 14px 18px;
       display: flex;
-      align-items: flex-start;
       gap: 14px;
+      align-items: flex-start;
     }
-    .demo-output-icon { font-size: 1.4rem; flex-shrink: 0; }
-    .demo-output-text h4 { font-size: 0.9rem; font-weight: 600; margin-bottom: 4px; }
-    .demo-output-text p { color: #666; font-size: 0.82rem; line-height: 1.5; }
+    .demo-output-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+    .demo-output h4 { font-size: 0.85rem; font-weight: 600; color: #fff; margin-bottom: 3px; }
+    .demo-output p { font-size: 0.78rem; color: var(--muted); margin: 0; }
 
-    /* ── STEPS ── */
-    .steps {
+    /* ── SERVICES ── */
+    .services-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 32px;
-    }
-    .step {
-      text-align: center;
-      padding: 32px 24px;
-      background: rgba(255,255,255,0.02);
-      border: 1px solid rgba(255,255,255,0.06);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
       border-radius: 16px;
-      position: relative;
+      overflow: hidden;
     }
-    .step-num {
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #7c3aed, #3b82f6);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-weight: 700;
+    .service {
+      background: var(--bg);
+      padding: 36px 32px;
+      transition: background 0.2s;
+    }
+    .service:hover { background: var(--surface); }
+    .service-icon { font-size: 1.6rem; margin-bottom: 20px; }
+    .service h3 {
       font-size: 1rem;
-      margin: 0 auto 20px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 12px;
     }
-    .step h3 { font-size: 1rem; font-weight: 600; margin-bottom: 10px; }
-    .step p { color: #666; font-size: 0.875rem; line-height: 1.6; }
-
-    /* ── GRID CARDS ── */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 24px;
-    }
-    .card {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(255,255,255,0.07);
-      border-radius: 16px;
-      padding: 32px;
-      transition: border-color 0.3s, transform 0.2s;
-    }
-    .card:hover { border-color: rgba(124,58,237,0.4); transform: translateY(-4px); }
-    .card-icon { font-size: 2rem; margin-bottom: 16px; }
-    .card h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 10px; }
-    .card p { color: #666; font-size: 0.875rem; line-height: 1.65; }
-
-    /* ── CONTACT ── */
-    .contact-section {
-      background: rgba(124,58,237,0.04);
-      border-top: 1px solid rgba(255,255,255,0.05);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
-    .contact-inner {
-      max-width: 620px;
-      margin: 0 auto;
-      text-align: center;
-      padding: 100px 20px;
-    }
-    .contact-inner h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; margin-bottom: 16px; }
-    .contact-inner p { color: #666; margin-bottom: 40px; line-height: 1.7; }
-    .contact-options {
+    .service p { color: var(--muted); font-size: 0.85rem; line-height: 1.65; }
+    .service ul {
+      margin-top: 14px;
+      padding-left: 0;
+      list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      max-width: 460px;
-      margin: 0 auto;
+      gap: 6px;
     }
-    .contact-option-main {
+    .service ul li {
+      font-size: 0.8rem;
+      color: var(--muted);
+      padding-left: 14px;
+      position: relative;
+    }
+    .service ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--purple);
+      font-size: 0.75rem;
+    }
+
+    /* ── METHODE ── */
+    .methode-steps { display: flex; flex-direction: column; gap: 0; }
+    .methode-step {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 32px;
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+    .methode-step:last-child { border-bottom: none; }
+    .methode-step-num {
+      font-family: 'Courier New', monospace;
+      font-size: 2.5rem;
+      font-weight: 700;
+      color: rgba(124,58,237,0.3);
+      line-height: 1;
+      padding-top: 4px;
+    }
+    .methode-step h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 8px;
+    }
+    .methode-step p { color: var(--muted); font-size: 0.88rem; line-height: 1.65; }
+    .methode-step-tag {
+      display: inline-block;
+      font-family: 'Courier New', monospace;
+      font-size: 0.7rem;
+      color: var(--accent);
+      background: rgba(124,58,237,0.1);
+      border: 1px solid rgba(124,58,237,0.2);
+      padding: 3px 10px;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+
+    /* ── MANIFESTE ── */
+    .manifeste {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 64px;
+    }
+    .manifeste-line {
+      font-size: clamp(1.2rem, 3vw, 1.9rem);
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.3;
+      margin-bottom: 20px;
+    }
+    .manifeste-line.muted { color: var(--muted); font-weight: 400; font-size: clamp(0.9rem, 2vw, 1.15rem); }
+    .manifeste-line em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--purple), var(--blue));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    /* ── POURQUOI ── */
+    .pourquoi-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .pourquoi-card {
+      padding: 32px;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      background: var(--surface);
+    }
+    .pourquoi-card h3 {
+      font-family: 'Courier New', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+    .pourquoi-card p { color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+
+    /* ── CONTACT ── */
+    .contact-wrap {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+    }
+    .contact-inner {
+      max-width: 660px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 100px 24px;
+    }
+    .contact-inner .s-num { justify-content: center; display: block; }
+    .contact-inner .s-title { font-size: clamp(1.8rem, 4vw, 2.6rem); margin-bottom: 14px; }
+    .contact-inner p { color: var(--muted); font-size: 0.95rem; line-height: 1.75; margin-bottom: 44px; }
+    .contact-options { display: flex; flex-direction: column; gap: 12px; max-width: 440px; margin: 0 auto; }
+    .contact-opt-main {
       display: flex;
       align-items: center;
       gap: 16px;
-      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      background: linear-gradient(135deg, var(--purple), var(--blue));
       color: #fff;
       padding: 20px 28px;
       border-radius: 12px;
-      text-decoration: none;
-      transition: opacity 0.3s, transform 0.2s;
+      transition: opacity 0.2s, transform 0.2s;
     }
-    .contact-option-main:hover { opacity: 0.88; transform: translateY(-2px); }
-    .contact-option-secondary {
+    .contact-opt-main:hover { opacity: 0.88; transform: translateY(-2px); }
+    .contact-opt-sec {
       display: flex;
       align-items: center;
       gap: 16px;
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.1);
-      color: #e0e0e0;
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text);
       padding: 18px 28px;
       border-radius: 12px;
-      text-decoration: none;
-      transition: background 0.3s, transform 0.2s;
+      transition: border-color 0.2s, transform 0.2s;
     }
-    .contact-option-secondary:hover { background: rgba(124,58,237,0.12); transform: translateY(-2px); }
-    .contact-option-icon { font-size: 1.5rem; flex-shrink: 0; }
-    .contact-option-title { font-weight: 600; font-size: 1rem; margin-bottom: 3px; }
-    .contact-option-sub { font-size: 0.82rem; opacity: 0.7; }
+    .contact-opt-sec:hover { border-color: rgba(124,58,237,0.4); transform: translateY(-2px); }
+    .opt-icon { font-size: 1.4rem; flex-shrink: 0; }
+    .opt-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 2px; }
+    .opt-sub { font-size: 0.78rem; opacity: 0.6; }
 
     /* ── FOOTER ── */
     footer {
       text-align: center;
-      padding: 36px 20px;
-      color: #2a2a2a;
-      font-size: 0.8rem;
-      border-top: 1px solid rgba(255,255,255,0.03);
+      padding: 32px 20px;
+      color: var(--muted);
+      font-size: 0.78rem;
+      font-family: 'Courier New', monospace;
+      border-top: 1px solid var(--border);
+      letter-spacing: 0.5px;
     }
 
     /* ── RESPONSIVE ── */
-    @media (max-width: 768px) {
+    @media (max-width: 900px) {
       nav { padding: 16px 24px; }
-      nav ul { gap: 16px; }
-      .section { padding: 70px 24px; }
-      .demo-wrapper { grid-template-columns: 1fr; padding: 36px 24px; gap: 40px; }
-      .steps { grid-template-columns: 1fr; }
-      .stats-bar { gap: 32px; }
+      .hero { padding: 120px 24px 70px; }
+      .s { padding: 70px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .pourquoi-grid { grid-template-columns: 1fr; }
+      .demo-box { grid-template-columns: 1fr; padding: 36px 28px; }
+      .manifeste { padding: 40px 28px; }
+      .hero h1 { letter-spacing: -1px; }
+      .methode-step { grid-template-columns: 50px 1fr; gap: 20px; }
+      .flux { gap: 8px; }
     }
   </style>
 </head>
@@ -330,94 +479,127 @@
 
   <!-- NAV -->
   <nav>
-    <div class="logo">Flashcore IA</div>
+    <div class="logo">flashcore<span>_ia</span></div>
     <ul>
       <li><a href="#demo">Agent IA</a></li>
-      <li><a href="#solutions">Solutions</a></li>
-      <li><a href="#contact" class="nav-cta">Me contacter</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#methode">Méthode</a></li>
+      <li><a href="#contact" class="nav-cta">Réserver un appel</a></li>
     </ul>
   </nav>
 
   <!-- HERO -->
-  <section class="hero">
-    <div class="badge">Agents IA & Automatisation sur mesure</div>
-    <h1>
-      L'IA qui travaille<br/>
-      <span>pendant que vous dormez</span>
-    </h1>
-    <p>
-      Je conçois des agents IA et automatisations sur mesure pour les entrepreneurs.
-      Vos tâches répétitives tournent en automatique — vous, vous vous concentrez sur ce qui compte.
-    </p>
-    <div class="hero-btns">
-      <a href="#demo" class="btn">Tester l'agent IA gratuit</a>
-      <a href="#contact" class="btn-outline">Discuter de mon projet</a>
-    </div>
-  </section>
+  <div style="background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.12) 0%, transparent 60%);">
+    <section class="hero">
+      <div class="hero-tag">// agents_ia · automatisation · flashcore</div>
+      <h1>
+        L'IA qui<br/>
+        travaille<br/>
+        <em>sans vous.</em>
+      </h1>
+      <p class="hero-sub">
+        Je conçois des agents IA sur mesure pour les entrepreneurs.
+        Vos tâches répétitives s'automatisent — vous, vous revenez sur ce qui crée vraiment de la valeur.
+      </p>
+      <div class="hero-btns">
+        <a href="#demo" class="btn-primary">Tester l'agent IA gratuit</a>
+        <a href="#contact" class="btn-ghost">Réserver un appel →</a>
+      </div>
+      <div class="hero-metrics">
+        <div>
+          <div class="hero-metric-val">48h</div>
+          <div class="hero-metric-label">Livraison moyenne</div>
+        </div>
+        <div>
+          <div class="hero-metric-val">24/7</div>
+          <div class="hero-metric-label">Agents actifs</div>
+        </div>
+        <div>
+          <div class="hero-metric-val">0</div>
+          <div class="hero-metric-label">Abonnement SaaS inutile</div>
+        </div>
+        <div>
+          <div class="hero-metric-val">3</div>
+          <div class="hero-metric-label">IA disponibles</div>
+        </div>
+      </div>
+    </section>
+  </div>
 
-  <!-- STATS -->
-  <div class="stats-bar">
-    <div class="stat">
-      <div class="stat-number">24h/24</div>
-      <div class="stat-label">Agents actifs non-stop</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">48h</div>
-      <div class="stat-label">Délai de livraison moyen</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">100%</div>
-      <div class="stat-label">Solutions sur mesure</div>
-    </div>
-    <div class="stat">
-      <div class="stat-number">3</div>
-      <div class="stat-label">IA disponibles (Claude, GPT, Mistral)</div>
+  <!-- 01 — FLUX -->
+  <div>
+    <div class="s">
+      <div class="s-num">// 01 — COMMENT ÇA FONCTIONNE</div>
+      <h2 class="s-title">Votre problème entre.<br/>La solution sort.</h2>
+      <p class="s-sub">Un agent IA reçoit une entrée, traite, décide et livre un résultat — sans intervention humaine.</p>
+      <div class="flux">
+        <div class="flux-node">
+          <div class="flux-node-icon">📥</div>
+          <div class="flux-node-label">Entrée</div>
+          <div class="flux-node-text">Message, image, données, déclencheur</div>
+        </div>
+        <div class="flux-arrow">──→</div>
+        <div class="flux-node" style="border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.08);">
+          <div class="flux-node-icon">🤖</div>
+          <div class="flux-node-label">Agent IA</div>
+          <div class="flux-node-text">Analyse · Décide · Agit</div>
+        </div>
+        <div class="flux-arrow">──→</div>
+        <div class="flux-node">
+          <div class="flux-node-icon">📤</div>
+          <div class="flux-node-label">Sortie</div>
+          <div class="flux-node-text">Réponse, contenu, action, rapport</div>
+        </div>
+        <div class="flux-arrow">──→</div>
+        <div class="flux-node">
+          <div class="flux-node-icon">🔁</div>
+          <div class="flux-node-label">Loop</div>
+          <div class="flux-node-text">Tourne 24h/24 sans vous</div>
+        </div>
+      </div>
     </div>
   </div>
 
-  <!-- DEMO AGENT IA -->
+  <!-- 02 — DEMO -->
   <div id="demo">
-    <div class="section">
-      <div class="section-label">Agent IA — Démo gratuite</div>
-      <div class="demo-wrapper">
-        <div class="demo-left">
-          <h2>Radiographie<br/>Marketing IA</h2>
-          <p>
-            Décrivez votre business en 2-3 phrases. L'agent analyse votre positionnement
-            et vous livre un diagnostic marketing complet en quelques secondes — sans bullshit.
-          </p>
-          <a href="https://t.me/monmarketing_bot" class="btn" target="_blank">
-            Tester gratuitement →
-          </a>
-          <p style="color:#444; font-size:0.8rem; margin-top:12px;">3 analyses offertes · Aucune inscription</p>
+    <div class="s">
+      <div class="s-num">// 02 — AGENT IA DÉMO · GRATUIT</div>
+      <h2 class="s-title">Testez l'IA<br/>sur votre business.</h2>
+      <div class="demo-box">
+        <div>
+          <div class="demo-tag">// radiographie_marketing.agent</div>
+          <h3>Diagnostic marketing en 30 secondes</h3>
+          <p>Décrivez votre business en 2-3 phrases. L'agent analyse votre positionnement et livre un diagnostic complet — direct, sans bullshit.</p>
+          <a href="https://t.me/monmarketing_bot" class="btn-primary" target="_blank">Lancer l'agent →</a>
+          <p class="demo-free">3 analyses offertes · Aucune inscription</p>
         </div>
         <div class="demo-outputs">
           <div class="demo-output">
             <div class="demo-output-icon">🔍</div>
-            <div class="demo-output-text">
+            <div>
               <h4>Diagnostic</h4>
-              <p>Ce qui freine réellement votre croissance marketing — sans détour</p>
+              <p>Ce qui freine votre croissance — sans détour</p>
             </div>
           </div>
           <div class="demo-output">
             <div class="demo-output-icon">🎯</div>
-            <div class="demo-output-text">
+            <div>
               <h4>Positionnement</h4>
-              <p>Comment vous différencier concrètement de vos concurrents</p>
+              <p>Comment vous différencier de vos concurrents</p>
             </div>
           </div>
           <div class="demo-output">
             <div class="demo-output-icon">📣</div>
-            <div class="demo-output-text">
+            <div>
               <h4>Message clé</h4>
-              <p>La phrase qui doit résumer votre offre — mémorable et différenciante</p>
+              <p>La phrase qui doit résumer votre offre</p>
             </div>
           </div>
           <div class="demo-output">
             <div class="demo-output-icon">⚡</div>
-            <div class="demo-output-text">
+            <div>
               <h4>3 actions immédiates</h4>
-              <p>Ce que vous pouvez faire dès cette semaine pour améliorer votre marketing</p>
+              <p>Faisables cette semaine</p>
             </div>
           </div>
         </div>
@@ -425,95 +607,191 @@
     </div>
   </div>
 
-  <!-- COMMENT ÇA MARCHE -->
-  <div>
-    <div class="section">
-      <div class="section-label">Processus</div>
-      <h2>Comment je travaille</h2>
-      <p class="section-sub">Du brief à la mise en production en 48h. Simple, rapide, efficace.</p>
-      <div class="steps">
-        <div class="step">
-          <div class="step-num">1</div>
-          <h3>Vous me décrivez le problème</h3>
-          <p>On échange sur Telegram. Vous m'expliquez ce que vous voulez automatiser ou ce qui vous prend trop de temps.</p>
+  <!-- 03 — SERVICES -->
+  <div id="services">
+    <div class="s">
+      <div class="s-num">// 03 — SERVICES</div>
+      <h2 class="s-title">Ce que je construis.</h2>
+      <p class="s-sub">Des solutions livrées rapidement, qui tournent sans vous et s'adaptent à votre activité.</p>
+      <div class="services-grid">
+        <div class="service">
+          <div class="service-icon">🤖</div>
+          <h3>Bots & Agents Telegram / WhatsApp</h3>
+          <p>Assistants IA qui répondent, qualifient, génèrent du contenu et gèrent vos processus — 24h/24.</p>
+          <ul>
+            <li>Réponse automatique clients</li>
+            <li>Qualification de leads</li>
+            <li>Génération de contenu</li>
+            <li>Notifications intelligentes</li>
+          </ul>
         </div>
-        <div class="step">
-          <div class="step-num">2</div>
-          <h3>Je conçois la solution IA</h3>
-          <p>Je choisis le bon modèle IA, je conçois l'architecture et je code votre agent sur mesure.</p>
+        <div class="service">
+          <div class="service-icon">⚡</div>
+          <h3>Agents IA autonomes</h3>
+          <p>Des agents capables d'analyser, décider et agir seuls — alimentés par Claude, GPT ou Mistral.</p>
+          <ul>
+            <li>Analyse de données en continu</li>
+            <li>Prise de décision automatisée</li>
+            <li>Connexion à vos outils existants</li>
+            <li>Rapports et alertes auto</li>
+          </ul>
         </div>
-        <div class="step">
-          <div class="step-num">3</div>
-          <h3>Déploiement & autonomie</h3>
-          <p>Votre agent est déployé sur serveur, tourne 24h/24 et vous livre les résultats directement.</p>
+        <div class="service">
+          <div class="service-icon">📢</div>
+          <h3>Automatisation marketing</h3>
+          <p>Posts réseaux sociaux, publicités, emails et campagnes générés par l'IA en quelques secondes.</p>
+          <ul>
+            <li>Contenu réseaux sociaux</li>
+            <li>Publicités multi-formats</li>
+            <li>Séquences email automatiques</li>
+            <li>Stratégie de contenu IA</li>
+          </ul>
+        </div>
+        <div class="service">
+          <div class="service-icon">🔗</div>
+          <h3>Connexion d'outils & APIs</h3>
+          <p>Votre CRM, e-commerce, réseaux sociaux connectés entre eux — les données circulent seules.</p>
+          <ul>
+            <li>Intégration CRM / e-commerce</li>
+            <li>Webhooks et automatisations</li>
+            <li>Synchronisation de données</li>
+            <li>Tableaux de bord auto-mis à jour</li>
+          </ul>
+        </div>
+        <div class="service">
+          <div class="service-icon">💡</div>
+          <h3>Audit & Stratégie IA</h3>
+          <p>Je cartographie les tâches automatisables dans votre activité et je définis la feuille de route la plus rentable.</p>
+          <ul>
+            <li>Identification des gains rapides</li>
+            <li>ROI estimé par automatisation</li>
+            <li>Plan d'action priorisé</li>
+            <li>Choix du bon modèle IA</li>
+          </ul>
+        </div>
+        <div class="service">
+          <div class="service-icon">🛠️</div>
+          <h3>Déploiement & Maintenance</h3>
+          <p>Vos agents installés sur VPS, monitorés, maintenus. Vous ne gérez rien — ils tournent et vous alertent.</p>
+          <ul>
+            <li>Déploiement VPS Linux</li>
+            <li>Monitoring & alertes</li>
+            <li>Mises à jour incluses</li>
+            <li>Support réactif</li>
+          </ul>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- SOLUTIONS -->
-  <div id="solutions">
-    <div class="section">
-      <div class="section-label">Services</div>
-      <h2>Ce que je construis</h2>
-      <p class="section-sub">Des automatisations concrètes, livrées rapidement, qui fonctionnent sans vous.</p>
-      <div class="grid">
-        <div class="card">
-          <div class="card-icon">🤖</div>
-          <h3>Bots Telegram & WhatsApp</h3>
-          <p>Assistants IA qui répondent à vos clients, qualifient les leads, génèrent du contenu ou gèrent vos processus — 24h/24, 7j/7.</p>
+  <!-- 04 — METHODE -->
+  <div id="methode">
+    <div class="s">
+      <div class="s-num">// 04 — MÉTHODE</div>
+      <h2 class="s-title">Du brief à la mise<br/>en production en 48h.</h2>
+      <p class="s-sub">Un process simple et rapide. Pas de réunions interminables, pas de specs de 40 pages.</p>
+      <div class="methode-steps">
+        <div class="methode-step">
+          <div class="methode-step-num">01</div>
+          <div>
+            <h3>Appel découverte — 30 min</h3>
+            <p>On se parle. Vous m'expliquez ce que vous voulez automatiser, ce qui vous prend trop de temps, ce qui vous coûte trop cher. Je pose des questions précises.</p>
+            <span class="methode-step-tag">// gratuit · sans engagement</span>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon">⚡</div>
-          <h3>Agents IA autonomes</h3>
-          <p>Agents capables d'analyser, décider et agir sans intervention humaine. Alimentés par Claude, GPT ou Mistral selon votre besoin.</p>
+        <div class="methode-step">
+          <div class="methode-step-num">02</div>
+          <div>
+            <h3>Conception de la solution</h3>
+            <p>Je choisis le bon modèle IA, je conçois l'architecture et je code votre agent sur mesure. Vous recevez une démo dans les 24-48h.</p>
+            <span class="methode-step-tag">// livraison : 24-48h</span>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon">📢</div>
-          <h3>Automatisation marketing</h3>
-          <p>Génération de publicités, posts réseaux sociaux, emails et campagnes entières grâce à l'IA — en quelques secondes.</p>
+        <div class="methode-step">
+          <div class="methode-step-num">03</div>
+          <div>
+            <h3>Déploiement & tests</h3>
+            <p>L'agent est déployé sur serveur, testé en conditions réelles. Vous validez, on ajuste si besoin jusqu'à ce que ce soit parfait.</p>
+            <span class="methode-step-tag">// inclus dans chaque projet</span>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon">🔗</div>
-          <h3>Connexion d'outils</h3>
-          <p>Votre CRM, e-commerce, réseaux sociaux et bases de données connectés entre eux — les données circulent automatiquement.</p>
+        <div class="methode-step">
+          <div class="methode-step-num">04</div>
+          <div>
+            <h3>Autonomie totale</h3>
+            <p>Votre agent tourne 24h/24 sans intervention. Je reste disponible pour les évolutions et la maintenance. Vous, vous récupérez votre temps.</p>
+            <span class="methode-step-tag">// support inclus</span>
+          </div>
         </div>
-        <div class="card">
-          <div class="card-icon">💡</div>
-          <h3>Audit & Stratégie IA</h3>
-          <p>Je cartographie les tâches automatisables dans votre activité et je vous propose la feuille de route IA la plus rentable.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 05 — MANIFESTE -->
+  <div>
+    <div class="s">
+      <div class="s-num">// 05 — POURQUOI FLASHCORE IA</div>
+      <div class="manifeste">
+        <div class="divider">/// manifeste ///</div>
+        <br/>
+        <p class="manifeste-line">Vous n'avez pas besoin d'une agence de 15 personnes.</p>
+        <p class="manifeste-line muted">Ni d'un consultant qui parle pendant 3 mois sans rien livrer.</p>
+        <br/>
+        <p class="manifeste-line">Vous avez besoin d'un <em>agent qui fait le travail.</em></p>
+        <p class="manifeste-line muted">Qui répond à vos clients à 3h du matin.</p>
+        <p class="manifeste-line muted">Qui génère vos contenus pendant que vous dormez.</p>
+        <p class="manifeste-line muted">Qui analyse vos données pendant que vous vendez.</p>
+        <br/>
+        <p class="manifeste-line">C'est ça, <em>Flashcore IA.</em></p>
+        <p class="manifeste-line muted">Pas du conseil. Des solutions qui tournent.</p>
+        <br/>
+        <div class="divider">/// ● ● ● ///</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 06 — POURQUOI -->
+  <div>
+    <div class="s">
+      <div class="s-num">// 06 — LES DIFFÉRENCES</div>
+      <h2 class="s-title">Pourquoi pas une agence.</h2>
+      <p class="s-sub">Ce qui change quand on travaille ensemble.</p>
+      <div class="pourquoi-grid">
+        <div class="pourquoi-card">
+          <h3>// Rapidité</h3>
+          <p>48h du brief à la mise en production. Pas de processus administratif, pas d'intermédiaire. Je code, je déploie, c'est live.</p>
         </div>
-        <div class="card">
-          <div class="card-icon">🛠️</div>
-          <h3>Déploiement & maintenance</h3>
-          <p>Vos agents installés sur VPS, configurés, monitorés. Vous n'avez rien à gérer — ils tournent et vous alertent si besoin.</p>
+        <div class="pourquoi-card">
+          <h3>// Sur mesure</h3>
+          <p>Aucun template, aucun outil no-code limité. Chaque agent est codé spécifiquement pour votre activité et vos contraintes.</p>
+        </div>
+        <div class="pourquoi-card">
+          <h3>// Résultats directs</h3>
+          <p>Je me paie sur les résultats, pas sur les heures. Vous payez une solution qui fonctionne, pas des réunions et des livrables PDF.</p>
         </div>
       </div>
     </div>
   </div>
 
   <!-- CONTACT -->
-  <div id="contact" class="contact-section">
+  <div id="contact" class="contact-wrap">
     <div class="contact-inner">
-      <div class="section-label">Contact</div>
-      <h2>Parlons de votre projet</h2>
-      <p>
-        Choisissez ce qui vous convient le mieux — un appel de 30 minutes
-        pour échanger en direct, ou un message Telegram si vous préférez l'écrit.
-      </p>
+      <div class="s-num">// 07 — CONTACT</div>
+      <h2 class="s-title">Parlons de votre projet.</h2>
+      <p>Un appel de 30 minutes suffit pour savoir si je peux vous aider et ce que ça donnerait concrètement.</p>
       <div class="contact-options">
-        <a href="https://calendly.com/flashrecrutia/appel-decouverte" class="contact-option-main" target="_blank">
-          <span class="contact-option-icon">📅</span>
+        <a href="https://calendly.com/flashrecrutia/appel-decouverte" class="contact-opt-main" target="_blank">
+          <span class="opt-icon">📅</span>
           <div>
-            <div class="contact-option-title">Réserver un appel gratuit</div>
-            <div class="contact-option-sub">30 min · Visio ou téléphone · Agenda en direct</div>
+            <div class="opt-title">Réserver un appel gratuit</div>
+            <div class="opt-sub">30 min · Visio ou téléphone · Agenda en direct</div>
           </div>
         </a>
-        <a href="https://t.me/yanissmolines" class="contact-option-secondary" target="_blank">
-          <span class="contact-option-icon">✈️</span>
+        <a href="https://t.me/yanissmolines" class="contact-opt-sec" target="_blank">
+          <span class="opt-icon">✈️</span>
           <div>
-            <div class="contact-option-title">Message Telegram</div>
-            <div class="contact-option-sub">Réponse sous 24h</div>
+            <div class="opt-title">Message Telegram</div>
+            <div class="opt-sub">@yanissmolines · Réponse sous 24h</div>
           </div>
         </a>
       </div>
@@ -521,7 +799,7 @@
   </div>
 
   <footer>
-    © 2026 Flashcore IA — Yaniss Molines &nbsp;·&nbsp; Agents IA & Automatisation
+    © 2026 flashcore_ia — Yaniss Molines &nbsp;·&nbsp; agents_ia · automatisation · marketing
   </footer>
 
 </body>
