@@ -128,6 +128,60 @@
     /* ── FOOTER ── */
     footer { text-align: center; padding: 32px 20px; color: var(--muted); font-size: 0.78rem; font-family: 'Courier New', monospace; border-top: 1px solid var(--border); letter-spacing: 0.5px; }
 
+    /* ── ANIMATIONS ── */
+    @keyframes heroFadeUp { from { opacity:0; transform:translateY(32px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes heroFadeIn  { from { opacity:0; } to { opacity:1; } }
+    @keyframes shimmer     { 0% { left:-100%; } 60%,100% { left:150%; } }
+    @keyframes drawLine    { from { width:0; } to { width:36px; } }
+    @keyframes gradientBreath { 0%,100% { opacity:0.12; transform:scale(1); } 50% { opacity:0.22; transform:scale(1.08); } }
+
+    /* Hero staged entrance */
+    .hero-tag  { opacity:0; animation: heroFadeIn  0.7s 0.15s cubic-bezier(0.16,1,0.3,1) forwards; }
+    .hero h1   { opacity:0; animation: heroFadeUp  0.9s 0.35s cubic-bezier(0.16,1,0.3,1) forwards; }
+    .hero-sub  { opacity:0; animation: heroFadeUp  0.8s 0.65s cubic-bezier(0.16,1,0.3,1) forwards; }
+    .hero-btns { opacity:0; animation: heroFadeUp  0.7s 0.88s cubic-bezier(0.16,1,0.3,1) forwards; }
+    .hero-metrics { opacity:0; animation: heroFadeUp 0.7s 1.05s cubic-bezier(0.16,1,0.3,1) forwards; }
+
+    /* Hero gradient breath */
+    .hero-bg { animation: gradientBreath 7s ease-in-out infinite; }
+
+    /* Scroll reveal */
+    .will-reveal { opacity:0; transform:translateY(48px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+    .will-reveal.revealed { opacity:1; transform:translateY(0); }
+
+    /* Manifeste lines — start hidden, JS reveals one by one */
+    .manifeste .manifeste-line, .manifeste .divider {
+      opacity:0; transform:translateX(-24px);
+      transition: opacity 0.55s ease, transform 0.55s cubic-bezier(0.16,1,0.3,1);
+    }
+
+    /* Mouse glow */
+    #mouse-glow { position:fixed; width:520px; height:520px; border-radius:50%; background:radial-gradient(circle, rgba(124,58,237,0.07) 0%, transparent 65%); pointer-events:none; z-index:0; transform:translate(-50%,-50%); transition:left 0.5s ease, top 0.5s ease; }
+
+    /* Button shimmer */
+    .btn-primary { position:relative; overflow:hidden; }
+    .btn-primary::after { content:''; position:absolute; top:0; left:-100%; width:55%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent); animation:shimmer 3.5s ease-in-out infinite; }
+
+    /* Nav link underline */
+    nav ul a:not(.nav-cta) { position:relative; }
+    nav ul a:not(.nav-cta)::after { content:''; position:absolute; bottom:-3px; left:0; width:0; height:1px; background:var(--accent); transition:width 0.3s ease; }
+    nav ul a:not(.nav-cta):hover::after { width:100%; }
+
+    /* Demo box hover lift */
+    .demo-box { transition:transform 0.45s cubic-bezier(0.16,1,0.3,1), box-shadow 0.45s; }
+    .demo-box:hover { transform:translateY(-8px); box-shadow:0 28px 70px rgba(124,58,237,0.14); }
+
+    /* Contact options hover */
+    .contact-opt-main, .contact-opt-sec { transition:opacity 0.2s, transform 0.35s cubic-bezier(0.16,1,0.3,1), box-shadow 0.35s, border-color 0.2s; }
+    .contact-opt-main:hover { transform:translateY(-4px); box-shadow:0 16px 40px rgba(124,58,237,0.25); }
+    .contact-opt-sec:hover { transform:translateY(-4px); }
+
+    /* Flux arrow draw (triggered by JS class) */
+    .flux-revealed .flux-arrow-line { animation:drawLine 0.4s cubic-bezier(0.16,1,0.3,1) both; }
+    .flux-revealed .flux:nth-child(1) .flux-arrow:nth-child(2) .flux-arrow-line { animation-delay:0.4s; }
+    .flux-revealed .flux:nth-child(1) .flux-arrow:nth-child(4) .flux-arrow-line { animation-delay:0.8s; }
+    .flux-revealed .flux:nth-child(1) .flux-arrow:nth-child(6) .flux-arrow-line { animation-delay:1.2s; }
+
     /* ── RESPONSIVE ── */
     @media (max-width: 900px) {
       nav { padding: 16px 20px; }
@@ -163,7 +217,7 @@
   </nav>
 
   <!-- HERO -->
-  <div style="background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.12) 0%, transparent 60%);">
+  <div class="hero-bg" style="background: radial-gradient(ellipse at 30% 50%, rgba(124,58,237,0.15) 0%, transparent 60%);">
     <section class="hero">
       <div class="hero-tag" data-i18n="hero-tag">// agents_ia · automatisation · flashcore</div>
       <h1 data-i18n-html="hero-h1">
@@ -742,6 +796,109 @@
     }
 
     setLang(currentLang);
+  </script>
+
+  <script>
+    // ── MOUSE GLOW ──
+    const glow = document.createElement('div');
+    glow.id = 'mouse-glow';
+    document.body.appendChild(glow);
+    document.addEventListener('mousemove', e => {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top  = e.clientY + 'px';
+    });
+
+    // ── SCROLL REVEAL ──
+    const revealTargets = [
+      '.s-num', '.s-title', '.s-sub',
+      '.service', '.methode-step', '.pourquoi-card',
+      '.demo-box', '.manifeste', '.flux-wrap',
+      '.contact-opt-main', '.contact-opt-sec'
+    ];
+
+    const allReveal = document.querySelectorAll(revealTargets.join(','));
+    allReveal.forEach(el => el.classList.add('will-reveal'));
+
+    // Stagger delay for card-like siblings
+    ['service','methode-step','pourquoi-card'].forEach(cls => {
+      document.querySelectorAll('.' + cls).forEach(el => {
+        const idx = Array.from(el.parentElement.children).indexOf(el);
+        el.style.transitionDelay = (idx * 0.09) + 's';
+      });
+    });
+
+    const revealObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        el.classList.add('revealed');
+        revealObserver.unobserve(el);
+
+        // Manifeste : stagger lines
+        if (el.classList.contains('manifeste')) {
+          el.querySelectorAll('.manifeste-line, .divider').forEach((line, i) => {
+            setTimeout(() => {
+              line.style.opacity = '1';
+              line.style.transform = 'translateX(0)';
+            }, 200 + i * 130);
+          });
+        }
+
+        // Flux : draw arrows + pop nodes
+        if (el.classList.contains('flux-wrap')) {
+          el.classList.add('flux-revealed');
+          el.querySelectorAll('.flux-node').forEach((node, i) => {
+            node.style.opacity = '0';
+            node.style.transform = 'scale(0.82)';
+            node.style.transition = 'opacity 0.5s cubic-bezier(0.16,1,0.3,1), transform 0.5s cubic-bezier(0.16,1,0.3,1)';
+            setTimeout(() => {
+              node.style.opacity = '1';
+              node.style.transform = 'scale(1)';
+            }, i * 220);
+          });
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -50px 0px' });
+
+    allReveal.forEach(el => revealObserver.observe(el));
+
+    // ── COUNTER ANIMATION ──
+    document.querySelectorAll('.hero-metric-val').forEach(el => {
+      const raw = el.textContent.trim();
+      const num = parseFloat(raw);
+      if (isNaN(num) || num === 0) return;
+      const suffix = raw.replace(/[\d.]/g, '');
+      const obs = new IntersectionObserver(entries => {
+        if (!entries[0].isIntersecting) return;
+        obs.disconnect();
+        const start = performance.now();
+        const duration = 1600;
+        const tick = now => {
+          const p = Math.min((now - start) / duration, 1);
+          const eased = 1 - Math.pow(1 - p, 4);
+          el.textContent = Math.round(eased * num) + suffix;
+          if (p < 1) requestAnimationFrame(tick);
+          else el.textContent = raw;
+        };
+        requestAnimationFrame(tick);
+      }, { threshold: 1 });
+      obs.observe(el);
+    });
+
+    // ── 3D TILT ON SERVICE CARDS ──
+    document.querySelectorAll('.service').forEach(card => {
+      card.addEventListener('mousemove', e => {
+        const r = card.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width  - 0.5;
+        const y = (e.clientY - r.top)  / r.height - 0.5;
+        card.style.transform = `perspective(700px) rotateY(${x * 9}deg) rotateX(${-y * 9}deg) translateY(-4px)`;
+        card.style.transition = 'transform 0.1s ease';
+      });
+      card.addEventListener('mouseleave', () => {
+        card.style.transition = 'transform 0.6s cubic-bezier(0.16,1,0.3,1), background 0.2s';
+        card.style.transform = '';
+      });
+    });
   </script>
 
 </body>
