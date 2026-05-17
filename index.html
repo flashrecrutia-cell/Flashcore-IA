@@ -244,65 +244,90 @@
 
     /* ── RESPONSIVE TABLETTE ── */
     @media (max-width: 900px) {
+      html, body { overflow-x: hidden; }
       nav { padding: 16px 20px; }
       nav ul { gap: 10px; }
-      /* Cacher les liens texte nav sur tablette/mobile */
       nav ul li:nth-child(-n+3) { display: none; }
-      .hero { grid-template-columns: 1fr; padding: 110px 24px 70px; }
-      .hero-visual { height: 300px; order: -1; }
-      .robot-svg { width: 140px; }
+      .hero { grid-template-columns: 1fr; padding: 110px 24px 60px; }
+      .hero-visual { height: 280px; order: -1; }
+      .robot-svg { width: 130px; }
       .badge-1,.badge-2,.badge-3 { display: none; }
-      .orbit-chip { font-size: 0.55rem; padding: 4px 8px; }
-      .s { padding: 70px 24px; }
+      .orbit-chip { display: none; }
+      .s { padding: 64px 24px; }
       .services-grid { grid-template-columns: 1fr; }
       .pourquoi-grid { grid-template-columns: 1fr; }
       .demo-box { grid-template-columns: 1fr; padding: 32px 24px; }
       .manifeste { padding: 36px 24px; }
       .hero h1 { letter-spacing: -0.5px; }
       .hero-sub { max-width: 100%; }
-      .hero-metrics { gap: 24px; margin-top: 40px; padding-top: 32px; }
+      .hero-metrics { gap: 20px; margin-top: 36px; padding-top: 28px; flex-wrap: wrap; }
       .methode-step { grid-template-columns: 48px 1fr; gap: 20px; }
     }
 
     /* ── RESPONSIVE MOBILE ── */
     @media (max-width: 640px) {
-      nav { padding: 14px 16px; }
+      html, body { overflow-x: hidden; }
+
+      nav { padding: 12px 16px; }
       nav ul { gap: 8px; }
-      .nav-cta { padding: 7px 14px; font-size: 0.78rem !important; }
-      .lang-btn { padding: 5px 9px; font-size: 0.72rem; }
+      .lang-toggle { display: none; }
+      .nav-cta { padding: 7px 14px; font-size: 0.78rem !important; white-space: nowrap; }
+      .lang-btn { padding: 5px 8px; font-size: 0.7rem; }
 
-      .hero { padding: 96px 20px 60px; gap: 0; }
-      .hero-visual { height: 260px; }
-      .robot-svg { width: 120px; }
-      /* Cacher les orbites sur petit écran */
-      .orbit-chip { display: none; }
-      .pulse-ring:nth-child(3) { display: none; }
-      .hero h1 { font-size: clamp(2.4rem, 9vw, 3rem); letter-spacing: -0.5px; }
-      .hero-sub { font-size: 1rem; }
-      .btn-primary, .btn-ghost { padding: 12px 22px; font-size: 0.88rem; width: 100%; text-align: center; }
-      .hero-btns { flex-direction: column; gap: 10px; }
-      .hero-metrics { gap: 16px; display: grid; grid-template-columns: 1fr 1fr; }
-      .hero-metric-val { font-size: 1.5rem; }
+      /* Hero */
+      .hero { padding: 80px 20px 48px; gap: 0; min-height: unset; }
+      .hero-visual { height: 220px; }
+      .robot-svg { width: 110px; }
+      .pulse-ring { display: none; }
+      .hero-tag { font-size: 0.65rem; letter-spacing: 2px; margin-bottom: 20px; }
+      .hero h1 { font-size: clamp(2.2rem, 8vw, 2.8rem); letter-spacing: -0.5px; margin-bottom: 20px; }
+      .hero-sub { font-size: 0.95rem; margin-bottom: 28px; }
+      .btn-primary, .btn-ghost { padding: 13px 20px; font-size: 0.88rem; width: 100%; text-align: center; box-sizing: border-box; }
+      .hero-btns { flex-direction: column; gap: 10px; width: 100%; }
+      .hero-metrics { gap: 12px; margin-top: 28px; padding-top: 24px; display: grid; grid-template-columns: 1fr 1fr; }
+      .hero-metric-val { font-size: 1.4rem; }
+      .hero-metric-label { font-size: 0.72rem; }
 
-      .s { padding: 56px 20px; }
-      .s-title { font-size: clamp(1.6rem, 6vw, 2rem); }
+      /* Flux diagram : vertical sur mobile */
+      .flux-wrap { overflow-x: hidden; margin-top: 32px; }
+      .flux { flex-direction: column; align-items: stretch; min-width: unset; gap: 0; }
+      .flux-node { width: 100%; }
+      .flux-arrow { transform: rotate(90deg); justify-content: center; padding: 2px 0; }
+      .flux-arrow-line { width: 28px; }
 
-      .demo-box { padding: 24px 18px; gap: 28px; }
-      .demo-box h3 { font-size: 1.4rem; }
+      /* Sections */
+      .s { padding: 48px 20px; }
+      .s-title { font-size: clamp(1.5rem, 6vw, 1.9rem); }
+      .s-sub { font-size: 0.88rem; margin-bottom: 36px; }
+      .s-num { font-size: 0.62rem; letter-spacing: 2px; }
 
-      .services-grid { border-radius: 12px; }
-      .service { padding: 28px 20px; }
+      /* Demo */
+      .demo-box { padding: 22px 16px; gap: 24px; border-radius: 14px; }
+      .demo-box h3 { font-size: 1.3rem; }
+      .demo-box p { font-size: 0.85rem; }
 
-      .methode-step { grid-template-columns: 40px 1fr; gap: 14px; padding: 28px 0; }
-      .methode-step-num { font-size: 2rem; }
+      /* Services */
+      .services-grid { border-radius: 10px; }
+      .service { padding: 24px 18px; }
+      .service h3 { font-size: 0.95rem; }
+      .service p { font-size: 0.82rem; }
 
-      .manifeste { padding: 28px 18px; border-radius: 14px; }
-      .manifeste-line { font-size: clamp(1.1rem, 4.5vw, 1.6rem); }
+      /* Méthode */
+      .methode-step { grid-template-columns: 36px 1fr; gap: 12px; padding: 24px 0; }
+      .methode-step-num { font-size: 1.8rem; }
+      .methode-step h3 { font-size: 1rem; }
 
-      .pourquoi-card { padding: 24px 18px; }
+      /* Manifeste */
+      .manifeste { padding: 24px 16px; border-radius: 12px; }
+      .manifeste-line { font-size: clamp(1rem, 4.5vw, 1.5rem); margin-bottom: 14px; }
 
-      .contact-inner { padding: 72px 20px; }
-      .contact-opt-main, .contact-opt-sec { padding: 16px 20px; }
+      /* Pourquoi */
+      .pourquoi-card { padding: 22px 16px; }
+
+      /* Contact */
+      .contact-inner { padding: 60px 20px; }
+      .contact-opt-main, .contact-opt-sec { padding: 16px 18px; }
+      .opt-title { font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -480,9 +505,9 @@
   <!-- 01,FLUX -->
   <div>
     <div class="s">
-      <div class="s-num" data-i18n="s01-num">// 01,COMMENT ÇA FONCTIONNE</div>
+      <div class="s-num" data-i18n="s01-num">// 01 · COMMENT ÇA FONCTIONNE</div>
       <h2 class="s-title" data-i18n="s01-title">Votre problème entre.<br/>La solution sort.</h2>
-      <p class="s-sub" data-i18n="s01-sub">Un agent IA reçoit une entrée, traite, décide et livre un résultat,sans intervention humaine.</p>
+      <p class="s-sub" data-i18n="s01-sub">Un agent IA reçoit une entrée, traite, décide et livre un résultat, sans intervention humaine.</p>
       <div class="flux-wrap">
         <div class="flux">
           <div class="flux-node">
@@ -516,7 +541,7 @@
   <!-- 02,DEMO -->
   <div id="demo">
     <div class="s">
-      <div class="s-num" data-i18n="s02-num">// 02,AGENT IA DÉMO · GRATUIT</div>
+      <div class="s-num" data-i18n="s02-num">// 02 · AGENT IA DÉMO · GRATUIT</div>
       <h2 class="s-title" data-i18n="s02-title">Testez l'IA<br/>sur votre business.</h2>
       <div class="demo-box">
         <div>
@@ -563,7 +588,7 @@
   <!-- 03,SERVICES -->
   <div id="services">
     <div class="s">
-      <div class="s-num" data-i18n="s03-num">// 03,SERVICES</div>
+      <div class="s-num" data-i18n="s03-num">// 03 · SERVICES</div>
       <h2 class="s-title" data-i18n="s03-title">Ce que je construis.</h2>
       <p class="s-sub" data-i18n="s03-sub">Des solutions livrées rapidement, qui tournent sans vous et s'adaptent à votre activité.</p>
       <div class="services-grid">
@@ -640,7 +665,7 @@
   <!-- 04,METHODE -->
   <div id="methode">
     <div class="s">
-      <div class="s-num" data-i18n="s04-num">// 04,MÉTHODE</div>
+      <div class="s-num" data-i18n="s04-num">// 04 · MÉTHODE</div>
       <h2 class="s-title" data-i18n="s04-title">Du brief à la mise<br/>en production en 48h.</h2>
       <p class="s-sub" data-i18n="s04-sub">Un process simple et rapide. Pas de réunions interminables, pas de specs de 40 pages.</p>
       <div class="methode-steps">
@@ -683,7 +708,7 @@
   <!-- 05,MANIFESTE -->
   <div>
     <div class="s">
-      <div class="s-num" data-i18n="s05-num">// 05,POURQUOI FLASHCORE IA</div>
+      <div class="s-num" data-i18n="s05-num">// 05 · POURQUOI FLASHCORE IA</div>
       <div class="manifeste">
         <div class="divider" data-i18n="manifeste-divider">/// manifeste ///</div>
         <br/>
@@ -706,7 +731,7 @@
   <!-- 06,POURQUOI -->
   <div>
     <div class="s">
-      <div class="s-num" data-i18n="s06-num">// 06,LES DIFFÉRENCES</div>
+      <div class="s-num" data-i18n="s06-num">// 06 · LES DIFFÉRENCES</div>
       <h2 class="s-title" data-i18n="s06-title">Pourquoi pas une agence.</h2>
       <p class="s-sub" data-i18n="s06-sub">Ce qui change quand on travaille ensemble.</p>
       <div class="pourquoi-grid">
@@ -729,7 +754,7 @@
   <!-- CONTACT -->
   <div id="contact" class="contact-wrap">
     <div class="contact-inner">
-      <div class="s-num" data-i18n="s07-num">// 07,CONTACT</div>
+      <div class="s-num" data-i18n="s07-num">// 07 · CONTACT</div>
       <h2 class="s-title" data-i18n="s07-title">Parlons de votre projet.</h2>
       <p data-i18n="s07-sub">Un appel de 30 minutes suffit pour savoir si je peux vous aider et ce que ça donnerait concrètement.</p>
       <div class="contact-options">
@@ -776,9 +801,9 @@
         'metric-2': 'Agents actifs',
         'metric-3': 'Abonnement SaaS inutile',
         'metric-4': 'IA disponibles',
-        's01-num': '// 01,COMMENT ÇA FONCTIONNE',
+        's01-num': '// 01 · COMMENT ÇA FONCTIONNE',
         's01-title': 'Votre problème entre.<br/>La solution sort.',
-        's01-sub': "Un agent IA reçoit une entrée, traite, décide et livre un résultat,sans intervention humaine.",
+        's01-sub': "Un agent IA reçoit une entrée, traite, décide et livre un résultat, sans intervention humaine.",
         'flux-1-label': 'Entrée',
         'flux-1-text': 'Message, image, données, déclencheur',
         'flux-2-label': 'Agent IA',
@@ -786,7 +811,7 @@
         'flux-3-label': 'Sortie',
         'flux-3-text': 'Réponse, contenu, action, rapport',
         'flux-4-text': 'Tourne 24h/24 sans vous',
-        's02-num': '// 02,AGENT IA DÉMO · GRATUIT',
+        's02-num': '// 02 · AGENT IA DÉMO · GRATUIT',
         's02-title': "Testez l'IA<br/>sur votre business.",
         'demo-h3': 'Diagnostic marketing en 30 secondes',
         'demo-p': "Décrivez votre business en 2-3 phrases. L'agent analyse votre positionnement et livre un diagnostic complet,direct, sans bullshit.",
@@ -800,7 +825,7 @@
         'out-3-sub': 'La phrase qui doit résumer votre offre',
         'out-4-title': '3 actions immédiates',
         'out-4-sub': 'Faisables cette semaine',
-        's03-num': '// 03,SERVICES',
+        's03-num': '// 03 · SERVICES',
         's03-title': 'Ce que je construis.',
         's03-sub': "Des solutions livrées rapidement, qui tournent sans vous et s'adaptent à votre activité.",
         'srv-1-title': 'Bots & Agents Telegram / WhatsApp',
@@ -839,7 +864,7 @@
         'srv-6-li2': 'Monitoring & alertes',
         'srv-6-li3': 'Mises à jour incluses',
         'srv-6-li4': 'Support réactif',
-        's04-num': '// 04,MÉTHODE',
+        's04-num': '// 04 · MÉTHODE',
         's04-title': 'Du brief à la mise<br/>en production en 48h.',
         's04-sub': "Un process simple et rapide. Pas de réunions interminables, pas de specs de 40 pages.",
         'm1-title': 'Appel découverte : 30 min',
@@ -854,7 +879,7 @@
         'm4-title': 'Autonomie totale',
         'm4-desc': "Votre agent tourne 24h/24 sans intervention. Je reste disponible pour les évolutions et la maintenance. Vous, vous récupérez votre temps.",
         'm4-tag': '// support inclus',
-        's05-num': '// 05,POURQUOI FLASHCORE IA',
+        's05-num': '// 05 · POURQUOI FLASHCORE IA',
         'manifeste-divider': '/// manifeste ///',
         'mf-1': "Vous n'avez pas besoin d'une agence de 15 personnes.",
         'mf-2': "Ni d'un consultant qui parle pendant 3 mois sans rien livrer.",
@@ -864,7 +889,7 @@
         'mf-6': "Qui analyse vos données pendant que vous vendez.",
         'mf-7': "C'est ça, <em>Flashcore IA.</em>",
         'mf-8': "Pas du conseil. Des solutions qui tournent.",
-        's06-num': '// 06,LES DIFFÉRENCES',
+        's06-num': '// 06 · LES DIFFÉRENCES',
         's06-title': 'Pourquoi pas une agence.',
         's06-sub': 'Ce qui change quand on travaille ensemble.',
         'pq-1-title': '// Rapidité',
@@ -873,7 +898,7 @@
         'pq-2-desc': "Aucun template, aucun outil no-code limité. Chaque agent est codé spécifiquement pour votre activité et vos contraintes.",
         'pq-3-title': '// Résultats directs',
         'pq-3-desc': "Je me paie sur les résultats, pas sur les heures. Vous payez une solution qui fonctionne, pas des réunions et des livrables PDF.",
-        's07-num': '// 07,CONTACT',
+        's07-num': '// 07 · CONTACT',
         's07-title': 'Parlons de votre projet.',
         's07-sub': "Un appel de 30 minutes suffit pour savoir si je peux vous aider et ce que ça donnerait concrètement.",
         'cta-1-title': 'Réserver un appel gratuit',
@@ -896,7 +921,7 @@
         'metric-2': 'Active agents',
         'metric-3': 'Useless SaaS subscription',
         'metric-4': 'AI models available',
-        's01-num': '// 01,HOW IT WORKS',
+        's01-num': '// 01 · HOW IT WORKS',
         's01-title': 'Your problem goes in.<br/>The solution comes out.',
         's01-sub': "An AI agent receives an input, processes it, decides and delivers a result, without human intervention.",
         'flux-1-label': 'Input',
@@ -906,7 +931,7 @@
         'flux-3-label': 'Output',
         'flux-3-text': 'Response, content, action, report',
         'flux-4-text': 'Runs 24/7 without you',
-        's02-num': '// 02,AI AGENT DEMO · FREE',
+        's02-num': '// 02 · AI AGENT DEMO · FREE',
         's02-title': "Test the AI<br/>on your business.",
         'demo-h3': 'Marketing diagnosis in 30 seconds',
         'demo-p': "Describe your business in 2-3 sentences. The agent analyzes your positioning and delivers a complete diagnosis,straight, no fluff.",
@@ -920,7 +945,7 @@
         'out-3-sub': 'The sentence that should define your offer',
         'out-4-title': '3 immediate actions',
         'out-4-sub': 'Doable this week',
-        's03-num': '// 03,SERVICES',
+        's03-num': '// 03 · SERVICES',
         's03-title': 'What I build.',
         's03-sub': "Solutions delivered fast, that run without you and adapt to your business.",
         'srv-1-title': 'Telegram / WhatsApp Bots & Agents',
@@ -959,7 +984,7 @@
         'srv-6-li2': 'Monitoring & alerts',
         'srv-6-li3': 'Updates included',
         'srv-6-li4': 'Reactive support',
-        's04-num': '// 04,METHOD',
+        's04-num': '// 04 · METHOD',
         's04-title': 'From brief to production<br/>in 48 hours.',
         's04-sub': "A simple and fast process. No endless meetings, no 40-page specs.",
         'm1-title': 'Discovery call,30 min',
@@ -974,7 +999,7 @@
         'm4-title': 'Full autonomy',
         'm4-desc': "Your agent runs 24/7 without intervention. I stay available for updates and maintenance. You get your time back.",
         'm4-tag': '// support included',
-        's05-num': '// 05,WHY FLASHCORE IA',
+        's05-num': '// 05 · WHY FLASHCORE IA',
         'manifeste-divider': '/// manifesto ///',
         'mf-1': "You don't need a 15-person agency.",
         'mf-2': "Nor a consultant who talks for 3 months without delivering anything.",
@@ -984,7 +1009,7 @@
         'mf-6': "That analyzes your data while you sell.",
         'mf-7': "That's <em>Flashcore IA.</em>",
         'mf-8': "Not consulting. Solutions that run.",
-        's06-num': '// 06,THE DIFFERENCES',
+        's06-num': '// 06 · THE DIFFERENCES',
         's06-title': 'Why not an agency.',
         's06-sub': 'What changes when we work together.',
         'pq-1-title': '// Speed',
@@ -993,7 +1018,7 @@
         'pq-2-desc': "No templates, no limited no-code tools. Every agent is coded specifically for your business and constraints.",
         'pq-3-title': '// Direct results',
         'pq-3-desc': "I get paid on results, not hours. You pay for a working solution, not meetings and PDF deliverables.",
-        's07-num': '// 07,CONTACT',
+        's07-num': '// 07 · CONTACT',
         's07-title': "Let's talk about your project.",
         's07-sub': "A 30-minute call is enough to know if I can help you and what it would look like concretely.",
         'cta-1-title': 'Book a free call',
@@ -1045,11 +1070,13 @@
       document.body.appendChild(canvas);
       const ctx = canvas.getContext('2d');
       let W, H, pts;
+      const COUNT = window.innerWidth < 640 ? 22 : 48;
+      const DIST  = window.innerWidth < 640 ? 100 : 140;
 
       function resize() {
         W = canvas.width  = window.innerWidth;
         H = canvas.height = window.innerHeight;
-        pts = Array.from({length: 48}, () => ({
+        pts = Array.from({length: COUNT}, () => ({
           x: Math.random() * W, y: Math.random() * H,
           vx: (Math.random() - 0.5) * 0.4,
           vy: (Math.random() - 0.5) * 0.4,
@@ -1073,11 +1100,11 @@
         pts.forEach((a, i) => pts.slice(i + 1).forEach(b => {
           const dx = a.x - b.x, dy = a.y - b.y;
           const d = Math.sqrt(dx*dx + dy*dy);
-          if (d < 140) {
+          if (d < DIST) {
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
             ctx.lineTo(b.x, b.y);
-            ctx.strokeStyle = `rgba(124,58,237,${0.18 * (1 - d/140)})`;
+            ctx.strokeStyle = `rgba(124,58,237,${0.18 * (1 - d/DIST)})`;
             ctx.lineWidth = 0.8;
             ctx.stroke();
           }
@@ -1087,14 +1114,16 @@
       draw();
     })();
 
-    // ── MOUSE GLOW ──
-    const glow = document.createElement('div');
-    glow.id = 'mouse-glow';
-    document.body.appendChild(glow);
-    document.addEventListener('mousemove', e => {
-      glow.style.left = e.clientX + 'px';
-      glow.style.top  = e.clientY + 'px';
-    });
+    // ── MOUSE GLOW (desktop uniquement) ──
+    if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+      const glow = document.createElement('div');
+      glow.id = 'mouse-glow';
+      document.body.appendChild(glow);
+      document.addEventListener('mousemove', e => {
+        glow.style.left = e.clientX + 'px';
+        glow.style.top  = e.clientY + 'px';
+      });
+    }
 
     // ── SCROLL REVEAL ──
     const revealTargets = [
@@ -1178,7 +1207,7 @@
           else el.textContent = raw;
         };
         requestAnimationFrame(tick);
-      }, { threshold: 1 });
+      }, { threshold: 0.5 });
       obs.observe(el);
     });
 
