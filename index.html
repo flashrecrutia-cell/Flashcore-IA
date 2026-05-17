@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Flashcore IA — Yaniss Molines</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0a0a0f;
+      color: #e0e0e0;
+    }
+
+    /* NAV */
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 60px;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .logo {
+      font-size: 1.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 30px;
+    }
+    nav ul a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.3s;
+    }
+    nav ul a:hover { color: #fff; }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      padding: 100px 20px 60px;
+      background: radial-gradient(ellipse at 50% 0%, rgba(124,58,237,0.15) 0%, transparent 70%);
+    }
+    .badge {
+      background: rgba(124,58,237,0.15);
+      border: 1px solid rgba(124,58,237,0.3);
+      color: #a78bfa;
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      margin-bottom: 24px;
+      display: inline-block;
+    }
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 24px;
+    }
+    .hero h1 span {
+      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero p {
+      font-size: 1.15rem;
+      color: #888;
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 40px;
+    }
+    .btn {
+      background: linear-gradient(135deg, #7c3aed, #3b82f6);
+      color: #fff;
+      padding: 14px 32px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: opacity 0.3s, transform 0.2s;
+      display: inline-block;
+    }
+    .btn:hover { opacity: 0.85; transform: translateY(-2px); }
+
+    /* SERVICES */
+    .section {
+      padding: 100px 60px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .section-label {
+      color: #7c3aed;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 12px;
+    }
+    .section h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      color: #666;
+      font-size: 1rem;
+      margin-bottom: 60px;
+      max-width: 500px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+    .card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.07);
+      border-radius: 16px;
+      padding: 32px;
+      transition: border-color 0.3s, transform 0.2s;
+    }
+    .card:hover {
+      border-color: rgba(124,58,237,0.4);
+      transform: translateY(-4px);
+    }
+    .card-icon {
+      font-size: 2rem;
+      margin-bottom: 16px;
+    }
+    .card h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+    .card p {
+      color: #666;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    /* CONTACT */
+    .contact-section {
+      background: rgba(124,58,237,0.05);
+      border-top: 1px solid rgba(255,255,255,0.05);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+    .contact-inner {
+      max-width: 600px;
+      margin: 0 auto;
+      text-align: center;
+      padding: 100px 20px;
+    }
+    .contact-inner h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .contact-inner p {
+      color: #666;
+      margin-bottom: 40px;
+    }
+    .contact-links {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+    .contact-link {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #e0e0e0;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: background 0.3s;
+    }
+    .contact-link:hover { background: rgba(124,58,237,0.2); }
+
+    /* FOOTER */
+    footer {
+      text-align: center;
+      padding: 30px;
+      color: #333;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <div class="logo">Flashcore IA</div>
+    <ul>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="badge">Intelligence Artificielle & Automatisation</div>
+    <h1>
+      J'automatise ce qui<br/>
+      <span>vous fait perdre du temps</span>
+    </h1>
+    <p>
+      Bots Telegram, WhatsApp, agents IA, workflows sur mesure —
+      je conçois des solutions intelligentes pour les entrepreneurs et entreprises.
+    </p>
+    <a href="#contact" class="btn">Discutons de votre projet</a>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <div id="solutions">
+    <div class="section">
+      <div class="section-label">Ce que je fais</div>
+      <h2>Mes solutions</h2>
+      <p class="section-sub">Des automatisations concrètes, déployées rapidement, qui fonctionnent 24h/24.</p>
+
+      <div class="grid">
+        <div class="card">
+          <div class="card-icon">🤖</div>
+          <h3>Bots Telegram & WhatsApp</h3>
+          <p>Assistants intelligents pour répondre à vos clients, générer du contenu ou automatiser vos processus métier.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3>Agents IA sur mesure</h3>
+          <p>Des agents alimentés par Claude, GPT ou Mistral, capables d'analyser, décider et agir de façon autonome.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">📢</div>
+          <h3>Automatisation marketing</h3>
+          <p>Génération de publicités, de contenus réseaux sociaux et de campagnes grâce à l'IA.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🔗</div>
+          <h3>Connexion d'APIs</h3>
+          <p>Intégration de vos outils existants : CRM, e-commerce, réseaux sociaux, bases de données.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">💡</div>
+          <h3>Conseil & Stratégie IA</h3>
+          <p>Identification des tâches automatisables dans votre activité et conception de la solution optimale.</p>
+        </div>
+        <div class="card">
+          <div class="card-icon">🛠️</div>
+          <h3>Déploiement serveur</h3>
+          <p>Installation, configuration et maintenance de vos solutions sur VPS — disponibles 24h/24, 7j/7.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div id="contact" class="contact-section">
+    <div class="contact-inner">
+      <div class="section-label">Contact</div>
+      <h2>Un projet en tête ?</h2>
+      <p>Décrivez-moi votre besoin et je vous propose une solution concrète sous 24h.</p>
+      <div class="contact-links">
+        <a href="https://t.me/tontelegram" class="contact-link">Telegram</a>
+        <a href="mailto:flashrecrutia@gmail.com" class="contact-link">Email</a>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    © 2026 Flashcore IA — Yaniss Molines
+  </footer>
+
+</body>
+</html>
