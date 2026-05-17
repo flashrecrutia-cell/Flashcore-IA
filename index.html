@@ -270,21 +270,41 @@
     }
     .contact-inner h2 { font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 700; margin-bottom: 16px; }
     .contact-inner p { color: #666; margin-bottom: 40px; line-height: 1.7; }
-    .tg-btn {
-      display: inline-flex;
+    .contact-options {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 460px;
+      margin: 0 auto;
+    }
+    .contact-option-main {
+      display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 16px;
       background: linear-gradient(135deg, #7c3aed, #3b82f6);
       color: #fff;
-      padding: 16px 36px;
-      border-radius: 10px;
+      padding: 20px 28px;
+      border-radius: 12px;
       text-decoration: none;
-      font-weight: 600;
-      font-size: 1.05rem;
       transition: opacity 0.3s, transform 0.2s;
     }
-    .tg-btn:hover { opacity: 0.85; transform: translateY(-2px); }
-    .tg-icon { font-size: 1.2rem; }
+    .contact-option-main:hover { opacity: 0.88; transform: translateY(-2px); }
+    .contact-option-secondary {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #e0e0e0;
+      padding: 18px 28px;
+      border-radius: 12px;
+      text-decoration: none;
+      transition: background 0.3s, transform 0.2s;
+    }
+    .contact-option-secondary:hover { background: rgba(124,58,237,0.12); transform: translateY(-2px); }
+    .contact-option-icon { font-size: 1.5rem; flex-shrink: 0; }
+    .contact-option-title { font-weight: 600; font-size: 1rem; margin-bottom: 3px; }
+    .contact-option-sub { font-size: 0.82rem; opacity: 0.7; }
 
     /* ── FOOTER ── */
     footer {
@@ -476,15 +496,27 @@
   <div id="contact" class="contact-section">
     <div class="contact-inner">
       <div class="section-label">Contact</div>
-      <h2>Un projet en tête ?</h2>
+      <h2>Parlons de votre projet</h2>
       <p>
-        Décrivez-moi votre besoin sur Telegram. Je vous réponds en moins de 24h
-        avec une solution concrète et un devis clair.
+        Choisissez ce qui vous convient le mieux — un appel de 30 minutes
+        pour échanger en direct, ou un message Telegram si vous préférez l'écrit.
       </p>
-      <a href="https://t.me/yanissmolines" class="tg-btn" target="_blank">
-        <span class="tg-icon">✈️</span>
-        Me contacter sur Telegram
-      </a>
+      <div class="contact-options">
+        <a href="https://calendly.com/flashrecrutia/30min" class="contact-option-main" target="_blank">
+          <span class="contact-option-icon">📅</span>
+          <div>
+            <div class="contact-option-title">Réserver un appel gratuit</div>
+            <div class="contact-option-sub">30 min · Visio ou téléphone · Agenda en direct</div>
+          </div>
+        </a>
+        <a href="https://t.me/yanissmolines" class="contact-option-secondary" target="_blank">
+          <span class="contact-option-icon">✈️</span>
+          <div>
+            <div class="contact-option-title">Message Telegram</div>
+            <div class="contact-option-sub">Réponse sous 24h</div>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 
