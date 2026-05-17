@@ -57,12 +57,15 @@
     .divider { font-family: 'Courier New', monospace; color: var(--muted); font-size: 0.75rem; letter-spacing: 4px; margin: 16px 0; }
 
     /* ── FLUX ── */
-    .flux { display: flex; align-items: center; flex-wrap: wrap; margin-top: 48px; }
-    .flux-node { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; text-align: center; min-width: 160px; }
+    .flux-wrap { overflow-x: auto; margin-top: 48px; padding-bottom: 8px; }
+    .flux { display: flex; align-items: center; flex-wrap: nowrap; min-width: max-content; gap: 0; }
+    .flux-node { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 24px 28px; text-align: center; width: 180px; flex-shrink: 0; }
     .flux-node-icon { font-size: 1.8rem; margin-bottom: 8px; }
     .flux-node-label { font-family: 'Courier New', monospace; font-size: 0.72rem; color: var(--accent); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 6px; }
-    .flux-node-text { font-size: 0.85rem; color: var(--muted); }
-    .flux-arrow { font-family: 'Courier New', monospace; color: var(--purple); font-size: 1.4rem; padding: 0 12px; flex-shrink: 0; }
+    .flux-node-text { font-size: 0.82rem; color: var(--muted); line-height: 1.4; }
+    .flux-arrow { display: flex; align-items: center; flex-shrink: 0; padding: 0 4px; }
+    .flux-arrow-line { display: block; width: 36px; height: 2px; background: linear-gradient(90deg, rgba(124,58,237,0.3), var(--purple)); }
+    .flux-arrow-head { display: block; width: 0; height: 0; border-top: 6px solid transparent; border-bottom: 6px solid transparent; border-left: 9px solid var(--purple); margin-left: -1px; }
 
     /* ── DEMO ── */
     .demo-box { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; background: var(--surface); border: 1px solid rgba(124,58,237,0.2); border-radius: 20px; padding: 52px; align-items: start; }
@@ -200,29 +203,31 @@
       <div class="s-num" data-i18n="s01-num">// 01 — COMMENT ÇA FONCTIONNE</div>
       <h2 class="s-title" data-i18n="s01-title">Votre problème entre.<br/>La solution sort.</h2>
       <p class="s-sub" data-i18n="s01-sub">Un agent IA reçoit une entrée, traite, décide et livre un résultat — sans intervention humaine.</p>
-      <div class="flux">
-        <div class="flux-node">
-          <div class="flux-node-icon">📥</div>
-          <div class="flux-node-label" data-i18n="flux-1-label">Entrée</div>
-          <div class="flux-node-text" data-i18n="flux-1-text">Message, image, données, déclencheur</div>
-        </div>
-        <div class="flux-arrow">──→</div>
-        <div class="flux-node" style="border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.08);">
-          <div class="flux-node-icon">🤖</div>
-          <div class="flux-node-label" data-i18n="flux-2-label">Agent IA</div>
-          <div class="flux-node-text" data-i18n="flux-2-text">Analyse · Décide · Agit</div>
-        </div>
-        <div class="flux-arrow">──→</div>
-        <div class="flux-node">
-          <div class="flux-node-icon">📤</div>
-          <div class="flux-node-label" data-i18n="flux-3-label">Sortie</div>
-          <div class="flux-node-text" data-i18n="flux-3-text">Réponse, contenu, action, rapport</div>
-        </div>
-        <div class="flux-arrow">──→</div>
-        <div class="flux-node">
-          <div class="flux-node-icon">🔁</div>
-          <div class="flux-node-label">Loop</div>
-          <div class="flux-node-text" data-i18n="flux-4-text">Tourne 24h/24 sans vous</div>
+      <div class="flux-wrap">
+        <div class="flux">
+          <div class="flux-node">
+            <div class="flux-node-icon">📥</div>
+            <div class="flux-node-label" data-i18n="flux-1-label">Entrée</div>
+            <div class="flux-node-text" data-i18n="flux-1-text">Message, image, données, déclencheur</div>
+          </div>
+          <div class="flux-arrow"><span class="flux-arrow-line"></span><span class="flux-arrow-head"></span></div>
+          <div class="flux-node" style="border-color: rgba(124,58,237,0.4); background: rgba(124,58,237,0.08);">
+            <div class="flux-node-icon">🤖</div>
+            <div class="flux-node-label" data-i18n="flux-2-label">Agent IA</div>
+            <div class="flux-node-text" data-i18n="flux-2-text">Analyse · Décide · Agit</div>
+          </div>
+          <div class="flux-arrow"><span class="flux-arrow-line"></span><span class="flux-arrow-head"></span></div>
+          <div class="flux-node">
+            <div class="flux-node-icon">📤</div>
+            <div class="flux-node-label" data-i18n="flux-3-label">Sortie</div>
+            <div class="flux-node-text" data-i18n="flux-3-text">Réponse, contenu, action, rapport</div>
+          </div>
+          <div class="flux-arrow"><span class="flux-arrow-line"></span><span class="flux-arrow-head"></span></div>
+          <div class="flux-node">
+            <div class="flux-node-icon">🔁</div>
+            <div class="flux-node-label">Loop</div>
+            <div class="flux-node-text" data-i18n="flux-4-text">Tourne 24h/24 sans vous</div>
+          </div>
         </div>
       </div>
     </div>
