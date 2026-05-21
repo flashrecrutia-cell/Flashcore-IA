@@ -294,17 +294,39 @@
     .float-cta-link:hover { transform:translateY(-3px); box-shadow:0 16px 48px rgba(124,58,237,0.48); }
     .float-cta-pulse { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.9); animation:dotPulse 1.8s infinite; flex-shrink:0; }
 
-    /* ── BOT COMMANDES ── */
-    #bot-commandes .s-num { color: #22c55e; }
-    .order-demo-box { border-color: rgba(34,197,94,0.35) !important; }
-    .order-demo-box .demo-tag { color: #22c55e; }
-
-    /* ── BOT SCHÉMA EXCALIDRAW ── */
-    #bot-schema .s-num { color: #f59e0b; }
-    .excalidraw-demo-box { border-color: rgba(245,158,11,0.35) !important; }
-    .excalidraw-demo-box .demo-tag { color: #f59e0b; }
-    .excalidraw-examples { display:flex; flex-direction:column; gap:8px; margin-top:14px; }
-    .excalidraw-ex { font-family:'Courier New',monospace; font-size:0.71rem; color:var(--muted); background:rgba(0,0,0,0.025); border:1px solid var(--border); border-radius:8px; padding:9px 14px; line-height:1.55; }
+    /* ── AGENTS GRID ── */
+    .agents-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
+    .agent-card { border:1px solid var(--border); border-radius:20px; padding:40px; background:var(--bg); display:flex; flex-direction:column; transition:border-color 0.25s, box-shadow 0.35s cubic-bezier(0.16,1,0.3,1); }
+    .agent-card:hover { box-shadow:0 16px 48px rgba(0,0,0,0.07); }
+    .agent-card-tag { font-family:'Courier New',monospace; font-size:0.68rem; letter-spacing:2px; margin-bottom:20px; }
+    .agent-card-header { display:flex; align-items:flex-start; gap:16px; margin-bottom:18px; }
+    .agent-icon-wrap { width:46px; height:46px; border-radius:12px; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+    .agent-card h3 { font-size:1.2rem; font-weight:700; color:var(--text); margin-bottom:4px; }
+    .agent-card-url { font-size:0.74rem; color:var(--muted); font-family:'Courier New',monospace; }
+    .agent-card > p { color:var(--muted); font-size:0.88rem; line-height:1.7; margin-bottom:20px; }
+    .agent-features { list-style:none; display:flex; flex-direction:column; gap:8px; margin-bottom:24px; flex:1; }
+    .agent-features li { font-size:0.82rem; color:var(--muted); padding-left:16px; position:relative; }
+    .agent-features li::before { content:'→'; position:absolute; left:0; color:var(--purple); font-size:0.75rem; }
+    .agent-cta { display:flex; align-items:center; justify-content:center; padding:14px 24px; border-radius:10px; font-weight:600; font-size:0.9rem; transition:opacity 0.2s, transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s; text-align:center; position:relative; overflow:hidden; }
+    .agent-cta::after { content:''; position:absolute; top:0; left:-100%; width:55%; height:100%; background:linear-gradient(90deg,transparent,rgba(255,255,255,0.18),transparent); animation:shimmer 3.5s ease-in-out infinite; }
+    .agent-cta:hover { opacity:0.88; transform:translateY(-3px); }
+    .agent-cta-green { background:linear-gradient(135deg,#22c55e,#16a34a); color:#fff; box-shadow:0 4px 20px rgba(34,197,94,0.2); }
+    .agent-cta-green:hover { box-shadow:0 12px 36px rgba(34,197,94,0.35); }
+    .agent-cta-amber { background:linear-gradient(135deg,#f59e0b,#d97706); color:#fff; box-shadow:0 4px 20px rgba(245,158,11,0.2); }
+    .agent-cta-amber:hover { box-shadow:0 12px 36px rgba(245,158,11,0.35); }
+    .agent-card-commandes { border-color:rgba(34,197,94,0.2); }
+    .agent-card-commandes:hover { border-color:rgba(34,197,94,0.45); }
+    .agent-card-schema { border-color:rgba(245,158,11,0.2); }
+    .agent-card-schema:hover { border-color:rgba(245,158,11,0.45); }
+    .agent-card-commandes .agent-card-tag { color:#22c55e; }
+    .agent-card-schema .agent-card-tag { color:#f59e0b; }
+    .agent-card-commandes .agent-icon-wrap { background:rgba(34,197,94,0.1); }
+    .agent-card-schema .agent-icon-wrap { background:rgba(245,158,11,0.1); }
+    .agent-card-commandes .agent-features li::before { color:#22c55e; }
+    .agent-card-schema .agent-features li::before { color:#f59e0b; }
+    .excalidraw-examples { display:flex; flex-direction:column; gap:7px; margin-bottom:24px; flex:1; }
+    .excalidraw-ex { font-family:'Courier New',monospace; font-size:0.7rem; color:var(--muted); background:rgba(245,158,11,0.04); border:1px solid rgba(245,158,11,0.15); border-radius:8px; padding:9px 14px; line-height:1.55; }
+    @media (max-width:900px) { .agents-grid { grid-template-columns:1fr; } }
 
     /* ── RESPONSIVE MOBILE ── */
     @media (max-width: 640px) {
@@ -398,8 +420,7 @@
   <nav>
     <div class="logo">Flashcore <span>IA</span></div>
     <ul>
-      <li><a href="#bot-commandes" data-i18n="nav-order">Bot Commandes</a></li>
-      <li><a href="#bot-schema" data-i18n="nav-schema">Bot Schéma</a></li>
+      <li><a href="#agents" data-i18n="nav-agents">Agents IA</a></li>
       <li><a href="#services" data-i18n="nav-services">Services</a></li>
       <li><a href="#methode" data-i18n="nav-methode">Méthode</a></li>
       <li class="nav-avail-item"><span class="nav-avail"><span class="nav-avail-dot"></span>Disponible</span></li>
@@ -601,105 +622,63 @@
     </div>
   </div>
 
-  <!-- 02b,BOT COMMANDES -->
-  <div id="bot-commandes">
+  <!-- 02,AGENTS IA -->
+  <div id="agents">
     <div class="s">
-      <div class="s-num" data-i18n="s02b-num">// BOT COMMANDES · LIVE</div>
-      <h2 class="s-title" data-i18n="s02b-title">Vos clients commandent.<br/>Livraison automatique.</h2>
-      <p class="s-sub" data-i18n="s02b-sub">Un agent IA gère les commandes de bout en bout, sans intervention manuelle.</p>
-      <div class="demo-box order-demo-box">
-        <div>
-          <div class="demo-tag">// order_bot.agent</div>
-          <h3 data-i18n="order-h3">Agent Commandes IA — Live</h3>
-          <p data-i18n="order-p">Vos clients passent commande via le chat. L'agent reçoit, traite et confirme chaque commande en temps réel. Zéro saisie manuelle, zéro erreur.</p>
-          <a href="http://72.62.23.66:8090/" class="btn-primary" target="_blank" rel="noopener" data-i18n="order-btn">Tester le bot →</a>
-          <p class="demo-free" data-i18n="order-free">Démo live · Sans inscription</p>
-        </div>
-        <div class="demo-outputs">
-          <div class="demo-output">
-            <div class="demo-output-icon"><svg class="icon-svg" width="18" height="18"><use href="#ic-message"/></svg></div>
-            <div>
-              <h4 data-i18n="order-out-1-title">Sélection produits</h4>
-              <p data-i18n="order-out-1-sub">Le client choisit ses articles directement dans le chat</p>
-            </div>
-          </div>
-          <div class="demo-output">
-            <div class="demo-output-icon"><svg class="icon-svg" width="18" height="18"><use href="#ic-zap"/></svg></div>
-            <div>
-              <h4 data-i18n="order-out-2-title">Confirmation automatique</h4>
-              <p data-i18n="order-out-2-sub">L'agent confirme et enregistre la commande instantanément</p>
-            </div>
-          </div>
-          <div class="demo-output">
-            <div class="demo-output-icon"><svg class="icon-svg" width="18" height="18"><use href="#ic-refresh"/></svg></div>
-            <div>
-              <h4 data-i18n="order-out-3-title">Traitement en temps réel</h4>
-              <p data-i18n="order-out-3-sub">Notification immédiate au vendeur, préparation déclenchée</p>
-            </div>
-          </div>
-          <div class="demo-output">
-            <div class="demo-output-icon"><svg class="icon-svg" width="18" height="18"><use href="#ic-target"/></svg></div>
-            <div>
-              <h4 data-i18n="order-out-4-title">Suivi client</h4>
-              <p data-i18n="order-out-4-sub">Le client reçoit les mises à jour de sa commande en direct</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+      <div class="s-num" data-i18n="s02-num">// 02 · AGENTS IA · EN DIRECT</div>
+      <h2 class="s-title" data-i18n="s02-title">Testez nos agents.<br/>Maintenant.</h2>
+      <p class="s-sub" data-i18n="s02-sub">Deux agents déployés, opérationnels 24h/24. Essayez gratuitement.</p>
+      <div class="agents-grid">
 
-  <!-- 02c,BOT SCHÉMA EXCALIDRAW -->
-  <div id="bot-schema">
-    <div class="s">
-      <div class="s-num" data-i18n="s02c-num">// BOT SCHÉMA · EXCALIDRAW</div>
-      <h2 class="s-title" data-i18n="s02c-title">Décris ta structure.<br/>Le schéma sort tout seul.</h2>
-      <p class="s-sub" data-i18n="s02c-sub">Texte, vocal ou document — l'agent génère un fichier Excalidraw prêt à éditer.</p>
-      <div class="demo-box excalidraw-demo-box">
-        <div>
-          <div class="demo-tag">// excalidraw_bot.agent</div>
-          <h3 data-i18n="exc-h3">@escalidraw_bot — Schémas IA</h3>
-          <p data-i18n="exc-p">Décris ta structure en texte ou en vocal. L'agent analyse et génère un schéma Excalidraw complet — architecture, flux, organigramme — livré en secondes.</p>
-          <a href="https://t.me/escalidraw_bot" class="btn-primary" target="_blank" rel="noopener" data-i18n="exc-btn">Générer mon schéma →</a>
-          <p class="demo-free" data-i18n="exc-free">Essai gratuit · @escalidraw_bot</p>
-        </div>
-        <div>
-          <div class="demo-outputs">
-            <div class="demo-output">
-              <div class="demo-output-icon"><svg class="icon-svg" width="18" height="18"><use href="#ic-speaker"/></svg></div>
-              <div>
-                <h4 data-i18n="exc-out-1-title">Vocal ou texte</h4>
-                <p data-i18n="exc-out-1-sub">Décris ton schéma en audio ou en texte libre</p>
-              </div>
+        <!-- Bot Commandes -->
+        <div class="agent-card agent-card-commandes" id="bot-commandes">
+          <div class="agent-card-tag" data-i18n="agent1-tag">// order_bot.agent · LIVE</div>
+          <div class="agent-card-header">
+            <div class="agent-icon-wrap">
+              <svg class="icon-svg" width="22" height="22" style="stroke:#22c55e"><use href="#ic-message"/></svg>
             </div>
-            <div class="demo-output">
-              <div class="demo-output-icon"><svg class="icon-svg" width="18" height="18"><use href="#ic-upload"/></svg></div>
-              <div>
-                <h4 data-i18n="exc-out-2-title">Documents</h4>
-                <p data-i18n="exc-out-2-sub">Envoie un PDF, image ou fichier texte à analyser</p>
-              </div>
-            </div>
-            <div class="demo-output">
-              <div class="demo-output-icon"><svg class="icon-svg" width="18" height="18"><use href="#ic-zap"/></svg></div>
-              <div>
-                <h4 data-i18n="exc-out-3-title">Génération IA</h4>
-                <p data-i18n="exc-out-3-sub">L'agent structure et compose le schéma automatiquement</p>
-              </div>
-            </div>
-            <div class="demo-output">
-              <div class="demo-output-icon"><svg class="icon-svg" width="18" height="18"><use href="#ic-edit"/></svg></div>
-              <div>
-                <h4 data-i18n="exc-out-4-title">Fichier .excalidraw</h4>
-                <p data-i18n="exc-out-4-sub">Reçois un fichier prêt à éditer sur excalidraw.com</p>
-              </div>
+            <div>
+              <h3 data-i18n="agent1-title">Bot Commandes</h3>
+              <div class="agent-card-url" data-i18n="agent1-url">72.62.23.66:8090</div>
             </div>
           </div>
+          <p data-i18n="agent1-desc">Vos clients passent commande via le chat. L'agent reçoit, traite et confirme chaque commande en temps réel.</p>
+          <ul class="agent-features">
+            <li data-i18n="agent1-f1">Sélection produits dans le chat</li>
+            <li data-i18n="agent1-f2">Confirmation automatique instantanée</li>
+            <li data-i18n="agent1-f3">Notification vendeur en temps réel</li>
+            <li data-i18n="agent1-f4">Suivi de commande client</li>
+          </ul>
+          <a href="http://72.62.23.66:8090/" class="agent-cta agent-cta-green" target="_blank" rel="noopener" data-i18n="agent1-btn">Tester le bot commandes →</a>
+        </div>
+
+        <!-- Bot Excalidraw -->
+        <div class="agent-card agent-card-schema" id="bot-schema">
+          <div class="agent-card-tag" data-i18n="agent2-tag">// excalidraw_bot.agent · Telegram</div>
+          <div class="agent-card-header">
+            <div class="agent-icon-wrap">
+              <svg class="icon-svg" width="22" height="22" style="stroke:#f59e0b"><use href="#ic-edit"/></svg>
+            </div>
+            <div>
+              <h3 data-i18n="agent2-title">Bot Schéma Excalidraw</h3>
+              <div class="agent-card-url">@escalidraw_bot</div>
+            </div>
+          </div>
+          <p data-i18n="agent2-desc">Décris ta structure en texte ou vocal. L'agent génère un fichier Excalidraw complet — architecture, flux, organigramme.</p>
+          <ul class="agent-features">
+            <li data-i18n="agent2-f1">Vocal, texte ou documents</li>
+            <li data-i18n="agent2-f2">Analyse et structuration IA</li>
+            <li data-i18n="agent2-f3">Architecture, flux, organigrammes</li>
+            <li data-i18n="agent2-f4">Fichier .excalidraw prêt à éditer</li>
+          </ul>
           <div class="excalidraw-examples">
             <div class="excalidraw-ex" data-i18n="exc-ex-1">«Architecture micro-services : API Gateway + 3 services + BDD»</div>
             <div class="excalidraw-ex" data-i18n="exc-ex-2">«Flux de commande : client → panier → paiement → confirmation»</div>
             <div class="excalidraw-ex" data-i18n="exc-ex-3">«Organigramme : PDG, 3 directeurs, 2 équipes chacun»</div>
           </div>
+          <a href="https://t.me/escalidraw_bot" class="agent-cta agent-cta-amber" target="_blank" rel="noopener" data-i18n="agent2-btn">Générer mon schéma →</a>
         </div>
+
       </div>
     </div>
   </div>
@@ -961,8 +940,7 @@
     const t = {
       fr: {
         'nav-demo': 'Agent IA',
-        'nav-order': 'Bot Commandes',
-        'nav-schema': 'Bot Schéma',
+        'nav-agents': 'Agents IA',
         'nav-services': 'Services',
         'nav-methode': 'Méthode',
         'nav-cta': 'Réserver un appel',
@@ -986,36 +964,26 @@
         'flux-3-label': 'Sortie',
         'flux-3-text': 'Réponse, contenu, action, rapport',
         'flux-4-text': 'Tourne 24h/24 sans vous',
-        's02b-num': '// BOT COMMANDES · LIVE',
-        's02b-title': 'Vos clients commandent.<br/>Livraison automatique.',
-        's02b-sub': 'Un agent IA gère les commandes de bout en bout, sans intervention manuelle.',
-        'order-h3': 'Agent Commandes IA — Live',
-        'order-p': "Vos clients passent commande via le chat. L'agent reçoit, traite et confirme chaque commande en temps réel. Zéro saisie manuelle, zéro erreur.",
-        'order-btn': 'Tester le bot →',
-        'order-free': 'Démo live · Sans inscription',
-        'order-out-1-title': 'Sélection produits',
-        'order-out-1-sub': 'Le client choisit ses articles directement dans le chat',
-        'order-out-2-title': 'Confirmation automatique',
-        'order-out-2-sub': "L'agent confirme et enregistre la commande instantanément",
-        'order-out-3-title': 'Traitement en temps réel',
-        'order-out-3-sub': 'Notification immédiate au vendeur, préparation déclenchée',
-        'order-out-4-title': 'Suivi client',
-        'order-out-4-sub': 'Le client reçoit les mises à jour de sa commande en direct',
-        's02c-num': '// BOT SCHÉMA · EXCALIDRAW',
-        's02c-title': 'Décris ta structure.<br/>Le schéma sort tout seul.',
-        's02c-sub': "Texte, vocal ou document — l'agent génère un fichier Excalidraw prêt à éditer.",
-        'exc-h3': '@escalidraw_bot — Schémas IA',
-        'exc-p': "Décris ta structure en texte ou en vocal. L'agent analyse et génère un schéma Excalidraw complet — architecture, flux, organigramme — livré en secondes.",
-        'exc-btn': 'Générer mon schéma →',
-        'exc-free': 'Essai gratuit · @escalidraw_bot',
-        'exc-out-1-title': 'Vocal ou texte',
-        'exc-out-1-sub': 'Décris ton schéma en audio ou en texte libre',
-        'exc-out-2-title': 'Documents',
-        'exc-out-2-sub': 'Envoie un PDF, image ou fichier texte à analyser',
-        'exc-out-3-title': 'Génération IA',
-        'exc-out-3-sub': "L'agent structure et compose le schéma automatiquement",
-        'exc-out-4-title': 'Fichier .excalidraw',
-        'exc-out-4-sub': 'Reçois un fichier prêt à éditer sur excalidraw.com',
+        's02-num': '// 02 · AGENTS IA · EN DIRECT',
+        's02-title': 'Testez nos agents.<br/>Maintenant.',
+        's02-sub': 'Deux agents déployés, opérationnels 24h/24. Essayez gratuitement.',
+        'agent1-tag': '// order_bot.agent · LIVE',
+        'agent1-title': 'Bot Commandes',
+        'agent1-url': '72.62.23.66:8090',
+        'agent1-desc': "Vos clients passent commande via le chat. L'agent reçoit, traite et confirme chaque commande en temps réel.",
+        'agent1-f1': 'Sélection produits dans le chat',
+        'agent1-f2': 'Confirmation automatique instantanée',
+        'agent1-f3': 'Notification vendeur en temps réel',
+        'agent1-f4': 'Suivi de commande client',
+        'agent1-btn': 'Tester le bot commandes →',
+        'agent2-tag': '// excalidraw_bot.agent · Telegram',
+        'agent2-title': 'Bot Schéma Excalidraw',
+        'agent2-desc': "Décris ta structure en texte ou vocal. L'agent génère un fichier Excalidraw complet — architecture, flux, organigramme.",
+        'agent2-f1': 'Vocal, texte ou documents',
+        'agent2-f2': 'Analyse et structuration IA',
+        'agent2-f3': 'Architecture, flux, organigrammes',
+        'agent2-f4': 'Fichier .excalidraw prêt à éditer',
+        'agent2-btn': 'Générer mon schéma →',
         'exc-ex-1': '«Architecture micro-services : API Gateway + 3 services + BDD»',
         'exc-ex-2': '«Flux de commande : client → panier → paiement → confirmation»',
         'exc-ex-3': '«Organigramme : PDG, 3 directeurs, 2 équipes chacun»',
@@ -1116,8 +1084,7 @@
       },
       en: {
         'nav-demo': 'AI Agent',
-        'nav-order': 'Order Bot',
-        'nav-schema': 'Schema Bot',
+        'nav-agents': 'AI Agents',
         'nav-services': 'Services',
         'nav-methode': 'Method',
         'nav-cta': 'Book a call',
@@ -1141,36 +1108,26 @@
         'flux-3-label': 'Output',
         'flux-3-text': 'Response, content, action, report',
         'flux-4-text': 'Runs 24/7 without you',
-        's02b-num': '// ORDER BOT · LIVE',
-        's02b-title': 'Clients order.<br/>Automatic delivery.',
-        's02b-sub': 'An AI agent handles your customer orders end-to-end, with zero manual intervention.',
-        'order-h3': 'AI Order Bot — Live',
-        'order-p': 'Customers place orders through the chat. The agent receives, processes and confirms every order in real time. Zero manual entry, zero errors.',
-        'order-btn': 'Try the bot →',
-        'order-free': 'Live demo · No sign-up',
-        'order-out-1-title': 'Product selection',
-        'order-out-1-sub': 'Customer picks items directly in the chat',
-        'order-out-2-title': 'Automatic confirmation',
-        'order-out-2-sub': 'Agent confirms and records the order instantly',
-        'order-out-3-title': 'Real-time processing',
-        'order-out-3-sub': 'Immediate seller notification, preparation triggered',
-        'order-out-4-title': 'Order tracking',
-        'order-out-4-sub': 'Customer receives live order status updates',
-        's02c-num': '// SCHEMA BOT · EXCALIDRAW',
-        's02c-title': 'Describe your structure.<br/>The diagram comes out.',
-        's02c-sub': 'Text, voice or document — the agent generates an Excalidraw file ready to edit.',
-        'exc-h3': '@escalidraw_bot — AI Diagrams',
-        'exc-p': 'Describe your structure in text or voice. The agent analyzes and generates a complete Excalidraw diagram — architecture, flow, org chart — delivered in seconds.',
-        'exc-btn': 'Generate my diagram →',
-        'exc-free': 'Free trial · @escalidraw_bot',
-        'exc-out-1-title': 'Voice or text',
-        'exc-out-1-sub': 'Describe your diagram in audio or free text',
-        'exc-out-2-title': 'Documents',
-        'exc-out-2-sub': 'Send a PDF, image or text file for analysis',
-        'exc-out-3-title': 'AI generation',
-        'exc-out-3-sub': 'Agent structures and composes the diagram automatically',
-        'exc-out-4-title': '.excalidraw file',
-        'exc-out-4-sub': 'Receive a file ready to edit on excalidraw.com',
+        's02-num': '// 02 · AI AGENTS · LIVE',
+        's02-title': 'Test our agents.<br/>Right now.',
+        's02-sub': 'Two deployed agents, running 24/7. Try them for free.',
+        'agent1-tag': '// order_bot.agent · LIVE',
+        'agent1-title': 'Order Bot',
+        'agent1-url': '72.62.23.66:8090',
+        'agent1-desc': 'Customers place orders through the chat. The agent receives, processes and confirms every order in real time.',
+        'agent1-f1': 'Product selection in chat',
+        'agent1-f2': 'Instant automatic confirmation',
+        'agent1-f3': 'Real-time seller notification',
+        'agent1-f4': 'Customer order tracking',
+        'agent1-btn': 'Try the order bot →',
+        'agent2-tag': '// excalidraw_bot.agent · Telegram',
+        'agent2-title': 'Excalidraw Schema Bot',
+        'agent2-desc': 'Describe your structure in text or voice. The agent generates a complete Excalidraw file — architecture, flow, org chart.',
+        'agent2-f1': 'Voice, text or documents',
+        'agent2-f2': 'AI analysis and structuring',
+        'agent2-f3': 'Architecture, flows, org charts',
+        'agent2-f4': '.excalidraw file ready to edit',
+        'agent2-btn': 'Generate my diagram →',
         'exc-ex-1': '"Micro-services architecture: API Gateway + 3 services + DB"',
         'exc-ex-2': '"Order flow: customer → cart → payment → confirmation"',
         'exc-ex-3': '"Org chart: CEO, 3 directors, 2 teams each"',
