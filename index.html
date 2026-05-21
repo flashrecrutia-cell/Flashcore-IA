@@ -266,6 +266,39 @@
       .methode-step { grid-template-columns: 48px 1fr; gap: 20px; }
     }
 
+    /* ── NAV BADGE DISPONIBLE ── */
+    .nav-avail { display:flex; align-items:center; gap:7px; font-family:'Courier New',monospace; font-size:0.68rem; color:#22c55e; letter-spacing:0.5px; white-space:nowrap; }
+    .nav-avail-dot { width:7px; height:7px; border-radius:50%; background:#22c55e; box-shadow:0 0 8px #22c55e; animation:dotPulse 1.8s ease-in-out infinite; flex-shrink:0; }
+    @media (max-width: 900px) { .nav-avail-item { display:none; } }
+
+    /* ── TYPEWRITER HERO ── */
+    .typewriter-word { background:linear-gradient(135deg,var(--purple),var(--blue)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; transition:opacity 0.22s ease; display:inline-block; }
+
+    /* ── FAQ ── */
+    .faq-list { display:flex; flex-direction:column; border:1px solid var(--border); border-radius:16px; overflow:hidden; }
+    .faq-item { border-bottom:1px solid var(--border); }
+    .faq-item:last-child { border-bottom:none; }
+    .faq-btn { width:100%; text-align:left; background:var(--bg); border:none; padding:22px 28px; display:flex; justify-content:space-between; align-items:center; cursor:pointer; gap:16px; transition:background 0.2s; font-family:inherit; }
+    .faq-btn:hover { background:var(--surface); }
+    .faq-q { font-size:0.95rem; font-weight:600; color:var(--text); }
+    .faq-icon { flex-shrink:0; width:26px; height:26px; border-radius:50%; border:1.5px solid var(--border); display:flex; align-items:center; justify-content:center; font-size:1.1rem; color:var(--muted); line-height:1; transition:transform 0.35s cubic-bezier(0.16,1,0.3,1), border-color 0.2s, color 0.2s, background 0.2s; }
+    .faq-item.open .faq-icon { transform:rotate(45deg); border-color:var(--accent); color:var(--accent); background:rgba(124,58,237,0.08); }
+    .faq-body { max-height:0; overflow:hidden; transition:max-height 0.45s cubic-bezier(0.16,1,0.3,1); }
+    .faq-item.open .faq-body { max-height:250px; }
+    .faq-ans { padding:0 28px 22px; color:var(--muted); font-size:0.9rem; line-height:1.75; }
+
+    /* ── CTA FLOTTANT ── */
+    .float-cta { position:fixed; bottom:28px; right:28px; z-index:500; opacity:0; transform:translateY(16px); transition:opacity 0.4s cubic-bezier(0.16,1,0.3,1), transform 0.4s cubic-bezier(0.16,1,0.3,1); pointer-events:none; }
+    .float-cta.visible { opacity:1; transform:translateY(0); pointer-events:all; }
+    .float-cta-link { display:flex; align-items:center; gap:10px; background:linear-gradient(135deg,var(--purple),var(--blue)); color:#fff; padding:14px 22px; border-radius:50px; font-weight:600; font-size:0.88rem; box-shadow:0 8px 32px rgba(124,58,237,0.35); transition:transform 0.25s cubic-bezier(0.16,1,0.3,1), box-shadow 0.25s; white-space:nowrap; }
+    .float-cta-link:hover { transform:translateY(-3px); box-shadow:0 16px 48px rgba(124,58,237,0.48); }
+    .float-cta-pulse { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.9); animation:dotPulse 1.8s infinite; flex-shrink:0; }
+
+    /* ── BOT COMMANDES ── */
+    #bot-commandes .s-num { color: #22c55e; }
+    .order-demo-box { border-color: rgba(34,197,94,0.35) !important; }
+    .order-demo-box .demo-tag { color: #22c55e; }
+
     /* ── RESPONSIVE MOBILE ── */
     @media (max-width: 640px) {
       html, body { overflow-x: hidden; }
@@ -358,8 +391,10 @@
     <div class="logo">Flashcore <span>IA</span></div>
     <ul>
       <li><a href="#demo" data-i18n="nav-demo">Agent IA</a></li>
+      <li><a href="#bot-commandes" data-i18n="nav-order">Bot Commandes</a></li>
       <li><a href="#services" data-i18n="nav-services">Services</a></li>
       <li><a href="#methode" data-i18n="nav-methode">Méthode</a></li>
+      <li class="nav-avail-item"><span class="nav-avail"><span class="nav-avail-dot"></span>Disponible</span></li>
       <li>
         <div class="lang-toggle">
           <button class="lang-btn active" onclick="setLang('fr')">FR</button>
@@ -379,8 +414,8 @@
       <!-- Texte -->
       <div class="hero-content">
         <div class="hero-tag" data-i18n="hero-tag">// agents_ia · automatisation · flashcore</div>
-        <h1 data-i18n-html="hero-h1">
-          L'IA qui<br/>travaille<br/><em>sans vous.</em>
+        <h1>
+          <span data-i18n="hero-h1-pre">L'IA qui</span><br/><span class="typewriter-word">travaille</span><br/><em data-i18n="hero-h1-suf">sans vous.</em>
         </h1>
         <p class="hero-sub" data-i18n="hero-sub">
           Je conçois des agents IA sur mesure pour les entrepreneurs. Vos tâches répétitives s'automatisent, vous revenez sur ce qui crée vraiment de la valeur.
@@ -605,6 +640,54 @@
     </div>
   </div>
 
+  <!-- 02b,BOT COMMANDES -->
+  <div id="bot-commandes">
+    <div class="s">
+      <div class="s-num" data-i18n="s02b-num">// BOT COMMANDES · LIVE</div>
+      <h2 class="s-title" data-i18n="s02b-title">Vos clients commandent.<br/>Livraison automatique.</h2>
+      <p class="s-sub" data-i18n="s02b-sub">Un agent IA gère les commandes de bout en bout, sans intervention manuelle.</p>
+      <div class="demo-box order-demo-box">
+        <div>
+          <div class="demo-tag">// order_bot.agent</div>
+          <h3 data-i18n="order-h3">Agent Commandes IA — Live</h3>
+          <p data-i18n="order-p">Vos clients passent commande via le chat. L'agent reçoit, traite et confirme chaque commande en temps réel. Zéro saisie manuelle, zéro erreur.</p>
+          <a href="http://72.62.23.66:8090/" class="btn-primary" target="_blank" rel="noopener" data-i18n="order-btn">Tester le bot →</a>
+          <p class="demo-free" data-i18n="order-free">Démo live · Sans inscription</p>
+        </div>
+        <div class="demo-outputs">
+          <div class="demo-output">
+            <div class="demo-output-icon"><svg class="icon-svg" width="18" height="18"><use href="#ic-message"/></svg></div>
+            <div>
+              <h4 data-i18n="order-out-1-title">Sélection produits</h4>
+              <p data-i18n="order-out-1-sub">Le client choisit ses articles directement dans le chat</p>
+            </div>
+          </div>
+          <div class="demo-output">
+            <div class="demo-output-icon"><svg class="icon-svg" width="18" height="18"><use href="#ic-zap"/></svg></div>
+            <div>
+              <h4 data-i18n="order-out-2-title">Confirmation automatique</h4>
+              <p data-i18n="order-out-2-sub">L'agent confirme et enregistre la commande instantanément</p>
+            </div>
+          </div>
+          <div class="demo-output">
+            <div class="demo-output-icon"><svg class="icon-svg" width="18" height="18"><use href="#ic-refresh"/></svg></div>
+            <div>
+              <h4 data-i18n="order-out-3-title">Traitement en temps réel</h4>
+              <p data-i18n="order-out-3-sub">Notification immédiate au vendeur, préparation déclenchée</p>
+            </div>
+          </div>
+          <div class="demo-output">
+            <div class="demo-output-icon"><svg class="icon-svg" width="18" height="18"><use href="#ic-target"/></svg></div>
+            <div>
+              <h4 data-i18n="order-out-4-title">Suivi client</h4>
+              <p data-i18n="order-out-4-sub">Le client reçoit les mises à jour de sa commande en direct</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- 03,SERVICES -->
   <div id="services">
     <div class="s">
@@ -771,6 +854,51 @@
     </div>
   </div>
 
+  <!-- FAQ -->
+  <div id="faq">
+    <div class="s">
+      <div class="s-num" data-i18n="s-faq-num">// FAQ</div>
+      <h2 class="s-title" data-i18n="s-faq-title">Vos questions.</h2>
+      <div class="faq-list will-reveal">
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span class="faq-q" data-i18n="faq-1-q">Combien ça coûte ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-body"><p class="faq-ans" data-i18n="faq-1-a">Chaque projet est unique — les tarifs dépendent de la complexité et des outils à intégrer. On en parle lors de l'appel découverte gratuit. Aucun abonnement, aucun engagement caché.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span class="faq-q" data-i18n="faq-2-q">Je ne suis pas technique. Est-ce que ça me convient ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-body"><p class="faq-ans" data-i18n="faq-2-a">Absolument. Mon rôle c'est de tout gérer techniquement. Vous m'expliquez votre problème business, je construis la solution. Vous utilisez l'agent sans jamais toucher au code.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span class="faq-q" data-i18n="faq-3-q">En combien de temps je reçois mon agent ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-body"><p class="faq-ans" data-i18n="faq-3-a">En général 24 à 48h après l'appel de brief. Pour des projets complexes avec plusieurs intégrations, comptez 3 à 5 jours. Je m'engage sur des délais réels, pas des estimations gonflées.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span class="faq-q" data-i18n="faq-4-q">Que se passe-t-il si ça ne fonctionne pas comme prévu ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-body"><p class="faq-ans" data-i18n="faq-4-a">On ajuste jusqu'à ce que ce soit parfait. Vous testez en conditions réelles avant de valider le livrable. Le support est inclus 30 jours après livraison.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-btn" onclick="toggleFaq(this)">
+            <span class="faq-q" data-i18n="faq-5-q">Quels outils intégrez-vous ?</span>
+            <span class="faq-icon">+</span>
+          </button>
+          <div class="faq-body"><p class="faq-ans" data-i18n="faq-5-a">Telegram, WhatsApp, n8n, Make, Notion, Google Sheets, Airtable, CRM, e-commerce, APIs sur mesure... Si l'outil a une API, on peut l'intégrer.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <!-- CONTACT -->
   <div id="contact" class="contact-wrap">
     <div class="contact-inner">
@@ -805,15 +933,25 @@
     <span data-i18n="footer">© 2026 flashcore_ia · Yaniss Molines · agents_ia · automatisation · marketing</span>
   </footer>
 
+  <!-- CTA FLOTTANT -->
+  <div class="float-cta" id="float-cta">
+    <a href="#contact" class="float-cta-link">
+      <span class="float-cta-pulse"></span>
+      <span data-i18n="float-cta">Réserver un appel</span>
+    </a>
+  </div>
+
   <script>
     const t = {
       fr: {
         'nav-demo': 'Agent IA',
+        'nav-order': 'Bot Commandes',
         'nav-services': 'Services',
         'nav-methode': 'Méthode',
         'nav-cta': 'Réserver un appel',
         'hero-tag': '// agents_ia · automatisation · flashcore',
-        'hero-h1': "L'IA qui<br/>travaille<br/><em>sans vous.</em>",
+        'hero-h1-pre': "L'IA qui",
+        'hero-h1-suf': 'sans vous.',
         'hero-sub': "Je conçois des agents IA sur mesure pour les entrepreneurs. Vos tâches répétitives s'automatisent, vous revenez sur ce qui crée vraiment de la valeur.",
         'hero-btn1': "Créer ma pub IA gratuite",
         'hero-btn2': 'Réserver un appel →',
@@ -845,6 +983,21 @@
         'out-3-sub': 'HyperFrames + Kimi créent la composition animée',
         'out-4-title': 'Pub vidéo MP4',
         'out-4-sub': 'Stories 9:16 prête pour Instagram & TikTok',
+        's02b-num': '// BOT COMMANDES · LIVE',
+        's02b-title': 'Vos clients commandent.<br/>Livraison automatique.',
+        's02b-sub': 'Un agent IA gère les commandes de bout en bout, sans intervention manuelle.',
+        'order-h3': 'Agent Commandes IA — Live',
+        'order-p': "Vos clients passent commande via le chat. L'agent reçoit, traite et confirme chaque commande en temps réel. Zéro saisie manuelle, zéro erreur.",
+        'order-btn': 'Tester le bot →',
+        'order-free': 'Démo live · Sans inscription',
+        'order-out-1-title': 'Sélection produits',
+        'order-out-1-sub': 'Le client choisit ses articles directement dans le chat',
+        'order-out-2-title': 'Confirmation automatique',
+        'order-out-2-sub': "L'agent confirme et enregistre la commande instantanément",
+        'order-out-3-title': 'Traitement en temps réel',
+        'order-out-3-sub': 'Notification immédiate au vendeur, préparation déclenchée',
+        'order-out-4-title': 'Suivi client',
+        'order-out-4-sub': 'Le client reçoit les mises à jour de sa commande en direct',
         's03-num': '// 03 · SERVICES',
         's03-title': 'Ce que je construis.',
         's03-sub': "Des solutions livrées rapidement, qui tournent sans vous et s'adaptent à votre activité.",
@@ -925,15 +1078,30 @@
         'cta-1-sub': '30 min · Visio ou téléphone · Agenda en direct',
         'cta-2-title': 'Message Telegram',
         'cta-2-sub': '@yanissmolines · Réponse sous 24h',
+        's-faq-num': '// FAQ',
+        's-faq-title': 'Vos questions.',
+        'faq-1-q': 'Combien ça coûte ?',
+        'faq-1-a': "Chaque projet est unique — les tarifs dépendent de la complexité et des outils à intégrer. On en parle lors de l'appel découverte gratuit. Aucun abonnement, aucun engagement caché.",
+        'faq-2-q': "Je ne suis pas technique. Est-ce que ça me convient ?",
+        'faq-2-a': "Absolument. Mon rôle c'est de tout gérer techniquement. Vous m'expliquez votre problème business, je construis la solution. Vous utilisez l'agent sans jamais toucher au code.",
+        'faq-3-q': "En combien de temps je reçois mon agent ?",
+        'faq-3-a': "En général 24 à 48h après l'appel de brief. Pour des projets complexes, comptez 3 à 5 jours. Je m'engage sur des délais réels, pas des estimations gonflées.",
+        'faq-4-q': "Que se passe-t-il si ça ne fonctionne pas comme prévu ?",
+        'faq-4-a': "On ajuste jusqu'à ce que ce soit parfait. Vous testez en conditions réelles avant de valider. Le support est inclus 30 jours après livraison.",
+        'faq-5-q': "Quels outils intégrez-vous ?",
+        'faq-5-a': "Telegram, WhatsApp, n8n, Make, Notion, Google Sheets, Airtable, CRM, e-commerce, APIs sur mesure... Si l'outil a une API, on peut l'intégrer.",
+        'float-cta': 'Réserver un appel',
         'footer': '© 2026 flashcore_ia · Yaniss Molines · agents_ia · automatisation · marketing',
       },
       en: {
         'nav-demo': 'AI Agent',
+        'nav-order': 'Order Bot',
         'nav-services': 'Services',
         'nav-methode': 'Method',
         'nav-cta': 'Book a call',
         'hero-tag': '// ai_agents · automation · flashcore',
-        'hero-h1': "The AI that<br/>works<br/><em>without you.</em>",
+        'hero-h1-pre': 'The AI that',
+        'hero-h1-suf': 'without you.',
         'hero-sub': "I design custom AI agents for entrepreneurs. Your repetitive tasks run on autopilot,you focus on what actually creates value.",
         'hero-btn1': 'Create my free AI ad',
         'hero-btn2': 'Book a call →',
@@ -965,6 +1133,21 @@
         'out-3-sub': 'HyperFrames + Kimi build the animated composition',
         'out-4-title': 'MP4 video ad',
         'out-4-sub': '9:16 Stories ready for Instagram & TikTok',
+        's02b-num': '// ORDER BOT · LIVE',
+        's02b-title': 'Clients order.<br/>Automatic delivery.',
+        's02b-sub': 'An AI agent handles your customer orders end-to-end, with zero manual intervention.',
+        'order-h3': 'AI Order Bot — Live',
+        'order-p': 'Customers place orders through the chat. The agent receives, processes and confirms every order in real time. Zero manual entry, zero errors.',
+        'order-btn': 'Try the bot →',
+        'order-free': 'Live demo · No sign-up',
+        'order-out-1-title': 'Product selection',
+        'order-out-1-sub': 'Customer picks items directly in the chat',
+        'order-out-2-title': 'Automatic confirmation',
+        'order-out-2-sub': 'Agent confirms and records the order instantly',
+        'order-out-3-title': 'Real-time processing',
+        'order-out-3-sub': 'Immediate seller notification, preparation triggered',
+        'order-out-4-title': 'Order tracking',
+        'order-out-4-sub': 'Customer receives live order status updates',
         's03-num': '// 03 · SERVICES',
         's03-title': 'What I build.',
         's03-sub': "Solutions delivered fast, that run without you and adapt to your business.",
@@ -1045,6 +1228,19 @@
         'cta-1-sub': '30 min · Video or phone · Live calendar',
         'cta-2-title': 'Telegram message',
         'cta-2-sub': '@yanissmolines · Reply within 24h',
+        's-faq-num': '// FAQ',
+        's-faq-title': 'Your questions.',
+        'faq-1-q': 'How much does it cost?',
+        'faq-1-a': "Every project is unique — pricing depends on complexity and tools to integrate. We discuss it during the free discovery call. No subscription, no hidden fees.",
+        'faq-2-q': "I'm not technical. Is this right for me?",
+        'faq-2-a': "Absolutely. My job is to handle everything technical. You explain your business problem, I build the solution. You use the agent without ever touching the code.",
+        'faq-3-q': "How quickly will I receive my agent?",
+        'faq-3-a': "Usually 24 to 48 hours after the brief call. For complex projects with multiple integrations, expect 3 to 5 days. I commit to real timelines.",
+        'faq-4-q': "What happens if it doesn't work as expected?",
+        'faq-4-a': "We adjust until it's perfect. You test in real conditions before validating the deliverable. Support is included for 30 days after delivery.",
+        'faq-5-q': "What tools do you integrate?",
+        'faq-5-a': "Telegram, WhatsApp, n8n, Make, Notion, Google Sheets, Airtable, CRM, e-commerce, custom APIs... If the tool has an API, we can integrate it.",
+        'float-cta': 'Book a call',
         'footer': '© 2026 flashcore_ia · Yaniss Molines · ai_agents · automation · marketing',
       }
     };
@@ -1245,6 +1441,46 @@
         card.style.transform = '';
       });
     });
+
+    // ── TYPEWRITER HERO ──
+    (function() {
+      const words = {
+        fr: ['travaille', 'répond', 'génère', 'analyse', 'automatise', 'apprend'],
+        en: ['works', 'responds', 'generates', 'analyzes', 'automates', 'learns']
+      };
+      let wi = 0;
+      setInterval(() => {
+        const tw = document.querySelector('.typewriter-word');
+        if (!tw) return;
+        wi = (wi + 1) % words[currentLang].length;
+        tw.style.opacity = '0';
+        setTimeout(() => {
+          const tw2 = document.querySelector('.typewriter-word');
+          if (!tw2) return;
+          tw2.textContent = words[currentLang][wi];
+          tw2.style.opacity = '1';
+        }, 220);
+      }, 2400);
+    })();
+
+    // ── CTA FLOTTANT ──
+    (function() {
+      const fc = document.getElementById('float-cta');
+      if (!fc) return;
+      const hero = document.querySelector('.hero');
+      window.addEventListener('scroll', () => {
+        const gone = !hero || hero.getBoundingClientRect().bottom < 0;
+        fc.classList.toggle('visible', gone);
+      }, { passive: true });
+    })();
+
+    // ── FAQ ACCORDION ──
+    function toggleFaq(btn) {
+      const item = btn.closest('.faq-item');
+      const isOpen = item.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!isOpen) item.classList.add('open');
+    }
   </script>
 
 </body>
