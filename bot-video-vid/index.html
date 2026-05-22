@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"/>
+<title>Bot Pub Vidéo IA</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+
+html, body {
+  width: 100%; height: 100vh;
+  margin: 0; padding: 0;
+  overflow: hidden; background: #ffffff;
+  position: relative;
+}
+
+#bot-video-comp {
+  width: 1920px;
+  height: 1080px;
+  background: #ffffff;
+  overflow: hidden;
+  position: absolute;
+  top: 0; left: 0;
+  font-family: 'Segoe UI', system-ui, sans-serif;
+  color: #18181b;
+  transform-origin: 0 0;
+}
+
+/* ─── SCENE 1 : INTRO ─── */
+#s1 {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  justify-content: center;
+  padding: 100px 140px; gap: 24px;
+}
+#s1-ghost {
+  position: absolute;
+  font-family: 'Courier New', monospace;
+  font-weight: 900;
+  font-size: 300px;
+  color: rgba(124,58,237,0.06);
+  white-space: nowrap;
+  top: 50%; left: 50%;
+  pointer-events: none;
+  letter-spacing: -8px;
+  z-index: 0;
+}
+.s1-rule {
+  position: absolute; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, #7c3aed 0%, rgba(124,58,237,0) 100%);
+}
+#s1-rule-top { top: 72px; }
+#s1-rule-bot { bottom: 72px; transform: scaleX(-1); transform-origin: right; }
+.s1-corner {
+  position: absolute; width: 32px; height: 32px;
+  border-style: solid; border-color: rgba(124,58,237,0.45);
+}
+#s1-ctlc { top: 52px;  left: 52px;  border-width: 3px 0 0 3px; }
+#s1-ctrc { top: 52px;  right: 52px; border-width: 3px 3px 0 0; }
+#s1-cblc { bottom: 52px; left: 52px;  border-width: 0 0 3px 3px; }
+#s1-cbrc { bottom: 52px; right: 52px; border-width: 0 3px 3px 0; }
+#s1-tag {
+  font-family: 'Courier New', monospace;
+  font-size: 26px; color: #7c3aed;
+  letter-spacing: 4px; text-transform: uppercase;
+  position: relative; z-index: 1;
+}
+.s1-live-dot {
+  display: inline-block; width: 12px; height: 12px;
+  background: #7c3aed; border-radius: 50%;
+  margin-right: 10px; vertical-align: middle;
+  box-shadow: 0 0 14px rgba(124,58,237,0.8);
+}
+#s1-t1 {
+  font-size: 112px; font-weight: 900;
+  color: #18181b; line-height: 1;
+  letter-spacing: -3px;
+  position: relative; z-index: 1;
+}
+#s1-t2 {
+  font-size: 200px; font-weight: 900;
+  line-height: 0.9; letter-spacing: -6px;
+  background: linear-gradient(135deg, #7c3aed, #3b82f6);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  position: relative; z-index: 1;
+}
+#s1-div {
+  width: 80px; height: 4px;
+  background: linear-gradient(90deg, #7c3aed, #3b82f6);
+  border-radius: 2px; position: relative; z-index: 1;
+}
+#s1-sub {
+  font-size: 38px; font-weight: 300;
+  color: #6b7280; letter-spacing: 1px;
+  position: relative; z-index: 1;
+}
+#s1-meta {
+  position: absolute; bottom: 88px; right: 140px;
+  font-family: 'Courier New', monospace;
+  font-size: 18px; color: rgba(124,58,237,0.5);
+  letter-spacing: 2px; z-index: 1;
+}
+
+/* ─── SCENE 2 : FLUX ─── */
+#s2 {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding: 80px 80px; gap: 0;
+  background: #faf5ff;
+}
+#s2-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(124,58,237,0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(124,58,237,0.06) 1px, transparent 1px);
+  background-size: 96px 96px;
+  pointer-events: none;
+}
+#s2-glow {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 1000px; height: 400px;
+  background: radial-gradient(ellipse, rgba(124,58,237,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+#s2-label {
+  font-family: 'Courier New', monospace;
+  font-size: 22px; color: #7c3aed;
+  letter-spacing: 5px; margin-bottom: 56px; text-align: center;
+  position: relative; z-index: 1;
+}
+#s2-flow {
+  display: flex; align-items: center;
+  justify-content: center; width: 100%;
+  position: relative; z-index: 1;
+}
+.s2-node {
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center;
+  width: 220px; height: 168px; border-radius: 20px;
+  border: 2.5px solid rgba(124,58,237,0.2);
+  background: #ffffff;
+  box-shadow: 0 8px 48px rgba(0,0,0,0.07);
+  padding: 20px; flex-shrink: 0;
+}
+.s2-node.done {
+  border-color: #7c3aed;
+  background: rgba(124,58,237,0.04);
+  box-shadow: 0 8px 48px rgba(124,58,237,0.18);
+}
+.s2-node-icon { font-size: 34px; line-height: 1; margin-bottom: 8px; }
+.s2-node-lbl {
+  font-family: 'Courier New', monospace;
+  font-size: 12px; color: rgba(124,58,237,0.75);
+  letter-spacing: 2px; text-transform: uppercase; margin-bottom: 5px;
+}
+.s2-node-txt {
+  font-size: 24px; font-weight: 700;
+  color: #18181b; text-align: center; line-height: 1.2;
+}
+.s2-node.done .s2-node-txt { color: #7c3aed; }
+.s2-arr {
+  display: flex; align-items: center;
+  width: 110px; flex-shrink: 0;
+}
+.s2-arr-line {
+  flex: 1; height: 3px;
+  background: linear-gradient(90deg, rgba(124,58,237,0.25), #7c3aed);
+  transform-origin: left;
+}
+.s2-arr-head {
+  width: 0; height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 16px solid #7c3aed;
+}
+#s2-cap {
+  margin-top: 60px;
+  font-size: 34px; color: #6b7280; font-weight: 300; text-align: center;
+  position: relative; z-index: 1;
+}
+#s2-cap strong { color: #18181b; font-weight: 600; }
+
+/* ─── SCENE 3 : FORMAT ─── */
+#s3 {
+  position: absolute; inset: 0;
+  display: grid; grid-template-columns: 1fr 2px 1fr;
+  padding: 80px 120px; gap: 0;
+}
+#s3-glow {
+  position: absolute; left: -80px; top: 50%;
+  transform: translateY(-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(124,58,237,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+#s3-left {
+  display: flex; flex-direction: column;
+  justify-content: center; padding-right: 56px; gap: 0;
+}
+#s3-vdiv {
+  background: linear-gradient(180deg, transparent, rgba(124,58,237,0.3), transparent);
+  align-self: stretch; transform-origin: top;
+}
+#s3-right {
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  padding-left: 56px;
+}
+#s3-lbl {
+  font-family: 'Courier New', monospace;
+  font-size: 20px; color: #7c3aed;
+  letter-spacing: 4px; margin-bottom: 40px;
+}
+.s3-feat {
+  display: flex; align-items: center; gap: 20px;
+  padding: 22px 0; border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+.s3-feat:last-child { border-bottom: none; }
+.s3-feat-arr {
+  font-family: 'Courier New', monospace;
+  font-size: 26px; color: #7c3aed;
+  font-weight: 700; flex-shrink: 0;
+}
+.s3-feat-txt { font-size: 30px; font-weight: 500; color: #18181b; line-height: 1.3; }
+/* Stories phone mockup */
+#s3-phone {
+  width: 220px; height: 390px;
+  background: linear-gradient(160deg, #7c3aed 0%, #3b82f6 100%);
+  border-radius: 32px;
+  border: 3px solid rgba(255,255,255,0.2);
+  box-shadow: 0 24px 80px rgba(124,58,237,0.35);
+  position: relative; overflow: hidden;
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: flex-end;
+  padding: 20px;
+}
+#s3-phone-notch {
+  position: absolute; top: 12px; left: 50%;
+  transform: translateX(-50%);
+  width: 60px; height: 8px;
+  background: rgba(0,0,0,0.25); border-radius: 4px;
+}
+#s3-phone-label {
+  font-family: 'Courier New', monospace;
+  font-size: 14px; color: rgba(255,255,255,0.6);
+  letter-spacing: 2px; margin-bottom: 4px;
+}
+#s3-phone-size {
+  font-size: 22px; font-weight: 700;
+  color: #ffffff; letter-spacing: 1px;
+}
+#s3-phone-badge {
+  position: absolute; top: 32px; right: 14px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px; padding: 4px 12px;
+  font-size: 14px; color: #fff;
+  font-family: 'Courier New', monospace;
+}
+#s3-phone-play {
+  position: absolute; top: 50%; left: 50%;
+  transform: translate(-50%,-50%);
+  width: 60px; height: 60px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 28px;
+}
+
+/* ─── SCENE 4 : CTA ─── */
+#s4 {
+  position: absolute; inset: 0;
+  display: flex; flex-direction: column;
+  justify-content: center; align-items: center;
+  background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 100%);
+  padding: 80px; gap: 28px;
+}
+#s4-bg {
+  position: absolute; inset: 0; pointer-events: none;
+  background:
+    radial-gradient(circle at 18% 78%, rgba(255,255,255,0.10) 0%, transparent 38%),
+    radial-gradient(circle at 82% 22%, rgba(255,255,255,0.07) 0%, transparent 38%);
+}
+#s4-ring {
+  position: absolute; width: 600px; height: 600px;
+  border-radius: 50%; border: 1px solid rgba(255,255,255,0.12);
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+#s4-ring2 {
+  position: absolute; width: 900px; height: 900px;
+  border-radius: 50%; border: 1px solid rgba(255,255,255,0.07);
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+#s4-lbl {
+  font-family: 'Courier New', monospace;
+  font-size: 22px; color: rgba(255,255,255,0.6);
+  letter-spacing: 5px; text-transform: uppercase;
+}
+#s4-cta {
+  font-size: 88px; font-weight: 800;
+  color: #ffffff; letter-spacing: -2px;
+  line-height: 1.05; text-align: center;
+}
+#s4-sub { font-size: 34px; font-weight: 300; color: rgba(255,255,255,0.65); }
+#s4-url {
+  font-family: 'Courier New', monospace;
+  font-size: 28px; color: rgba(255,255,255,0.85);
+  background: rgba(255,255,255,0.12); padding: 12px 36px;
+  border-radius: 8px; border: 1px solid rgba(255,255,255,0.25);
+  letter-spacing: 2px;
+}
+
+/* ─── TRANSITION ─── */
+#t-wipe {
+  position: absolute; inset: 0;
+  background: #ffffff; opacity: 0; z-index: 20; pointer-events: none;
+}
+</style>
+</head>
+<body>
+<div id="bot-video-comp" data-composition-id="bot-video-comp" data-start="0" data-width="1920" data-height="1080">
+
+  <div id="t-wipe" class="clip" data-start="0" data-duration="18" data-track-index="9"></div>
+
+  <!-- ── SCENE 1 : INTRO (0–5s) ── -->
+  <div id="s1" class="clip" data-start="0" data-duration="5" data-track-index="0">
+    <div id="s1-ghost">VIDEO</div>
+    <div class="s1-rule" id="s1-rule-top"></div>
+    <div class="s1-rule" id="s1-rule-bot"></div>
+    <div class="s1-corner" id="s1-ctlc"></div>
+    <div class="s1-corner" id="s1-ctrc"></div>
+    <div class="s1-corner" id="s1-cblc"></div>
+    <div class="s1-corner" id="s1-cbrc"></div>
+    <div id="s1-tag"><span class="s1-live-dot"></span>// pub_video_bot.agent · Telegram · LIVE</div>
+    <div id="s1-t1">Bot Pub Vidéo</div>
+    <div id="s1-t2">IA</div>
+    <div id="s1-div"></div>
+    <div id="s1-sub">Vocal. Photos. Pub prête à poster.</div>
+    <div id="s1-meta">@monmarketing_bot</div>
+  </div>
+
+  <!-- ── SCENE 2 : FLUX (5–10s) ── -->
+  <div id="s2" class="clip" data-start="5" data-duration="5" data-track-index="2">
+    <div id="s2-grid"></div>
+    <div id="s2-glow"></div>
+    <div id="s2-label">// pipeline · vocal → vidéo Stories</div>
+    <div id="s2-flow">
+      <div class="s2-node" id="n1">
+        <div class="s2-node-icon">🎙️</div>
+        <div class="s2-node-lbl">vocal</div>
+        <div class="s2-node-txt">Message vocal</div>
+      </div>
+      <div class="s2-arr" id="a1">
+        <div class="s2-arr-line"></div><div class="s2-arr-head"></div>
+      </div>
+      <div class="s2-node" id="n2">
+        <div class="s2-node-icon">📸</div>
+        <div class="s2-node-lbl">photos</div>
+        <div class="s2-node-txt">Photos produit</div>
+      </div>
+      <div class="s2-arr" id="a2">
+        <div class="s2-arr-line"></div><div class="s2-arr-head"></div>
+      </div>
+      <div class="s2-node" id="n3">
+        <div class="s2-node-icon">🤖</div>
+        <div class="s2-node-lbl">agent IA</div>
+        <div class="s2-node-txt">Génération vidéo</div>
+      </div>
+      <div class="s2-arr" id="a3">
+        <div class="s2-arr-line"></div><div class="s2-arr-head"></div>
+      </div>
+      <div class="s2-node done" id="n4">
+        <div class="s2-node-icon">🎬</div>
+        <div class="s2-node-lbl">livraison</div>
+        <div class="s2-node-txt">Pub MP4</div>
+      </div>
+    </div>
+    <div id="s2-cap">Sans design. Sans montage. <strong>100% automatique.</strong></div>
+  </div>
+
+  <!-- ── SCENE 3 : FORMAT (10–15s) ── -->
+  <div id="s3" class="clip" data-start="10" data-duration="5" data-track-index="4">
+    <div id="s3-glow"></div>
+    <div id="s3-left">
+      <div id="s3-lbl">// fonctionnalités</div>
+      <div class="s3-feat" id="f1">
+        <div class="s3-feat-arr">→</div>
+        <div class="s3-feat-txt">Transcription vocale Whisper IA</div>
+      </div>
+      <div class="s3-feat" id="f2">
+        <div class="s3-feat-arr">→</div>
+        <div class="s3-feat-txt">Composition vidéo générée par IA</div>
+      </div>
+      <div class="s3-feat" id="f3">
+        <div class="s3-feat-arr">→</div>
+        <div class="s3-feat-txt">Format Stories 1080×1920</div>
+      </div>
+      <div class="s3-feat" id="f4">
+        <div class="s3-feat-arr">→</div>
+        <div class="s3-feat-txt">Prêt Instagram · TikTok · Reels</div>
+      </div>
+    </div>
+    <div id="s3-vdiv"></div>
+    <div id="s3-right">
+      <div id="s3-phone">
+        <div id="s3-phone-notch"></div>
+        <div id="s3-phone-badge">LIVE</div>
+        <div id="s3-phone-play">▶</div>
+        <div id="s3-phone-label">Stories · Reels</div>
+        <div id="s3-phone-size">1080 × 1920</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SCENE 4 : CTA (15–18s) ── -->
+  <div id="s4" class="clip" data-start="15" data-duration="3" data-track-index="6">
+    <div id="s4-bg"></div>
+    <div id="s4-ring"></div>
+    <div id="s4-ring2"></div>
+    <div id="s4-lbl">// pub_video_bot.agent</div>
+    <div id="s4-cta">Crée ta pub vidéo →</div>
+    <div id="s4-sub">2 démos gratuites · Livraison Telegram</div>
+    <div id="s4-url">@monmarketing_bot</div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+  <script>
+  window.__timelines = window.__timelines || {};
+  const tl = gsap.timeline({ paused: true });
+
+  // ─── SCENE 1 ───
+  tl.fromTo("#s1-ghost",
+    { xPercent: -50, yPercent: -50, x: -80, opacity: 0 },
+    { xPercent: -50, yPercent: -50, x: 0,   opacity: 1, duration: 1.8, ease: "power1.out" },
+    0.1
+  );
+  tl.to("#s1-ghost", { xPercent: -50, yPercent: -50, x: 50, duration: 3.0, ease: "sine.inOut", overwrite: "auto" }, 1.92);
+  tl.from("#s1-rule-top", { scaleX: 0, duration: 0.7, ease: "expo.out", transformOrigin: "left" }, 0.15);
+  tl.from("#s1-rule-bot", { scaleX: 0, duration: 0.7, ease: "expo.out", transformOrigin: "right" }, 0.2);
+  tl.from("#s1-ctlc", { scale: 0, duration: 0.35, ease: "back.out(2)", transformOrigin: "top left" }, 0.25);
+  tl.from("#s1-ctrc", { scale: 0, duration: 0.35, ease: "back.out(2)", transformOrigin: "top right" }, 0.3);
+  tl.from("#s1-cblc", { scale: 0, duration: 0.35, ease: "back.out(2)", transformOrigin: "bottom left" }, 0.3);
+  tl.from("#s1-cbrc", { scale: 0, duration: 0.35, ease: "back.out(2)", transformOrigin: "bottom right" }, 0.35);
+  tl.from("#s1-tag",  { y: 30, opacity: 0, duration: 0.5, ease: "power3.out" }, 0.45);
+  tl.from("#s1-t1",   { x: -100, opacity: 0, duration: 0.6, ease: "expo.out" }, 0.72);
+  tl.from("#s1-t2",   { scale: 0.75, opacity: 0, duration: 0.55, ease: "back.out(1.6)" }, 0.92);
+  tl.from("#s1-div",  { scaleX: 0, duration: 0.4, ease: "power3.out", transformOrigin: "left" }, 1.3);
+  tl.from("#s1-sub",  { y: 22, opacity: 0, duration: 0.5, ease: "sine.out" }, 1.48);
+  tl.from("#s1-meta", { opacity: 0, duration: 0.4, ease: "power1.out" }, 1.7);
+
+  // ─── TRANSITION 1→2 ───
+  tl.to("#t-wipe", { opacity: 1, duration: 0.32, ease: "power2.in" }, 4.35);
+  tl.to("#t-wipe", { opacity: 0, duration: 0.32, ease: "power2.out" }, 5.1);
+
+  // ─── SCENE 2 ───
+  tl.from("#s2-grid",  { opacity: 0, duration: 0.6, ease: "power1.out" }, 5.05);
+  tl.from("#s2-glow",  { scale: 0.4, opacity: 0, duration: 0.8, ease: "power2.out" }, 5.05);
+  tl.from("#s2-label", { y: -24, opacity: 0, duration: 0.45, ease: "power3.out" }, 5.25);
+  tl.from("#n1", { x: -50, opacity: 0, scale: 0.82, duration: 0.48, ease: "back.out(1.5)" }, 5.5);
+  tl.from("#a1 .s2-arr-line", { scaleX: 0, duration: 0.3, ease: "power2.out", transformOrigin: "left" }, 5.88);
+  tl.from("#a1 .s2-arr-head", { opacity: 0, duration: 0.15, ease: "none" }, 6.15);
+  tl.from("#n2", { x: -44, opacity: 0, scale: 0.82, duration: 0.48, ease: "back.out(1.5)" }, 6.2);
+  tl.from("#a2 .s2-arr-line", { scaleX: 0, duration: 0.3, ease: "power2.out", transformOrigin: "left" }, 6.58);
+  tl.from("#a2 .s2-arr-head", { opacity: 0, duration: 0.15, ease: "none" }, 6.85);
+  tl.from("#n3", { x: -44, opacity: 0, scale: 0.82, duration: 0.48, ease: "back.out(1.5)" }, 6.9);
+  tl.from("#a3 .s2-arr-line", { scaleX: 0, duration: 0.3, ease: "power2.out", transformOrigin: "left" }, 7.28);
+  tl.from("#a3 .s2-arr-head", { opacity: 0, duration: 0.15, ease: "none" }, 7.55);
+  tl.from("#n4", { x: -44, opacity: 0, scale: 0.82, duration: 0.55, ease: "back.out(2.2)" }, 7.6);
+  tl.from("#s2-cap", { y: 28, opacity: 0, duration: 0.5, ease: "power2.out" }, 8.3);
+
+  // ─── TRANSITION 2→3 ───
+  tl.to("#t-wipe", { opacity: 1, duration: 0.28, ease: "power3.in" }, 9.42);
+  tl.to("#t-wipe", { opacity: 0, duration: 0.28, ease: "power3.out" }, 10.12);
+
+  // ─── SCENE 3 ───
+  tl.from("#s3-glow",  { scale: 0.3, opacity: 0, duration: 1.0, ease: "power2.out" }, 10.05);
+  tl.from("#s3-lbl",   { x: -30, opacity: 0, duration: 0.4, ease: "expo.out" }, 10.2);
+  tl.from("#s3-vdiv",  { scaleY: 0, duration: 0.65, ease: "power3.out", transformOrigin: "top" }, 10.28);
+  tl.from("#f1", { x: -55, opacity: 0, duration: 0.42, ease: "power3.out" }, 10.5);
+  tl.from("#f2", { x: -55, opacity: 0, duration: 0.42, ease: "power3.out" }, 10.78);
+  tl.from("#f3", { x: -55, opacity: 0, duration: 0.42, ease: "power3.out" }, 11.06);
+  tl.from("#f4", { x: -55, opacity: 0, duration: 0.42, ease: "power3.out" }, 11.34);
+  tl.from("#s3-phone",       { scale: 0.6, opacity: 0, y: 40, duration: 0.65, ease: "back.out(1.4)" }, 10.38);
+  tl.from("#s3-phone-badge", { opacity: 0, duration: 0.35, ease: "power1.out" }, 11.2);
+  tl.from("#s3-phone-play",  { scale: 0, opacity: 0, duration: 0.4, ease: "back.out(2)" }, 11.4);
+  // Phone pulse
+  tl.to("#s3-phone", {
+    boxShadow: "0 24px 100px rgba(124,58,237,0.55), 0 0 0 8px rgba(124,58,237,0.12)",
+    duration: 0.7, ease: "sine.inOut", yoyo: true, repeat: 5
+  }, 11.6);
+
+  // ─── TRANSITION 3→4 ───
+  tl.to("#t-wipe", { opacity: 1, duration: 0.25, ease: "power3.in" }, 14.45);
+  tl.to("#t-wipe", { opacity: 0, duration: 0.25, ease: "power3.out" }, 15.1);
+
+  // ─── SCENE 4 ───
+  tl.from("#s4-ring",  { scale: 0.5, opacity: 0, duration: 0.8, ease: "power2.out" }, 15.05);
+  tl.from("#s4-ring2", { scale: 0.5, opacity: 0, duration: 1.0, ease: "power1.out" }, 15.1);
+  tl.from("#s4-lbl",   { y: -20, opacity: 0, duration: 0.38, ease: "power2.out" }, 15.25);
+  tl.from("#s4-cta",   { y: 55, opacity: 0, scale: 0.9, duration: 0.65, ease: "expo.out" }, 15.45);
+  tl.from("#s4-sub",   { y: 20, opacity: 0, duration: 0.4, ease: "power2.out" }, 15.95);
+  tl.from("#s4-url",   { y: 18, opacity: 0, duration: 0.38, ease: "sine.out" }, 16.2);
+  tl.to("#s4", { opacity: 0, duration: 0.55, ease: "power1.in" }, 17.45);
+
+  window.__timelines["bot-video-comp"] = tl;
+
+  // ─── Scale composition to fit iframe viewport ───
+  function scaleComp() {
+    var comp = document.getElementById('bot-video-comp');
+    var sw = window.innerWidth, sh = window.innerHeight;
+    var scale = Math.min(sw / 1920, sh / 1080);
+    comp.style.transform = 'scale(' + scale + ')';
+    comp.style.left = (sw - 1920 * scale) / 2 + 'px';
+    comp.style.top  = (sh - 1080 * scale) / 2 + 'px';
+  }
+  scaleComp();
+  window.addEventListener('resize', scaleComp);
+
+  // ─── Autoplay driver ───
+  function updateClips(t) {
+    document.querySelectorAll('.clip').forEach(function(el) {
+      var s = parseFloat(el.dataset.start);
+      var d = parseFloat(el.dataset.duration);
+      el.style.display = (t >= s && t < s + d) ? '' : 'none';
+    });
+  }
+  updateClips(0);
+  tl.eventCallback('onUpdate', function() { updateClips(tl.time()); });
+  tl.eventCallback('onComplete', function() { tl.seek(0); tl.play(); });
+  tl.play();
+  </script>
+</div>
+</body>
+</html>
