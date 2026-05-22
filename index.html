@@ -324,10 +324,24 @@
     .agent-card-schema:hover { border-color:rgba(245,158,11,0.45); }
     .agent-card-commandes .agent-card-tag { color:#22c55e; }
     .agent-card-schema .agent-card-tag { color:#f59e0b; }
+    .agent-card-video .agent-card-tag { color:#7c3aed; }
     .agent-card-commandes .agent-icon-wrap { background:rgba(34,197,94,0.1); }
     .agent-card-schema .agent-icon-wrap { background:rgba(245,158,11,0.1); }
+    .agent-card-video .agent-icon-wrap { background:rgba(124,58,237,0.1); }
     .agent-card-commandes .agent-features li::before { color:#22c55e; }
     .agent-card-schema .agent-features li::before { color:#f59e0b; }
+    .agent-card-video .agent-features li::before { color:#7c3aed; }
+    .agent-card-video { border-color:rgba(124,58,237,0.2); grid-column:1/-1; }
+    .agent-card-video:hover { border-color:rgba(124,58,237,0.45); }
+    .agent-cta-purple { background:linear-gradient(135deg,#7c3aed,#3b82f6); color:#fff; box-shadow:0 4px 20px rgba(124,58,237,0.25); }
+    .agent-cta-purple:hover { box-shadow:0 12px 36px rgba(124,58,237,0.4); }
+    .agent-card-video .agent-card-inner { display:grid; grid-template-columns:1fr 1fr; gap:40px; align-items:start; }
+    .video-steps { display:flex; flex-direction:column; gap:12px; margin-bottom:24px; flex:1; }
+    .video-step { display:flex; align-items:flex-start; gap:14px; background:rgba(124,58,237,0.03); border:1px solid rgba(124,58,237,0.12); border-radius:10px; padding:14px 18px; }
+    .video-step-num { font-family:'Courier New',monospace; font-size:0.7rem; color:#7c3aed; font-weight:700; flex-shrink:0; margin-top:2px; }
+    .video-step h4 { font-size:0.84rem; font-weight:600; color:var(--text); margin-bottom:2px; }
+    .video-step p { font-size:0.76rem; color:var(--muted); margin:0; line-height:1.5; }
+    @media(max-width:700px){ .agent-card-video .agent-card-inner { grid-template-columns:1fr; } }
     .excalidraw-examples { display:flex; flex-direction:column; gap:7px; margin-bottom:24px; flex:1; }
     .excalidraw-ex { font-family:'Courier New',monospace; font-size:0.7rem; color:var(--muted); background:rgba(245,158,11,0.04); border:1px solid rgba(245,158,11,0.15); border-radius:8px; padding:9px 14px; line-height:1.55; }
     @media (max-width:900px) { .agents-grid { grid-template-columns:1fr; } }
@@ -631,7 +645,7 @@
     <div class="s">
       <div class="s-num" data-i18n="s02-num">// 02 · AGENTS IA · EN DIRECT</div>
       <h2 class="s-title" data-i18n="s02-title">Testez nos agents.<br/>Maintenant.</h2>
-      <p class="s-sub" data-i18n="s02-sub">Deux agents déployés, opérationnels 24h/24. Essayez gratuitement.</p>
+      <p class="s-sub" data-i18n="s02-sub">Trois agents déployés, opérationnels 24h/24. Essayez gratuitement.</p>
       <div class="agents-grid">
 
         <!-- Bot Commandes -->
@@ -684,6 +698,57 @@
             <div class="excalidraw-ex" data-i18n="exc-ex-3">«Organigramme : PDG, 3 directeurs, 2 équipes chacun»</div>
           </div>
           <a href="https://t.me/escalidraw_bot" class="agent-cta agent-cta-amber" target="_blank" rel="noopener" data-i18n="agent2-btn">Générer mon schéma →</a>
+        </div>
+
+        <!-- Bot Pub Vidéo IA -->
+        <div class="agent-card agent-card-video" id="bot-video">
+          <div class="agent-card-tag" data-i18n="agent3-tag">// pub_video_bot.agent · Telegram · LIVE</div>
+          <div class="agent-card-inner">
+            <div>
+              <div class="agent-card-header">
+                <div class="agent-icon-wrap">
+                  <svg class="icon-svg" width="22" height="22" style="stroke:#7c3aed"><use href="#ic-zap"/></svg>
+                </div>
+                <div>
+                  <h3 data-i18n="agent3-title">Bot Pub Vidéo IA</h3>
+                  <div class="agent-card-url">@monmarketing_bot</div>
+                </div>
+              </div>
+              <p data-i18n="agent3-desc">Décris ton business en message vocal, envoie tes photos produit — le bot génère une publicité vidéo Stories prête à publier sur Instagram ou TikTok. Sans design, sans montage.</p>
+              <ul class="agent-features">
+                <li data-i18n="agent3-f1">Message vocal transcrit par Whisper IA</li>
+                <li data-i18n="agent3-f2">Composition vidéo générée par IA</li>
+                <li data-i18n="agent3-f3">Format Stories 1080×1920 · prêt à poster</li>
+                <li data-i18n="agent3-f4">2 démos gratuites par utilisateur</li>
+              </ul>
+              <a href="https://t.me/monmarketing_bot" class="agent-cta agent-cta-purple" target="_blank" rel="noopener" data-i18n="agent3-btn">Créer ma pub vidéo →</a>
+            </div>
+            <div>
+              <div class="video-steps">
+                <div class="video-step">
+                  <div class="video-step-num">01</div>
+                  <div>
+                    <h4 data-i18n="vstep1-title">Envoie un vocal</h4>
+                    <p data-i18n="vstep1-desc">Décris ton business, ton produit ou ta cible en 30 secondes. Whisper transcrit automatiquement.</p>
+                  </div>
+                </div>
+                <div class="video-step">
+                  <div class="video-step-num">02</div>
+                  <div>
+                    <h4 data-i18n="vstep2-title">Envoie tes photos</h4>
+                    <p data-i18n="vstep2-desc">Jusqu'à 5 photos de ton produit ou service. Elles s'intègrent dans la vidéo automatiquement.</p>
+                  </div>
+                </div>
+                <div class="video-step">
+                  <div class="video-step-num">03</div>
+                  <div>
+                    <h4 data-i18n="vstep3-title">Reçois ta pub vidéo</h4>
+                    <p data-i18n="vstep3-desc">Une vidéo Stories animée, avec accroche, showcase produit et CTA. Prête à diffuser.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
 
       </div>
@@ -973,7 +1038,7 @@
         'flux-4-text': 'Tourne 24h/24 sans vous',
         's02-num': '// 02 · AGENTS IA · EN DIRECT',
         's02-title': 'Testez nos agents.<br/>Maintenant.',
-        's02-sub': 'Deux agents déployés, opérationnels 24h/24. Essayez gratuitement.',
+        's02-sub': 'Trois agents déployés, opérationnels 24h/24. Essayez gratuitement.',
         'agent1-tag': '// order_bot.agent · LIVE',
         'agent1-title': 'Bot Commandes',
         'agent1-url': '72.62.23.66:8090',
@@ -992,6 +1057,20 @@
         'agent2-f4': 'Fichier .excalidraw prêt à éditer',
         'agent2-btn': 'Générer mon schéma →',
         'exc-ex-1': '«Architecture micro-services : API Gateway + 3 services + BDD»',
+        'agent3-tag': '// pub_video_bot.agent · Telegram · LIVE',
+        'agent3-title': 'Bot Pub Vidéo IA',
+        'agent3-desc': "Décris ton business en message vocal, envoie tes photos produit — le bot génère une publicité vidéo Stories prête à publier sur Instagram ou TikTok. Sans design, sans montage.",
+        'agent3-f1': 'Message vocal transcrit par Whisper IA',
+        'agent3-f2': 'Composition vidéo générée par IA',
+        'agent3-f3': 'Format Stories 1080×1920 · prêt à poster',
+        'agent3-f4': '2 démos gratuites par utilisateur',
+        'agent3-btn': 'Créer ma pub vidéo →',
+        'vstep1-title': 'Envoie un vocal',
+        'vstep1-desc': 'Décris ton business, ton produit ou ta cible en 30 secondes. Whisper transcrit automatiquement.',
+        'vstep2-title': 'Envoie tes photos',
+        'vstep2-desc': "Jusqu'à 5 photos de ton produit ou service. Elles s'intègrent dans la vidéo automatiquement.",
+        'vstep3-title': 'Reçois ta pub vidéo',
+        'vstep3-desc': 'Une vidéo Stories animée, avec accroche, showcase produit et CTA. Prête à diffuser.',
         'exc-ex-2': '«Flux de commande : client → panier → paiement → confirmation»',
         'exc-ex-3': '«Organigramme : PDG, 3 directeurs, 2 équipes chacun»',
         's03-num': '// 03 · SERVICES',
@@ -1117,7 +1196,7 @@
         'flux-4-text': 'Runs 24/7 without you',
         's02-num': '// 02 · AI AGENTS · LIVE',
         's02-title': 'Test our agents.<br/>Right now.',
-        's02-sub': 'Two deployed agents, running 24/7. Try them for free.',
+        's02-sub': 'Three deployed agents, running 24/7. Try them for free.',
         'agent1-tag': '// order_bot.agent · LIVE',
         'agent1-title': 'Order Bot',
         'agent1-url': '72.62.23.66:8090',
@@ -1136,6 +1215,20 @@
         'agent2-f4': '.excalidraw file ready to edit',
         'agent2-btn': 'Generate my diagram →',
         'exc-ex-1': '"Micro-services architecture: API Gateway + 3 services + DB"',
+        'agent3-tag': '// pub_video_bot.agent · Telegram · LIVE',
+        'agent3-title': 'AI Video Ad Bot',
+        'agent3-desc': "Describe your business in a voice message, send your product photos — the bot generates a Stories video ad ready to post on Instagram or TikTok. No design, no editing.",
+        'agent3-f1': 'Voice message transcribed by Whisper AI',
+        'agent3-f2': 'Video composition generated by AI',
+        'agent3-f3': '1080×1920 Stories format · ready to post',
+        'agent3-f4': '2 free demos per user',
+        'agent3-btn': 'Create my video ad →',
+        'vstep1-title': 'Send a voice message',
+        'vstep1-desc': 'Describe your business, product or audience in 30 seconds. Whisper transcribes automatically.',
+        'vstep2-title': 'Send your photos',
+        'vstep2-desc': 'Up to 5 photos of your product or service. They get integrated into the video automatically.',
+        'vstep3-title': 'Receive your video ad',
+        'vstep3-desc': 'An animated Stories video with hook, product showcase and CTA. Ready to publish.',
         'exc-ex-2': '"Order flow: customer → cart → payment → confirmation"',
         'exc-ex-3': '"Org chart: CEO, 3 directors, 2 teams each"',
         's03-num': '// 03 · SERVICES',
