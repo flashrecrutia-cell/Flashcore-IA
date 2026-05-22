@@ -294,6 +294,10 @@
     .float-cta-link:hover { transform:translateY(-3px); box-shadow:0 16px 48px rgba(124,58,237,0.48); }
     .float-cta-pulse { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.9); animation:dotPulse 1.8s infinite; flex-shrink:0; }
 
+    /* ── VIDEO BOT ── */
+    .agent-video-wrap { margin:20px 0; border-radius:12px; overflow:hidden; background:#000; aspect-ratio:16/9; width:100%; }
+    .agent-video-wrap iframe { width:100%; height:100%; border:none; display:block; }
+
     /* ── AGENTS GRID ── */
     .agents-grid { display:grid; grid-template-columns:1fr 1fr; gap:24px; }
     .agent-card { border:1px solid var(--border); border-radius:20px; padding:40px; background:var(--bg); display:flex; flex-direction:column; transition:border-color 0.25s, box-shadow 0.35s cubic-bezier(0.16,1,0.3,1); }
@@ -649,6 +653,9 @@
             <li data-i18n="agent1-f3">Notification vendeur en temps réel</li>
             <li data-i18n="agent1-f4">Suivi de commande client</li>
           </ul>
+          <div class="agent-video-wrap">
+            <iframe src="bot-commandes-vid/" allowfullscreen loading="lazy" title="Bot Commandes IA — démo"></iframe>
+          </div>
           <a href="http://72.62.23.66:8090/" class="agent-cta agent-cta-green" target="_blank" rel="noopener" data-i18n="agent1-btn">Tester le bot commandes →</a>
         </div>
 
